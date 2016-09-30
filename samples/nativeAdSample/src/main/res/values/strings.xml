@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">InMobi NativeAd Samples</string>
+    <string name="label_title">Title</string>
+    <string name="default_sponsored_text">Sponsored</string>
+    <string name="title_section1">Headlines</string>
+    <string name="title_section2">Photos</string>
+    <string name="title_section3">News</string>
+    <string name="title_section4">Gallery</string>
+    <string name="label_image_caption">Caption</string>
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">InMobi Banner Sample</string>
+    <string name="banner_xml_message">Banner Ad through XML layout</string>
+    <string name="title_activity_banner">BannerActivity</string>
+    <string name="header_banner_ads">Banner Ads</string>
+    <string name="label_banner_xml_300x50">XML Banner Ad 320 x 50</string>
+    <string name="label_banner_300x50">Banner Ad 320 x 50</string>
+    <string name="label_banner_300x250">Banner Ad 300 x 250</string>
+    <string name="label_banner_468x60">Banner Ad 468 x 60</string>
+    <string name="label_banner_728x90">Banner Ad 728 x 90</string>
+    <string name="label_title">Title</string>
+    <string name="title_activity_banner_ads">BannerAdsActivity</string>
+</resources>

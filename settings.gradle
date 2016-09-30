@@ -1,0 +1,3 @@
+
+include ':samples:bannerSample', ':samples:interstitialSample', ':samples:nativeAdSample', ':samples:nativeStoryboardSample'
+

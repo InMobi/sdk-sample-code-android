@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">InMobi Interstitial Sample</string>
+
+    <string name="banner_xml_message">Banner Ad through XML layout</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_banner">BannerActivity</string>
+    <string name="title_activity_interstitial">InterstitialActivity</string>
+    <string name="title_activity_native_feed">NativeFeedActivity</string>
+    <string name="title_activity_native_news">NativeNewsActivity</string>
+    <string name="title_activity_native_board">NativeBoardActivity</string>
+    <string name="title_activity_native_cover">NativeCoverActivity</string>
+    <string name="header_main_activity">InMobi Demo App</string>
+
+    <string name="header_interstitial_ads">Interstitial Ads</string>
+    <string name="label_interstitial">Show Fullscreen Ad</string>
+    <string name="button_load_interstitial">Load Ad</string>
+    <string name="button_show_interstitial">Show Ad</string>
+    <string name="button_show_interstitial_with_animation">Show Ad with animation</string>
+    <string name="header_native_ads">Native Ads</string>
+    <string name="label_native_image_feed">Native Ad in Image Feed</string>
+    <string name="label_native_news_feed">Native Ad in News Feed</string>
+    <string name="label_native_board_feed">Native Ad in Board Feed</string>
+    <string name="label_native_flow">Native Ad in Flow</string>
+    <string name="label_title">Title</string>
+
+    <string name="button_refresh">Refresh</string>
+    <string name="activity_interstitial_text">InMobi Interstitial Ad</string>
+    <string name="title_activity_banner_xml">BannerXMLActivity</string>
+    <string name="default_sponsored_text">Sponsored</string>
+    <string name="title_activity_native_ads">NativeAdsActivity</string>
+
+    <string name="title_section1">Headlines</string>
+    <string name="title_section2">Photos</string>
+    <string name="title_section3">News</string>
+    <string name="title_section4">Gallery</string>
+    <string name="title_activity_banner_ads">BannerAdsActivity</string>
+    <string name="title_activity_interstitial_ads">InterstitialAdsActivity</string>
+    <string name="label_image_caption">Caption</string>
+
+    <string name="title_activity_native_storyboards">StoryboardsActivity</string>
+</resources>
