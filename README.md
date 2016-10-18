@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.inmobi.monetization:inmobi-ads:6.0.0'
+    compile 'com.inmobi.monetization:inmobi-ads:6.0.1'
 }
 ```
 
