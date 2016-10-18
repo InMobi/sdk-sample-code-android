@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: September 28, 2016
+Modified: October 14, 2016
 
-SDK Version: 6.0.0
+SDK Version: 6.0.1
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!

@@ -1,6 +1,11 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 6.0.1 [14/Oct/2016]
+
+    • Fixed a crash due to missing Google Play Services
+
+
 ## Build 6.0.0 [28/Sep/2016]
 A brand new SDK that turbo-charges performance, improves stability and introduces a fully re-engineered fullscreen video experience that aims to deliver a truly native, stall-free experience that should improve render rates. What's more, SDK 6.0.0 for Android is compliant with Android-N, the latest version of Android, and is also a drop-in replacement for publishers who are already integrating with SDK 5.x.x for Android. The complete list of changes follows.
 
