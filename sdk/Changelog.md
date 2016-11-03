@@ -1,6 +1,14 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 6.0.3 [03/Nov/2016]
+    • Hot-fix
+
+
+## Build 6.0.2 [28/Oct/2016]
+    • Hot-fix for crashes
+
+
 ## Build 6.0.1 [14/Oct/2016]
 
     • Fixed a crash due to missing Google Play Services
