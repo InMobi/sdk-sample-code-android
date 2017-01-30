@@ -18,7 +18,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +28,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static com.inmobi.banner.sample.Constants.FALLBACK_IMAGE_URL;
 
 public class BannerAdsActivity extends AppCompatActivity {
 
@@ -40,9 +44,6 @@ public class BannerAdsActivity extends AppCompatActivity {
     private final Handler mHandler = new Handler();
     private List<NewsSnippet> mItemList = new ArrayList<>();
     private NewsFeedAdapter mAdapter;
-
-    private static final String FEED_URL = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=30&q=http://rss.nytimes.com/services/xml/rss/nyt/World.xml";
-    private static final String FALLBACK_IMAGE_URL = "https://s3-ap-southeast-1.amazonaws.com/inmobi-surpriseme/notification/notif2.jpg";
 
     public interface OnHeadlineSelectedListener {
         void onArticleSelected(int position);
@@ -178,7 +179,7 @@ public class BannerAdsActivity extends AppCompatActivity {
     }
 
     private void getHeadlines() {
-        new DataFetcher().getFeed(FEED_URL, new DataFetcher.OnFetchCompletedListener() {
+        new DataFetcher().getFeed(Constants.FEED_URL, new DataFetcher.OnFetchCompletedListener() {
             @Override
             public void onFetchCompleted(@Nullable final String data, @Nullable final String message) {
                 if (null != data) {
@@ -197,22 +198,22 @@ public class BannerAdsActivity extends AppCompatActivity {
     private void loadHeadlines(String data) {
         try {
             JSONArray feed = new JSONObject(data).
-                    getJSONObject("responseData").
-                    getJSONObject("feed").
-                    getJSONArray("entries");
+                    getJSONArray(Constants.FeedJsonKeys.FEED_LIST);
             for (int i = 0; i < feed.length(); i++) {
                 JSONObject item = feed.getJSONObject(i);
                 Log.v(TAG, item.toString());
                 NewsSnippet feedEntry = new NewsSnippet();
                 try {
-                    feedEntry.title = item.getString("title");
-                    if (item.isNull("mediaGroups")) {
-                        feedEntry.imageUrl = FALLBACK_IMAGE_URL;
+                    feedEntry.title = item.getString(Constants.FeedJsonKeys.CONTENT_TITLE);
+                    JSONObject enclosureObject = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE);
+                    if (!enclosureObject.isNull(Constants.FeedJsonKeys.CONTENT_LINK)) {
+                        feedEntry.imageUrl = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE).
+                                getString(Constants.FeedJsonKeys.CONTENT_LINK);
                     } else {
-                        feedEntry.imageUrl = item.getJSONArray("mediaGroups").getJSONObject(0).getJSONArray("contents").getJSONObject(0).getString("url");
+                        feedEntry.imageUrl = FALLBACK_IMAGE_URL;
                     }
-                    feedEntry.landingUrl = item.getString("link");
-                    feedEntry.content = item.getString("contentSnippet");
+                    feedEntry.landingUrl = item.getString(Constants.FeedJsonKeys.CONTENT_LINK);
+                    feedEntry.content = item.getString(Constants.FeedJsonKeys.FEED_CONTENT);
                     feedEntry.isSponsored = false;
                     mItemList.add(feedEntry);
                 } catch (JSONException e) {
