@@ -31,13 +31,13 @@ To download the latest SDK as a JAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-A brand new SDK that turbo-charges performance, improves stability and introduces a fully re-engineered fullscreen video experience that aims to deliver a truly native, stall-free experience that should improve render rates. What's more, SDK 6.0.0 for Android is compliant with Android-N, the latest version of Android, and is also a drop-in replacement for publishers who are already integrating with SDK 5.x.x for Android. Please view the [Changelog](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/Changelog.md) for a complete list of additions, fixes, and enhancements in the latest release.
+InMobi SDK v6.1.0 for Android introduces the ability to insert video ads into your content feeds. To know more, please reach out to us at [video@inmobi.com](mailto:video@inmobi.com). This version also improves handling of `intent://` schemes and deeplink URLs. It also includes several improvements to the fullscreen native video-ad experience introduced in SDK 6.0.0 for Android. SDK 6.1.0 for Android is compliant with Android-N, the latest version of Android, and is also a drop-in replacement for publishers who are already integrating with SDK 5.x.x for Android. Please view the [Changelog](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/Changelog.md) for a complete list of additions, fixes, and enhancements in the latest release.
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
 - android-support-v4.jar, r24 
-- Picasso Library (picasso-2.5.2.jar - available on JCenter)
 - android-recyclerview-v7.jar,r24
+- Picasso Library (picasso-2.5.2.jar - available on JCenter)
 - **Recommended** Google Play Services 8.4.0
 
 ## License
