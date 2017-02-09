@@ -2,6 +2,7 @@ package com.inmobi.nativead.sample.newsheadline;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
+import com.inmobi.nativead.sample.Constants;
 import com.inmobi.nativead.sample.DataFetcher;
 import com.inmobi.nativead.sample.PlacementId;
 
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,9 +43,6 @@ public class NewsHeadlinesFragment extends ListFragment implements NativeProvide
     private List<NewsSnippet> mItemList = new ArrayList<>();
     private InMobiNative[] mNativeAds = new InMobiNative[MAX_ADS];
     private FeedAdapter mAdapter;
-
-    private static final String FEED_URL = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=30&q=http://rss.nytimes.com/services/xml/rss/nyt/World.xml";
-    private static final String FALLBACK_IMAGE_URL = "https://s3-ap-southeast-1.amazonaws.com/inmobi-surpriseme/notification/notif2.jpg";
     private static final int[] AD_PLACEMENT_POSITIONS = new int[]{2, 4, 8, 13, 18};
 
     private OnHeadlineSelectedListener mCallback;
@@ -63,7 +62,7 @@ public class NewsHeadlinesFragment extends ListFragment implements NativeProvide
     }
 
     private void getHeadlines() {
-        new DataFetcher().getFeed(FEED_URL, new DataFetcher.OnFetchCompletedListener() {
+        new DataFetcher().getFeed(Constants.FEED_URL, new DataFetcher.OnFetchCompletedListener() {
             @Override
             public void onFetchCompleted(@Nullable final String data, @Nullable final String message) {
                 if (null != data) {
@@ -119,22 +118,22 @@ public class NewsHeadlinesFragment extends ListFragment implements NativeProvide
     private void loadHeadlines(String data) {
         try {
             JSONArray feed = new JSONObject(data).
-                    getJSONObject("responseData").
-                    getJSONObject("feed").
-                    getJSONArray("entries");
+                    getJSONArray(Constants.FeedJsonKeys.FEED_LIST);
             for (int i = 0; i < feed.length(); i++) {
                 JSONObject item = feed.getJSONObject(i);
                 Log.v(TAG, item.toString());
                 NewsSnippet feedEntry = new NewsSnippet();
                 try {
-                    feedEntry.title = item.getString("title");
-                    if (item.isNull("mediaGroups")) {
-                        feedEntry.imageUrl = FALLBACK_IMAGE_URL;
+                    feedEntry.title = item.getString(Constants.FeedJsonKeys.CONTENT_TITLE);
+                    JSONObject enclosureObject = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE);
+                    if (!enclosureObject.isNull(Constants.FeedJsonKeys.CONTENT_LINK)) {
+                        feedEntry.imageUrl = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE).
+                                getString(Constants.FeedJsonKeys.CONTENT_LINK);
                     } else {
-                        feedEntry.imageUrl = item.getJSONArray("mediaGroups").getJSONObject(0).getJSONArray("contents").getJSONObject(0).getString("url");
+                        feedEntry.imageUrl = Constants.FALLBACK_IMAGE_URL;
                     }
-                    feedEntry.landingUrl = item.getString("link");
-                    feedEntry.content = item.getString("contentSnippet");
+                    feedEntry.landingUrl = item.getString(Constants.FeedJsonKeys.CONTENT_LINK);
+                    feedEntry.content = item.getString(Constants.FeedJsonKeys.FEED_CONTENT);
                     mItemList.add(feedEntry);
                 } catch (JSONException e) {
                     Log.e(TAG, "JSONException", e);
@@ -162,9 +161,10 @@ public class NewsHeadlinesFragment extends ListFragment implements NativeProvide
                         JSONObject content = new JSONObject((String) inMobiNative.getAdContent());
                         Log.e(TAG, "onAdLoadSucceeded" + content.toString());
                         NewsSnippet item = new NewsSnippet();
-                        item.title = content.getString("title");
-                        item.landingUrl = content.getString("click_url");
-                        item.imageUrl = content.getJSONObject("image_xhdpi").getString("url");
+                        item.title = content.getString(Constants.AdJsonKeys.AD_TITLE);
+                        item.landingUrl = content.getString(Constants.AdJsonKeys.AD_CLICK_URL);
+                        item.imageUrl = content.getJSONObject(Constants.AdJsonKeys.AD_IMAGE_OBJECT).
+                                getString(Constants.AdJsonKeys.AD_IMAGE_URL);
                         mItemList.add(position, item);
                         mNativeAdMap.put(item, new WeakReference<>(inMobiNative));
                         mAdapter.notifyDataSetChanged();
@@ -196,6 +196,9 @@ public class NewsHeadlinesFragment extends ListFragment implements NativeProvide
                 }
             });
             nativeAd.load();
+            Map<String,String>map=new HashMap<>();
+            map.put("x-forwarded-for","8.8.8.8");
+            nativeAd.setExtras(map);
             mNativeAds[i] = nativeAd;
         }
     }

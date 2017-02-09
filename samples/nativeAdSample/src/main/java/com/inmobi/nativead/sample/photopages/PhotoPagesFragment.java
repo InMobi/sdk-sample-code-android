@@ -2,6 +2,7 @@ package com.inmobi.nativead.sample.photopages;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
+import com.inmobi.nativead.sample.Constants;
 import com.inmobi.nativead.sample.PlacementId;
 import com.inmobi.nativead.sample.R;
 
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,6 +58,7 @@ public class PhotoPagesFragment extends Fragment implements NativeProvider {
         CustomViewPager pager = (CustomViewPager) rootView.findViewById(R.id.custom_page_view);
         mAdapter = new CustomPagerAdapter(getActivity(), mItemList, this);
         pager.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
         placeNativeAds();
         return rootView;
     }
@@ -78,7 +81,8 @@ public class PhotoPagesFragment extends Fragment implements NativeProvider {
                         JSONObject content = new JSONObject((String) inMobiNative.getAdContent());
                         Log.d(TAG, "onAdLoadSucceeded" + content.toString());
                         PageItem item = new PageItem();
-                        item.imageUrl = content.getJSONObject("image_xhdpi").getString("url");
+                        item.imageUrl = content.getJSONObject(Constants.AdJsonKeys.AD_IMAGE_OBJECT).
+                                getString(Constants.AdJsonKeys.AD_IMAGE_URL);
                         mItemList.add(position, item);
                         mNativeAdMap.put(item, new WeakReference<>(inMobiNative));
                         mAdapter.notifyDataSetChanged();

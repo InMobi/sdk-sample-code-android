@@ -1,6 +1,5 @@
 package com.inmobi.nativestoryboard.sample;
 
-import com.inmobi.nativestoryboard.sample.adplacer.AdPlacerFeedFragment;
 import com.inmobi.nativestoryboard.sample.listview.ListViewFeedFragment;
 import com.inmobi.nativestoryboard.sample.recyclerview.RecyclerFeedFragment;
 import com.inmobi.nativestoryboard.sample.singlestrand.SingleStrandFragment;
@@ -12,15 +11,13 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
 
-    private static final int NUM_TABS = 4;
+    private static final int NUM_TABS = 3;
 
-    private static final int POSITION_AD_PLACER = 0;
+    private static final int POSITION_CUSTOM_INTEGRATION = 0;
 
-    private static final int POSITION_CUSTOM_INTEGRATION = 1;
+    private static final int POSITION_LIST_VIEW_INTEGRATION = 1;
 
-    private static final int POSITION_LIST_VIEW_INTEGRATION = 2;
-
-    private static final int POSITION_RECYCLER_VIEW_INTEGRATION = 3;
+    private static final int POSITION_RECYCLER_VIEW_INTEGRATION = 2;
 
     public FragmentAdapter(FragmentManager fm, TabLayout tabLayout) {
         super(fm);
@@ -32,9 +29,6 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case POSITION_AD_PLACER:
-                return new AdPlacerFeedFragment();
-
             case POSITION_CUSTOM_INTEGRATION:
                 return new SingleStrandFragment();
 
@@ -51,9 +45,6 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
 
     private String getTitle(int position) {
         switch (position) {
-            case POSITION_AD_PLACER:
-                return AdPlacerFeedFragment.getTitle();
-
             case POSITION_CUSTOM_INTEGRATION:
                 return SingleStrandFragment.getTitle();
 
@@ -70,6 +61,6 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 }

@@ -29,11 +29,14 @@ android {
     lintOptions {
         abortOnError false
     }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.inmobi.monetization:inmobi-ads:6.0.3"
+    compile "com.inmobi.monetization:inmobi-ads:6.1.0"
     compile "com.android.support:appcompat-v7:${androidSupportLibVersion}"
     compile "com.android.support:support-annotations:${androidSupportLibVersion}"
     compile "com.android.support:support-v4:${androidSupportLibVersion}"

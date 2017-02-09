@@ -2,6 +2,7 @@ package com.inmobi.nativead.sample.photofeed;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
+import com.inmobi.nativead.sample.Constants;
 import com.inmobi.nativead.sample.DataFetcher;
 import com.inmobi.nativead.sample.PlacementId;
 
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,8 +30,6 @@ public class PhotosFeedFragment extends ListFragment implements NativeProvider {
 
     private static final String TAG = PhotosFeedFragment.class.getSimpleName();
     private static final int MAX_ADS = 50;
-    private static final String FALLBACK_IMAGE_URL = "https://s3-ap-southeast-1.amazonaws.com/inmobi-surpriseme/notification/notif2.jpg";
-
 
     @NonNull
     private final Handler mHandler = new Handler();
@@ -38,8 +38,6 @@ public class PhotosFeedFragment extends ListFragment implements NativeProvider {
     private InMobiNative[] mNativeAds = new InMobiNative[MAX_ADS];
     private PhotosAdapter mAdapter;
     private DataFetcher mDataFetcher = new DataFetcher();
-
-    private static final String FEED_URL = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=30&q=http://rss.nytimes.com/services/xml/rss/nyt/World.xml";
     private static final int[] AD_PLACEMENT_POSITIONS = new int[]{2, 4, 8, 13, 18};
 
 
@@ -52,7 +50,7 @@ public class PhotosFeedFragment extends ListFragment implements NativeProvider {
     }
 
     private void getPhotos() {
-        mDataFetcher.getFeed(FEED_URL, new DataFetcher.OnFetchCompletedListener() {
+        mDataFetcher.getFeed(Constants.FEED_URL, new DataFetcher.OnFetchCompletedListener() {
             @Override
             public void onFetchCompleted(final String data, final String message) {
                 if (null != data) {
@@ -83,21 +81,21 @@ public class PhotosFeedFragment extends ListFragment implements NativeProvider {
         try {
             Log.d(TAG, "loading photos");
             JSONArray feed = new JSONObject(data).
-                    getJSONObject("responseData").
-                    getJSONObject("feed").
-                    getJSONArray("entries");
+                    getJSONArray(Constants.FeedJsonKeys.FEED_LIST);
             for (int i = 0; i < feed.length(); i++) {
                 JSONObject item = feed.getJSONObject(i);
                 Log.d(TAG, item.toString());
                 PhotosFeedItem feedEntry = new PhotosFeedItem();
                 try {
-                    feedEntry.title = item.getString("title");
-                    if (item.isNull("mediaGroups")) {
-                        feedEntry.imageUrl = FALLBACK_IMAGE_URL;
+                    feedEntry.title = item.getString(Constants.FeedJsonKeys.CONTENT_TITLE);
+                    JSONObject enclosureObject = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE);
+                    if (!enclosureObject.isNull(Constants.FeedJsonKeys.CONTENT_LINK)) {
+                        feedEntry.imageUrl = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE).
+                                getString(Constants.FeedJsonKeys.CONTENT_LINK);
                     } else {
-                        feedEntry.imageUrl = item.getJSONArray("mediaGroups").getJSONObject(0).getJSONArray("contents").getJSONObject(0).getString("url");
+                        feedEntry.imageUrl = Constants.FALLBACK_IMAGE_URL;
                     }
-                    feedEntry.landingUrl = item.getString("link");
+                    feedEntry.landingUrl = item.getString(Constants.FeedJsonKeys.CONTENT_LINK);
                     mItemList.add(feedEntry);
                 } catch (JSONException e) {
                     Log.d(TAG, e.toString());
@@ -122,9 +120,10 @@ public class PhotosFeedFragment extends ListFragment implements NativeProvider {
                         JSONObject content = new JSONObject((String) inMobiNative.getAdContent());
                         Log.d(TAG, "onAdLoadSucceeded" + content.toString());
                         PhotosFeedItem item = new PhotosFeedItem();
-                        item.title = content.getString("title");
-                        item.landingUrl = content.getString("click_url");
-                        item.imageUrl = content.getJSONObject("image_xhdpi").getString("url");
+                        item.title = content.getString(Constants.AdJsonKeys.AD_TITLE);
+                        item.landingUrl = content.getString(Constants.AdJsonKeys.AD_CLICK_URL);
+                        item.imageUrl = content.getJSONObject(Constants.AdJsonKeys.AD_IMAGE_OBJECT).
+                                getString(Constants.AdJsonKeys.AD_IMAGE_URL);
                         mItemList.add(position, item);
                         mNativeAdMap.put(item, new WeakReference<>(inMobiNative));
                         mAdapter.notifyDataSetChanged();

@@ -1,6 +1,53 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 6.1.0 [02/Feb/2017]
+    • Added support for in-feed video ads
+    • Improvements to video experience
+    • Improved handling of intent schemes and fallback URLs
+    • Bug fixes
+    • APIs removed
+      • InMobiStrandAdapter
+            public InMobiStrandAdapter(Context context, long placementId, Adapter originalAdapter, InMobiStrandPositioning.InMobiClientPositioning clientPositioning)
+            public InMobiStrandAdapter(Activity activity, final long placementId,Adapter originalAdapter,InMobiStrandPositioning.InMobiClientPositioning clientPositioning)
+            public void clearStrands()
+            public void destroy()
+            public int getAdjustedPosition(int originalPosition)
+            public int getCount()
+            public Object getItem(int position)
+            public long getItemId(int position)
+            public int getItemViewType(int position)
+            public int getOriginalPosition(int position)
+            public View getView(int position, View view, ViewGroup viewGroup)
+            public int getViewTypeCount()
+            public boolean hasStableIds()
+            public void insertItem(int originalPosition)
+            public boolean isEmpty()
+            public boolean isStrand(int position)
+            public void load()
+            public void refreshAds(ListView listView)
+            public void removeItem(int originalPosition)
+            public void setExtras(Map<String, String> extras)
+            public void setKeywords(String keywords)
+            public void setListener(InMobiStrandAdapter.NativeStrandAdListener listener)
+            public void setOnClickListener(ListView listView, AdapterView.OnItemClickListener listener)
+            public void setOnItemLongClickListener(ListView listView, AdapterView.OnItemLongClickListener listener)
+            public void setOnItemSelectedListener(ListView listView, AdapterView.OnItemSelectedListener listener)
+            public void setSelection(ListView listView, int originalPosition)
+            public void smoothScrollToPosition(ListView listView, int originalPosition)
+
+
+      • InMobiStrandAdapter.NativeStrandAdListener
+            public void onAdLoadSucceeded(int position)
+            public void onAdRemoved(int position)
+
+
+## Build 6.0.4 [24/Nov/2016]
+    • Enhancements to End-Card experience
+    • Support for auto-close fullscreen native video ads
+    • Bug fixes
+
+
 ## Build 6.0.3 [03/Nov/2016]
     • Hot-fix
 
@@ -10,9 +57,7 @@ InMobi Monetization SDK ChangeLog for Android
 
 
 ## Build 6.0.1 [14/Oct/2016]
-
     • Fixed a crash due to missing Google Play Services
-
 
 ## Build 6.0.0 [28/Sep/2016]
 A brand new SDK that turbo-charges performance, improves stability and introduces a fully re-engineered fullscreen video experience that aims to deliver a truly native, stall-free experience that should improve render rates. What's more, SDK 6.0.0 for Android is compliant with Android-N, the latest version of Android, and is also a drop-in replacement for publishers who are already integrating with SDK 5.x.x for Android. The complete list of changes follows.
@@ -25,22 +70,22 @@ A brand new SDK that turbo-charges performance, improves stability and introduce
         • InMobiBanner
             public InMobiBanner(Activity activity, AttributeSet attributeSet)
             public InMobiBanner(Activity activity, long placementId)
-           
+
         • InMobiInterstitial
             public InMobiInterstitial(Activity activity, long placementId, InterstitialAdListener2 listener)
-            
+
         • InMobiNative
             public InMobiNative(Activity activity, long placementId, NativeAdListener listener)
             public void setNativeAdEventListener(NativeAdEventsListener listener)
-           
+
         • InMobiStrandAdapter
             public InMobiStrandAdapter(@NonNull final Activity activity, final long placementId,
                                            @NonNull final Adapter originalAdapter,
                                            @NonNull final InMobiStrandPositioning.InMobiClientPositioning clientPositioning)
-                                            
+
         • InMobiNativeStrand
             public InMobiNativeStrand(Activity activity, long placementId, NativeStrandAdListener listener)
-            
+
     • APIs deprecated:
         • InMobiSdk class
            public static void init (Context context, String accountId)
@@ -48,21 +93,21 @@ A brand new SDK that turbo-charges performance, improves stability and introduce
         • InMobiBanner
             public InMobiBanner(Context context, AttributeSet attributeSet)
             public InMobiBanner(Context context, long placementId)
-            
+
         • InMobiInterstitial
             public InMobiInterstitial(Context context, long placementId, InterstitialAdListener listener)
-            
+
         • InMobiNative
             public InMobiNative(long placementId, NativeAdListener listener)
-           
+
         • InMobiStrandAdapter
             public InMobiStrandAdapter(@NonNull final Context context, final long placementId,
                                            @NonNull final Adapter originalAdapter,
                                            @NonNull final InMobiStrandPositioning.InMobiClientPositioning clientPositioning)
- 
+
         • InMobiNativeStrand
             public InMobiNativeStrand(Context context, long placementId, NativeStrandAdListener listener)
-            
+
 ### Other improvements and changes
     • Improved memory collection for Native Storyboards ad units
     • Fix a crash due to incorrect handling of cleared references
@@ -164,8 +209,8 @@ A brand new SDK that turbo-charges performance, improves stability and introduce
 
 ## Build 5.2.1 [08/Feb/2016]
 
-    • Fix crashes  
-    • Bug fixes for orientation lock by creative and missing viewable change 
+    • Fix crashes
+    • Bug fixes for orientation lock by creative and missing viewable change
       events on certain devices
 
 ## Build 5.2.0 [11/Jan/2016]

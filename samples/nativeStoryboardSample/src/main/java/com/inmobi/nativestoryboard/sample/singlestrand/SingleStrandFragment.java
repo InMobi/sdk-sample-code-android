@@ -72,7 +72,6 @@ public class SingleStrandFragment extends Fragment
 
     @Override
     public void onAdLoadSucceeded(@NonNull InMobiNativeStrand nativeStrand) {
-        clearAd();
         //Pass the old ad view as the first parameter to facilitate view reuse.
         mAdView = mInMobiNativeStrand.getStrandView(mAdView, mContainer);
         if (mAdView == null) {
