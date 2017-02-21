@@ -1,6 +1,10 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 6.1.1 [16/Feb/2017]
+    • Hot-fix for impression tracking for Native fullscreen video
+
+
 ## Build 6.1.0 [02/Feb/2017]
     • Added support for in-feed video ads
     • Improvements to video experience
