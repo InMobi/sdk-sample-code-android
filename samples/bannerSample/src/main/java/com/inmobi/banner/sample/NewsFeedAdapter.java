@@ -1,5 +1,7 @@
 package com.inmobi.banner.sample;
 
+import com.inmobi.banner.utility.NewsSnippet;
+
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;

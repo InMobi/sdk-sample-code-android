@@ -2,8 +2,8 @@ package com.inmobi.nativead.sample.newsfeed;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
-import com.inmobi.nativead.sample.Constants;
-import com.inmobi.nativead.sample.DataFetcher;
+import com.inmobi.nativead.sample.utility.Constants;
+import com.inmobi.nativead.sample.utility.DataFetcher;
 import com.inmobi.nativead.sample.PlacementId;
 import com.inmobi.nativead.sample.R;
 
@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.inmobi.nativead.sample.Constants.FALLBACK_IMAGE_URL;
+import static com.inmobi.nativead.sample.utility.Constants.FALLBACK_IMAGE_URL;
 
 public class NewsFragment extends Fragment implements NativeProvider {
 

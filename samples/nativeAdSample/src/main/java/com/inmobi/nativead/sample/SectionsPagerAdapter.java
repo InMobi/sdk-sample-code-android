@@ -4,6 +4,7 @@ import com.inmobi.nativead.sample.newsfeed.NewsFragment;
 import com.inmobi.nativead.sample.newsheadline.NewsHeadlinesFragment;
 import com.inmobi.nativead.sample.photofeed.PhotosFeedFragment;
 import com.inmobi.nativead.sample.photopages.PhotoPagesFragment;
+import com.inmobi.nativead.sample.prefetch.NewsHeadlinesPrefetchFragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -40,6 +41,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return new NewsFragment();
             case 3:
                 return new PhotoPagesFragment();
+            case 4:
+                return new NewsHeadlinesPrefetchFragment();
             default:
                 return new PlaceholderFragment();
         }
@@ -48,7 +51,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -63,6 +66,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return context.getString(R.string.title_section3).toUpperCase(l);
             case 3:
                 return context.getString(R.string.title_section4).toUpperCase(l);
+            case 4:
+                return context.getString(R.string.title_section5).toUpperCase(l);
             default:
                 return PlaceholderFragment.getTitle().toUpperCase(l);
         }

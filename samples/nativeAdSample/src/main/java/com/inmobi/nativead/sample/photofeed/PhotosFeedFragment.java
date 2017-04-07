@@ -2,8 +2,8 @@ package com.inmobi.nativead.sample.photofeed;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
-import com.inmobi.nativead.sample.Constants;
-import com.inmobi.nativead.sample.DataFetcher;
+import com.inmobi.nativead.sample.utility.Constants;
+import com.inmobi.nativead.sample.utility.DataFetcher;
 import com.inmobi.nativead.sample.PlacementId;
 
 import android.os.Bundle;

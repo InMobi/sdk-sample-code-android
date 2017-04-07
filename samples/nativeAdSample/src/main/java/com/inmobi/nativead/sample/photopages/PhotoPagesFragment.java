@@ -2,7 +2,7 @@ package com.inmobi.nativead.sample.photopages;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
-import com.inmobi.nativead.sample.Constants;
+import com.inmobi.nativead.sample.utility.Constants;
 import com.inmobi.nativead.sample.PlacementId;
 import com.inmobi.nativead.sample.R;
 

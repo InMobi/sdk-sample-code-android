@@ -1,4 +1,4 @@
-package com.inmobi.nativead.sample;
+package com.inmobi.nativead.sample.utility;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package com.inmobi.banner.sample;
+package com.inmobi.banner.utility;
 
 import android.util.Log;
 
