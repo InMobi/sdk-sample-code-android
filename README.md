@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: February 16, 2017
+Modified: April 07, 2017
 
-SDK Version: 6.1.1
+SDK Version: 6.2.0
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.inmobi.monetization:inmobi-ads:6.1.1'
+    compile 'com.inmobi.monetization:inmobi-ads:6.2.0'
 }
 ```
 
@@ -31,7 +31,8 @@ To download the latest SDK as a JAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-InMobi SDK v6.1.0 for Android introduces the ability to insert video ads into your content feeds. To know more, please reach out to us at [video@inmobi.com](mailto:video@inmobi.com). This version also improves handling of `intent://` schemes and deeplink URLs. It also includes several improvements to the fullscreen native video-ad experience introduced in SDK 6.0.0 for Android. SDK 6.1.0 for Android is compliant with Android-N, the latest version of Android, and is also a drop-in replacement for publishers who are already integrating with SDK 5.x.x for Android. Please view the [Changelog](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/Changelog.md) for a complete list of additions, fixes, and enhancements in the latest release.
+InMobi SDK v6.2.0 for Android introduces the ability to monetize the lock screen.
+This version also introduces the ability to request ads in an activity different from activity in which your monetization event will occur. Please view the [Changelog](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/Changelog.md) for a complete list of additions, fixes, and enhancements in the latest release.
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher

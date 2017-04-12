@@ -6,7 +6,7 @@ InMobi Monetization SDK ChangeLog for Android
     • Fix for an issue while loading resource in WebView.
     • Making Picasso and RecyclerView mandatory for Interstitial and Native Strands Ad formats.
 
-    ### Interface changes
+   ### Interface changes
         • APIs added:
             • InMobiSdk class
                public static void init (Context context, String accountId);
