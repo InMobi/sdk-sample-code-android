@@ -6,5 +6,6 @@
     <string name="title_section2">Photos</string>
     <string name="title_section3">News</string>
     <string name="title_section4">Gallery</string>
+    <string name="title_section5">Prefetch</string>
     <string name="label_image_caption">Caption</string>
 </resources>

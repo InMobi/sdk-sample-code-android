@@ -1,4 +1,4 @@
-package com.inmobi.nativead.sample;
+package com.inmobi.banner.utility;
 
 /**
  * Created by rahul.raja on 1/23/17.
@@ -15,12 +15,10 @@ public class Constants {
         String CONTENT_ENCLOSURE = "enclosure";
         String CONTENT_LINK = "link";
         String FEED_CONTENT = "content";
+
     }
 
-    public interface AdJsonKeys {
-        String AD_TITLE = "title";
-        String AD_CLICK_URL = "landingURL";
-        String AD_IMAGE_OBJECT = "icon";
-        String AD_IMAGE_URL = "url";
-    }
+    public static final int BANNER_WIDTH = 320;
+    public static final int BANNER_HEIGHT = 50;
+
 }

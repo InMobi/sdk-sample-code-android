@@ -1,10 +1,68 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 6.2.0 [06/Apr/2017]
+    • Support for monetizing the lock screen
+    • Fix for an issue while loading resource in WebView.
+    • Making Picasso and RecyclerView mandatory for Interstitial and Native Strands Ad formats.
+
+   ### Interface changes
+        • APIs added:
+            • InMobiSdk class
+               public static void init (Context context, String accountId);
+
+            • InMobiAdRequest
+               public enum MonetizationContext;
+
+            • InMobiAdRequest.Builder
+               public Builder(long placementId);
+               public Builder setMonetizationContext(MonetizationContext monetizationContext);
+               public Builder setSlotSize(int widthInDp, int heightInDp);
+               public Builder setKeywords(String keywords);
+               public Builder setExtras(Map<String, String> extras);
+               public InMobiAdRequest build();
+
+            • InMobiBanner
+                public InMobiBanner(Context context, AttributeSet attributeSet);
+                public InMobiBanner(Context context, long placementId);
+                public static void requestAd(Context context, InMobiAdRequest adRequest, BannerAdRequestListener listener);
+                public void load(Context context);
+                public void pause();
+                public void resume();
+
+            • InMobiBanner.BannerAdRequestListener
+                public void onAdRequestCompleted(InMobiAdRequestStatus status, InMobiBanner inMobiBanner);
+
+            • InMobiInterstitial
+                public InMobiInterstitial(Context context, long placementId, InterstitialAdListener2 listener);
+                public static void requestAd(Context context, InMobiAdRequest adRequest, InterstitialAdRequestListener interstitialAdRequestListener);
+
+            • InMobiInterstitial.InterstitialAdRequestListener
+                public void onAdRequestCompleted(InMobiAdRequestStatus status, InMobiInterstitial inMobiInterstitial);
+
+            • InMobiNative
+                public InMobiNative(long placementId, NativeAdListener listener);
+                public static void requestAd(Context context, InMobiAdRequest adRequest, NativeAdRequestListener listener);
+                public void load(Context context);
+
+            • InMobiNative.NativeAdRequestListener
+                public void onAdRequestCompleted(InMobiAdRequestStatus status, InMobiNative inMobiNative);
+
+            • InMobiNativeStrand
+                public InMobiNativeStrand(Context context, long placementId, NativeStrandAdListener listener);
+                public static void requestAd(Context context,InMobiAdRequest adRequest, NativeStrandAdRequestListener listener);
+                public void load(Context context);
+                public void pause();
+                public void resume();
+
+            • InMobiNativeStrand.NativeStrandAdRequestListener
+                public void onAdRequestCompleted(InMobiAdRequestStatus status, InMobiNativeStrand nativeStrandAd);
+
+
 ## Build 6.1.1 [16/Feb/2017]
     • Hot-fix for impression tracking for Native fullscreen video
-
-
+    
+ 
 ## Build 6.1.0 [02/Feb/2017]
     • Added support for in-feed video ads
     • Improvements to video experience

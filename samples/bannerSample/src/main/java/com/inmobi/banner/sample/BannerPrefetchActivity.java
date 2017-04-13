@@ -1,8 +1,9 @@
 package com.inmobi.banner.sample;
 
+
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiBanner;
-import com.inmobi.banner.PlacementId;
+import com.inmobi.banner.utility.BannerFetcher;
 import com.inmobi.banner.utility.Constants;
 import com.inmobi.banner.utility.DataFetcher;
 import com.inmobi.banner.utility.NewsSnippet;
@@ -27,23 +28,27 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.inmobi.banner.utility.Constants.BANNER_HEIGHT;
 import static com.inmobi.banner.utility.Constants.BANNER_WIDTH;
-import static com.inmobi.banner.utility.Constants.FALLBACK_IMAGE_URL;
 
-public class BannerAdsActivity extends AppCompatActivity {
 
-    private static final String TAG = BannerAdsActivity.class.getSimpleName();
+public class BannerPrefetchActivity extends AppCompatActivity {
+
+    private static final String TAG = BannerPrefetchActivity.class.getSimpleName();
 
     private InMobiBanner mBannerAd;
     private ListView mNewsListView;
+    private BannerApplication bannerApplication;
+    private BannerFetcher bannerFetcher;
 
 
     @NonNull
     private final Handler mHandler = new Handler();
     private List<NewsSnippet> mItemList = new ArrayList<>();
     private NewsFeedAdapter mAdapter;
+    private AtomicInteger forcedRetry = new AtomicInteger(0);
 
     public interface OnHeadlineSelectedListener {
         void onArticleSelected(int position);
@@ -61,16 +66,41 @@ public class BannerAdsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
+        bannerApplication = ((BannerApplication) this.getApplication());
+
+        bannerFetcher = new BannerFetcher() {
+            @Override
+            public void onFetchSuccess() {
+                setupBannerAd();
+            }
+
+            @Override
+            public void onFetchFailure() {
+                if (forcedRetry.getAndIncrement() < 2) {
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bannerApplication.fetchBanner(bannerFetcher);
+                        }
+                    }, 2000);
+                }
+            }
+        };
         setContentView(R.layout.activity_banner_ads);
         setupListView();
         getHeadlines();
-        setupBannerAd();
     }
 
     private void setupBannerAd() {
-        mBannerAd = new InMobiBanner(BannerAdsActivity.this, PlacementId.YOUR_PLACEMENT_ID);
+        mBannerAd = bannerApplication.getBanner();
+        if (null == mBannerAd) {
+            Log.d("SOS", "mBannerAd is null.. Fetching again..");
+            bannerApplication.fetchBanner(bannerFetcher);
+            return;
+        }
         RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
         mBannerAd.setAnimationType(InMobiBanner.AnimationType.ROTATE_HORIZONTAL_AXIS);
+        mBannerAd.setRefreshInterval(60);
         mBannerAd.setListener(new InMobiBanner.BannerAdListener() {
             @Override
             public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
@@ -111,8 +141,10 @@ public class BannerAdsActivity extends AppCompatActivity {
         });
         setBannerLayoutParams();
         adContainer.addView(mBannerAd);
-        mBannerAd.load();
+        //Providing activity context to show ad
+        mBannerAd.load(this);
     }
+
 
     private void setBannerLayoutParams() {
         int width = toPixelUnits(BANNER_WIDTH);
@@ -136,7 +168,7 @@ public class BannerAdsActivity extends AppCompatActivity {
         mNewsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int position, final long id) {
-                AlertDialog.Builder confirmationDialog = new AlertDialog.Builder(BannerAdsActivity.this);
+                AlertDialog.Builder confirmationDialog = new AlertDialog.Builder(BannerPrefetchActivity.this);
                 confirmationDialog.setTitle("Delete Item?");
                 confirmationDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -195,12 +227,16 @@ public class BannerAdsActivity extends AppCompatActivity {
                 NewsSnippet feedEntry = new NewsSnippet();
                 try {
                     feedEntry.title = item.getString(Constants.FeedJsonKeys.CONTENT_TITLE);
-                    JSONObject enclosureObject = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE);
-                    if (!enclosureObject.isNull(Constants.FeedJsonKeys.CONTENT_LINK)) {
-                        feedEntry.imageUrl = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE).
-                                getString(Constants.FeedJsonKeys.CONTENT_LINK);
-                    } else {
-                        feedEntry.imageUrl = FALLBACK_IMAGE_URL;
+                    try {
+                        JSONObject enclosureObject = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE);
+                        if (!enclosureObject.isNull(Constants.FeedJsonKeys.CONTENT_LINK)) {
+                            feedEntry.imageUrl = item.getJSONObject(Constants.FeedJsonKeys.CONTENT_ENCLOSURE).
+                                    getString(Constants.FeedJsonKeys.CONTENT_LINK);
+                        } else {
+                            feedEntry.imageUrl = Constants.FALLBACK_IMAGE_URL;
+                        }
+                    } catch (JSONException e) {
+                        feedEntry.imageUrl = Constants.FALLBACK_IMAGE_URL;
                     }
                     feedEntry.landingUrl = item.getString(Constants.FeedJsonKeys.CONTENT_LINK);
                     feedEntry.content = item.getString(Constants.FeedJsonKeys.FEED_CONTENT);
@@ -210,6 +246,7 @@ public class BannerAdsActivity extends AppCompatActivity {
                     Log.d(TAG, e.toString());
                 }
             }
+            setupBannerAd();
             mAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
             Log.d(TAG, "JSONException for loadHeadlines", e);

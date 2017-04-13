@@ -22,7 +22,7 @@ ext {
     appVersionName = "1.0.0"
 
     gmsVersion = "8.4.0"
-    androidSupportLibVersion = "24.0.0"
+    androidSupportLibVersion = "24.2.1"
 }
 
 allprojects {
