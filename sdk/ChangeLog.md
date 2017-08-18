@@ -1,12 +1,18 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 6.2.2 [30/May/2017]
+    • Bug fixes
+
+## Build 6.2.1 [18/Apr/2017]
+    • Infeed video fixes
+
 ## Build 6.2.0 [06/Apr/2017]
     • Support for monetizing the lock screen
     • Fix for an issue while loading resource in WebView.
     • Making Picasso and RecyclerView mandatory for Interstitial and Native Strands Ad formats.
 
-   ### Interface changes
+    ### Interface changes
         • APIs added:
             • InMobiSdk class
                public static void init (Context context, String accountId);
