@@ -1,3 +1,1 @@
-
-include ':samples:bannerSample', ':samples:interstitialSample', ':samples:nativeAdSample', ':samples:nativeStoryboardSample'
-
+include ':samples:bannerSample', ':samples:interstitialSample', ':samples:nativeAdSample', ':samples:nativeStoryboardSample', ':samples:nativeRebootSample'

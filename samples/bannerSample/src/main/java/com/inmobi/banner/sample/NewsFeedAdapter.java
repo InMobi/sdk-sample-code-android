@@ -4,6 +4,7 @@ import com.inmobi.banner.utility.NewsSnippet;
 
 import android.content.Context;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +14,20 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
-public class NewsFeedAdapter extends ArrayAdapter<NewsSnippet> {
+class NewsFeedAdapter extends ArrayAdapter<NewsSnippet> {
 
-    private Context mContext;
     private LayoutInflater mInflater;
     private List<NewsSnippet> mItems;
 
-    public NewsFeedAdapter(Context context, List<NewsSnippet> items) {
+    NewsFeedAdapter(Context context, List<NewsSnippet> items) {
         super(context, R.layout.news_headline_view, items);
-        mContext = context;
         mInflater = LayoutInflater.from(context);
         mItems = items;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View rowView = convertView;
         ViewHolder viewHolder;
         if (null == rowView || null == convertView.getTag()) {

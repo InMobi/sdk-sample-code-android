@@ -15,7 +15,6 @@ public class Constants {
         String CONTENT_ENCLOSURE = "enclosure";
         String CONTENT_LINK = "link";
         String FEED_CONTENT = "content";
-
     }
 
     public static final int BANNER_WIDTH = 320;

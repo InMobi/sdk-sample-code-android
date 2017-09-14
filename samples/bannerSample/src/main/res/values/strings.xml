@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">InMobi Banner Sample</string>
     <string name="banner_xml_message">Banner Ad through XML layout</string>
     <string name="title_activity_banner">BannerActivity</string>
@@ -10,4 +11,6 @@
     <string name="label_banner_728x90">Banner Ad 728 x 90</string>
     <string name="label_title">Title</string>
     <string name="title_activity_banner_ads">BannerAdsActivity</string>
+    <string name="xml_integration">XML INTEGRATION</string>
+
 </resources>

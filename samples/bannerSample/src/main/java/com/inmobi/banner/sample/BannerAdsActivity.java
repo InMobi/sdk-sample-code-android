@@ -39,29 +39,26 @@ public class BannerAdsActivity extends AppCompatActivity {
     private InMobiBanner mBannerAd;
     private ListView mNewsListView;
 
-
     @NonNull
     private final Handler mHandler = new Handler();
     private List<NewsSnippet> mItemList = new ArrayList<>();
     private NewsFeedAdapter mAdapter;
 
-    public interface OnHeadlineSelectedListener {
+    interface OnHeadlineSelectedListener {
         void onArticleSelected(int position);
     }
 
     private OnHeadlineSelectedListener mCallback = new OnHeadlineSelectedListener() {
         @Override
-        public void onArticleSelected(int position) {
-
-        }
+        public void onArticleSelected(int position) {}
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_banner_ads);
+
         setupListView();
         getHeadlines();
         setupBannerAd();
@@ -123,7 +120,6 @@ public class BannerAdsActivity extends AppCompatActivity {
         mBannerAd.setLayoutParams(bannerLayoutParams);
     }
 
-
     private int toPixelUnits(int dipUnit) {
         float density = getResources().getDisplayMetrics().density;
         return Math.round(dipUnit * density);
@@ -183,7 +179,6 @@ public class BannerAdsActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void loadHeadlines(String data) {
         try {
