@@ -52,24 +52,16 @@ public class NativeAdsActivity extends AppCompatActivity implements
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
     }
 
     @Override
-    public void onArticleSelected(int position) {
-
-    }
+    public void onArticleSelected(int position) {}
 
     @Override
-    public void onTileSelected(int position) {
-
-    }
+    public void onTileSelected(int position) {}
 }

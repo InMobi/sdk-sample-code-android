@@ -27,7 +27,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
     private final Handler mHandler = new Handler();
     private AtomicInteger forcedRetry = new AtomicInteger(0);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

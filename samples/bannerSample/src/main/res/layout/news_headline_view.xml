@@ -14,7 +14,9 @@
         android:layout_marginBottom="4dp"
         android:textColor="#000000"
         android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
         android:textSize="16sp" />
 
     <RelativeLayout
@@ -30,6 +32,7 @@
             android:layout_height="64dp"
             fresco:placeholderImage="@mipmap/ic_launcher"
             android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_alignParentLeft="false"
             android:layout_alignParentTop="false"
             android:layout_marginTop="0dp"
@@ -42,15 +45,19 @@
             android:layout_height="wrap_content"
             android:textColor="#0A0A0A"
             android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
             android:layout_alignParentTop="false"
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@id/photo"
             android:layout_toRightOf="@id/photo"
             android:layout_alignParentRight="false"
+            android:layout_alignParentEnd="false"
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
             android:ellipsize="marquee"
             android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
             android:textSize="14sp"
             android:typeface="normal"
             android:textStyle="normal" />
