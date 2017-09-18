@@ -54,16 +54,6 @@
             android:theme="@android:style/Theme.NoTitleBar"
             tools:ignore="UnusedAttribute"/>
 
-        <receiver
-            android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
-            android:enabled="true"
-            android:exported="true"
-            tools:ignore="ExportedReceiver">
-            <intent-filter>
-                <action android:name="com.inmobi.share.id"/>
-            </intent-filter>
-        </receiver>
-
         <service
             android:name="com.inmobi.signals.activityrecognition.ActivityRecognitionManager"
             android:enabled="true"/>
