@@ -24,16 +24,15 @@ import com.inmobi.nativead.utility.SwipeRefreshLayoutWrapper;
 import com.squareup.picasso.Picasso;
 
 /**
- * Demonstrates the use of InMobiNativeStrand to place a single ad.
+ * Demonstrates the use of InMobiNative to place a single ad.
  * <p/>
  * Note: Swipe to refresh ads.
  */
-public class SingleStrandFragment extends Fragment
+public class SingleNativeAdFragment extends Fragment
         implements InMobiNative.NativeAdListener {
-    private static final String TAG = SingleStrandFragment.class.getSimpleName();
+    private static final String TAG = SingleNativeAdFragment.class.getSimpleName();
 
     private ViewGroup mContainer;
-
     private InMobiNative mInMobiNative;
 
     public static String getTitle() {

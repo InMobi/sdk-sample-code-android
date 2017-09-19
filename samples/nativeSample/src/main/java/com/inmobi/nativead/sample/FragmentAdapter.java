@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.inmobi.nativead.sample.listview.ListViewFeedFragment;
 import com.inmobi.nativead.sample.recyclerview.RecyclerFeedFragment;
-import com.inmobi.nativead.sample.singlestrand.SingleStrandFragment;
+import com.inmobi.nativead.sample.singlestrand.SingleNativeAdFragment;
 
 class FragmentAdapter extends FragmentStatePagerAdapter {
 
@@ -30,7 +30,7 @@ class FragmentAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case POSITION_CUSTOM_INTEGRATION:
-                return new SingleStrandFragment();
+                return new SingleNativeAdFragment();
 
             case POSITION_LIST_VIEW_INTEGRATION:
                 return new ListViewFeedFragment();
@@ -46,7 +46,7 @@ class FragmentAdapter extends FragmentStatePagerAdapter {
     private String getTitle(int position) {
         switch (position) {
             case POSITION_CUSTOM_INTEGRATION:
-                return SingleStrandFragment.getTitle();
+                return SingleNativeAdFragment.getTitle();
 
             case POSITION_LIST_VIEW_INTEGRATION:
                 return ListViewFeedFragment.getTitle();
