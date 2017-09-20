@@ -31,8 +31,10 @@ To download the latest SDK as a JAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-InMobi SDK v7.0.0 for Android introduces the ability to monetize the lock screen.
-This version also introduces the ability to request ads in an activity different from activity in which your monetization event will occur. Please view the [Changelog](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/Changelog.md) for a complete list of additions, fixes, and enhancements in the latest release.
+- InMobi SDK v7.0.0 for Android introduces brand new Native Ad solution.
+- Interactive Video Ad Experience
+- Engaging end-cards are now supported via Rich-Media End-cards
+- Support for GIF images
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
