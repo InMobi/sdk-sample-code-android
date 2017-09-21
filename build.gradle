@@ -21,7 +21,7 @@ ext {
     appVersionCode = 1
     appVersionName = "1.0.0"
 
-    gmsVersion = "11.0.4"
+    gmsVersion = "8.4.0"
     androidSupportLibVersion = "25.3.1"
 }
 
