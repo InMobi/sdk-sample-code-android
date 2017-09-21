@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-    <Button
-            android:id="@+id/xmlSample"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="XML INTEGRATION"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-    />
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <Button
-            android:id="@+id/normalBanner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BANNER SAMPLE"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/xmlSample"
-            android:layout_marginTop="20dp"
-    />
+        android:id="@+id/xmlSample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/xml_integration"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
     <Button
-            android:id="@+id/prefetchSample"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PREFETCH BANNER"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/normalBanner"
-            android:layout_marginTop="20dp"
-    />
+        android:id="@+id/normalBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/banner_sample"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/xmlSample"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/prefetchSample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/prefetch_banner"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/normalBanner"
+        android:layout_marginTop="20dp" />
 
 
 </RelativeLayout>

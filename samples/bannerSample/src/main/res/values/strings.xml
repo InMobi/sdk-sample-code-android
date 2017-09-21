@@ -12,5 +12,7 @@
     <string name="label_title">Title</string>
     <string name="title_activity_banner_ads">BannerAdsActivity</string>
     <string name="xml_integration">XML INTEGRATION</string>
+    <string name="banner_sample">BANNER SAMPLE</string>
+    <string name="prefetch_banner">PREFETCH BANNER</string>
 
 </resources>

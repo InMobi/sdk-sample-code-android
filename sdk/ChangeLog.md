@@ -1,6 +1,84 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Consolidated change-logs for v6.9.0, v6.9.1 and 7.0.0 [15/Sep/2017]
+    • Introduction to Brand new Native Ad solution (Merged InMobiNative & InMobiNativeStrand):
+           * Native ads can now support videos, carousel and static Ad types
+           * Prefetching Native Ads for better load times
+           * Better way to customize the Ad to match the App’s native environment
+    • Interactive Video Ad Experience:
+           * Brand new video Ad experience to increase user engagement in Interstitial Ad Format
+    • Rich End Cards:
+           * Engaging end-cards are now supported via Rich-Media End-cards
+    • Support for GIF images
+    • Enhanced Metrics
+    • Stability and performance improvements
+    • Dex count improvements
+    • Performance improvements
+    • Bug fixes
+
+
+    ### Interface changes
+            • APIs added:
+                • InMobiNative class
+                    public InMobiNative(Context context, long placementId, NativeAdListener listener);
+                    public showOnLockScreen(@NonNull LockScreenListener lockScreenListener);
+                    public void takeAction();
+                    public View getPrimaryViewOfWidth(View convertView, ViewGroup parent, int viewWidthInPixels);
+                    public JSONObject getCustomAdContent();
+                    public String getAdTitle();
+                    public String getAdDescription();
+                    public String getAdIconUrl();
+                    public String getAdLandingPageUrl();
+                    public String getAdCtaText();
+                    public float getAdRating();
+                    public boolean isAppDownload();
+                    public boolean isReady();
+                    public void destroy();
+                    public void setDownloaderEnabled(final boolean downloaderEnabled);
+                    public Downloader getDownloader();
+
+                • InMobiNative.NativeAdListener
+                    void onAdFullScreenDismissed(InMobiNative nativeAd);
+                    void onAdFullScreenWillDisplay(InMobiNative nativeAd);
+                    void onAdFullScreenDisplayed(InMobiNative nativeAd);
+                    void onUserWillLeaveApplication(InMobiNative nativeAd);
+                    void onAdImpressed(InMobiNative nativeAd);
+                    void onAdClicked(InMobiNative nativeAd);
+                    void onMediaPlaybackComplete(InMobiNative nativeAd);
+                    void onAdStatusChanged(InMobiNative nativeAd);
+
+                • InMobiNative.LockScreenListener
+                    void onActionRequired(InMobiNative nativeAd);
+
+                • InMobiNative.Downloader
+                    public int getDownloadProgress();
+                    public int getDownloadStatus();
+
+            • APIs removed
+                • InMobiNative class
+                    public InMobiNative(long placementId, NativeAdListener listener)
+                    public InMobiNative(Activity activity, long placementId, NativeAdListener listener);
+                    public final Object getAdContent();
+                    public static void bind(final View view, final InMobiNative inMobiNative);
+                    public static void unbind(final View view);
+                    public final void reportAdClick(Map<String, String> extras);
+
+                • InMobiNative.NativeAdListener
+                    void onAdDismissed(InMobiNative ad);
+                    void onAdDisplayed(InMobiNative ad);
+                    void onUserLeftApplication(InMobiNative ad);
+
+                • InMobiNative.NativeAdRequestListener
+
+                • InMobiNativeStrand
+
+## Build 6.2.4 [17/July/2017]
+    • Bug fixes
+
+## Build 6.2.3 [02/June/2017]
+    • Bug fixes
+
 ## Build 6.2.2 [30/May/2017]
     • Bug fixes
 
@@ -67,8 +145,8 @@ InMobi Monetization SDK ChangeLog for Android
 
 ## Build 6.1.1 [16/Feb/2017]
     • Hot-fix for impression tracking for Native fullscreen video
-    
- 
+
+
 ## Build 6.1.0 [02/Feb/2017]
     • Added support for in-feed video ads
     • Improvements to video experience
@@ -110,11 +188,16 @@ InMobi Monetization SDK ChangeLog for Android
             public void onAdRemoved(int position)
 
 
+## Build infeed-beta-V2 [29/Dec/2016]
+    • Bug fix related to firing of beacons
+
+## Build infeed-beta-V1 [13/Dec/2016]
+    • InMobi SDK now supports video in infeed format
+
 ## Build 6.0.4 [24/Nov/2016]
     • Enhancements to End-Card experience
     • Support for auto-close fullscreen native video ads
     • Bug fixes
-
 
 ## Build 6.0.3 [03/Nov/2016]
     • Hot-fix
