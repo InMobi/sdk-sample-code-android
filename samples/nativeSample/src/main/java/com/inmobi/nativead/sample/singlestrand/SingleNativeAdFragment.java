@@ -124,7 +124,8 @@ public class SingleNativeAdFragment extends Fragment
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        content.addView(inMobiNative.getPrimaryViewOfWidth(content, mContainer, displayMetrics.widthPixels));
+        content.addView(inMobiNative.getPrimaryViewOfWidth(getActivity(), content, mContainer,
+                displayMetrics.widthPixels));
 
         float rating  = inMobiNative.getAdRating();
         if (rating != 0) {

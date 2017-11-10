@@ -37,11 +37,11 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
     //View type for Ad Feed - from InMobi (InMobi Native Strand)
     private static final int VIEW_TYPE_INMOBI_STRAND = 1;
 
-    FeedItemAdapter(Context mContext, ArrayList<FeedItem> mUsers) {
-        super(mContext, R.layout.listitem, R.id.title, mUsers);
-        this.mContext = mContext;
-        this.mUsers = mUsers;
-        this.mLayoutInflater = LayoutInflater.from(mContext);
+    FeedItemAdapter(Context context, ArrayList<FeedItem> users) {
+        super(context, R.layout.listitem, R.id.title, users);
+        this.mContext = context;
+        this.mUsers = users;
+        this.mLayoutInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -138,8 +138,8 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
             ((Activity) mContext).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            viewHolder.content.addView(inMobiNative.getPrimaryViewOfWidth(viewHolder.content,
-                    parent, displayMetrics.widthPixels));
+            viewHolder.content.addView(inMobiNative.getPrimaryViewOfWidth(mContext,
+                    viewHolder.content, parent, displayMetrics.widthPixels));
 
             float rating  = inMobiNative.getAdRating();
             if (rating != 0) {

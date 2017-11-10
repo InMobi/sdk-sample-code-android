@@ -101,8 +101,8 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
             ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            adViewHolder.adContent.addView(inMobiNative.getPrimaryViewOfWidth(adViewHolder.adView,
-                    adViewHolder.cardView, displayMetrics.widthPixels));
+            adViewHolder.adContent.addView(inMobiNative.getPrimaryViewOfWidth(context,
+                    adViewHolder.adView, adViewHolder.cardView, displayMetrics.widthPixels));
 
             float rating  = inMobiNative.getAdRating();
             if (rating != 0) {
