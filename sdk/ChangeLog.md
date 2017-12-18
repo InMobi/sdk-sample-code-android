@@ -1,5 +1,19 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+## Build 7.0.2 [11/Dec/2017]
+    • Bug fixes
+
+## Build 7.0.1 [09/Nov/2017]
+    • Bug fixes
+
+    ### Interface changes
+            • APIs added:
+                • InMobiNative class
+                    public View getPrimaryViewOfWidth(Context context, View convertView, ViewGroup parent, int viewWidthInPixels);
+
+            • Deprecated API:
+                • InMobiNative class
+                    public View getPrimaryViewOfWidth(View convertView, ViewGroup parent, int viewWidthInPixels);
 
 ## Consolidated change-logs for v6.9.0, v6.9.1 and 7.0.0 [15/Sep/2017]
     • Introduction to Brand new Native Ad solution (Merged InMobiNative & InMobiNativeStrand):
@@ -78,7 +92,7 @@ InMobi Monetization SDK ChangeLog for Android
 
 ## Build 6.2.3 [02/June/2017]
     • Bug fixes
-
+    
 ## Build 6.2.2 [30/May/2017]
     • Bug fixes
 
@@ -145,7 +159,7 @@ InMobi Monetization SDK ChangeLog for Android
 
 ## Build 6.1.1 [16/Feb/2017]
     • Hot-fix for impression tracking for Native fullscreen video
-
+    
 
 ## Build 6.1.0 [02/Feb/2017]
     • Added support for in-feed video ads
