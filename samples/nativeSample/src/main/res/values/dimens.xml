@@ -2,6 +2,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 
     <dimen name="feed_item_margin">10dp</dimen>
     <dimen name="feed_item_padding_top_bottom">20dp</dimen>
@@ -16,5 +18,5 @@
     <dimen name="feed_item_border_width">1dp</dimen>
 
     <dimen name="adContentPadding">5dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+
 </resources>

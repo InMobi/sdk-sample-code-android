@@ -1,112 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/feed_bg"
-    android:orientation="vertical" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_parent_rounded_corner"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/feed_item_padding_top_bottom"
-        android:paddingTop="@dimen/feed_item_padding_top_bottom" >
+    <data>
+
+        <variable
+            name="feedData"
+            type="com.inmobi.nativeSample.utility.FeedData.FeedItem" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card:cardCornerRadius="3dp"
+        card:cardElevation="2dp"
+        card:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/feed_item_padding_left_right"
-            android:paddingRight="@dimen/feed_item_padding_left_right" >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/feed_bg"
+            android:orientation="vertical">
 
-
-            <ImageView
-                android:id="@+id/thumb_image"
-                android:layout_width="@dimen/feed_item_profile_pic"
-                android:layout_height="@dimen/feed_item_profile_pic"
-                android:scaleType="fitCenter" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_parent_rounded_corner"
                 android:orientation="vertical"
-                android:paddingLeft="@dimen/feed_item_profile_info_padd" >
+                android:paddingBottom="@dimen/feed_item_padding_top_bottom"
+                android:paddingTop="@dimen/feed_item_padding_top_bottom">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/feed_item_padding_left_right"
+                    android:paddingRight="@dimen/feed_item_padding_left_right">
+
+
+                    <ImageView
+                        android:id="@+id/thumb_image"
+                        android:layout_width="@dimen/feed_item_profile_pic"
+                        android:layout_height="@dimen/feed_item_profile_pic"
+                        app:imageSrc="@{feedData.thumbImage}"
+                        android:scaleType="fitCenter" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/feed_item_profile_info_padd">
+
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="148dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="0dp"
+                            android:text="@{feedData.title}"
+                            android:textSize="@dimen/feed_item_profile_name"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/subtitle"
+                            android:layout_width="148dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_below="@id/title"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@{feedData.subtitle}"
+                            android:textColor="@color/subtitle"
+                            android:textSize="@dimen/feed_item_timestamp" />
+
+                        <TextView
+                            android:id="@+id/time_tt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_gravity="right"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+                            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+                            android:paddingTop="@dimen/feed_item_status_pad_top"
+                            android:text="@{feedData.timestamp}"
+                            android:textColor="@color/timestamp" />
+
+                    </RelativeLayout>
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/title"
-                    android:layout_width="148dp"
+                    android:id="@+id/description_tt"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/feed_item_profile_name"
-                    android:textStyle="bold"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="0dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="0dp" />
-
-                <TextView
-                    android:id="@+id/subtitle"
-                    android:layout_width="148dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/subtitle"
-                    android:layout_below="@id/title"
-                    android:textSize="@dimen/feed_item_timestamp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="0dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="20dp" />
-
-                <TextView
-                    android:id="@+id/time_tt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:linksClickable="true"
+                    android:maxLines="3"
+                    android:minLines="1"
+                    android:paddingBottom="10dp"
                     android:paddingLeft="@dimen/feed_item_status_pad_left_right"
                     android:paddingRight="@dimen/feed_item_status_pad_left_right"
-                    android:paddingTop="@dimen/feed_item_status_pad_top"
-                    android:textColor="@color/timestamp"
-                    android:layout_gravity="right"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:text="@{feedData.description}"
+                    android:textColorLink="@color/link" />
 
-            </RelativeLayout>
+                <ImageView
+                    android:id="@+id/big_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white"
+                    android:scaleType="fitXY"
+                    app:imageSrc="@{feedData.bigImage}"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/bottom_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/linkedin_bottom"
+                    android:visibility="visible" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/description_tt"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:linksClickable="true"
-            android:paddingBottom="10dp"
-            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
-            android:paddingRight="@dimen/feed_item_status_pad_left_right"
-            android:maxLines="3"
-            android:minLines="1"
-            android:textColorLink="@color/link"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp" />
+    </android.support.v7.widget.CardView>
 
-        <ImageView
-            android:id="@+id/big_image"
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:background="@color/white"
-            android:scaleType="fitXY"
-            android:visibility="visible"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
-
-        <ImageView
-            android:id="@+id/bottom_img"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:background="@color/white"
-            android:scaleType="fitXY"
-            android:visibility="visible"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
-    </LinearLayout>
-
-</LinearLayout>
+</layout>

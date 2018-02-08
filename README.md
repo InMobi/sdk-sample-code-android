@@ -3,7 +3,7 @@ InMobi SDK for Android
 
 Modified: Sep 18, 2017
 
-SDK Version: 7.0.0
+SDK Version: 7.0.2
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.inmobi.monetization:inmobi-ads:7.0.0'
+    implementation 'com.inmobi.monetization:inmobi-ads:7.0.2'
 }
 ```
 
@@ -30,8 +30,14 @@ To download the latest SDK as a JAR, please visit [http://inmobi.com/sdk](https:
 
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
+## New in this version for native sample
+- Uses ViewModels and LiveData from [Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html) and the Data Binding library with an MVVM architecture.
+- Uses [RxJava 2](https://github.com/ReactiveX/RxJava) to implement concurrency, and abstract the data layer.
+- Uses [Dagger 2](https://google.github.io/dagger) to add support for dependency injection.
+- Unit Test case for view model
+
 ## New in this version
-- InMobi SDK v7.0.0 for Android introduces brand new Native Ad solution.
+- InMobi SDK v7.0.2 for Android introduces brand new Native Ad solution.
 - Interactive Video Ad Experience
 - Engaging end-cards are now supported via Rich-Media End-cards
 - Support for GIF images

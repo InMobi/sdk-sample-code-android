@@ -1,0 +1,90 @@
+{
+  "ads": [
+    {
+      "pubContent": {
+        "version": 0.1,
+        "orientation": "portrait",
+        "styleRefs": {
+          "cardContainerStyle": {
+            "geometry": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "passThroughJson": {
+          "title": "Watch it, you will like it",
+          "description": "Click here to know more...",
+          "icon": {
+            "width": 54.0,
+            "height": 54.0,
+            "url": "http://i.l.inmobicdn.net/ifctpads/IFC/CCN/assets/adsicon1490344688.png",
+            "aspectRatio": 1.0
+          },
+          "isBanner": true
+        },
+        "adContent": {
+          "title": "Watch it, you will like it",
+          "description": "Click here to know more...",
+          "iconUrl": "http://i.l.inmobicdn.net/ifctpads/IFC/CCN/assets/adsicon1490344688.png",
+          "ctaText": "Learn More",
+          "rating": "5.0",
+          "landingPageUrl": "https://www.inmobi.com",
+          "isApp": false
+        },
+        "onClick": {
+          "itemUrl": "https://www.inmobi.com",
+          "openMode": "EXTERNAL",
+          "fallbackUrl": "https://www.inmobi.com"
+        },
+        "rootContainer": {
+          "assetName": "root",
+          "assetType": "container",
+          "assetStyle": {
+            "geometry": [
+              0.0,
+              0.0,
+              300.0,
+              250.0
+            ],
+            "backgroundColor": "#00000000"
+          },
+          "trackers": [
+            {
+              "url": "http://au.w.inmobi.com/c.asm/C/-1/ekat3fgqw3/1u5u/16/b/a0/u/0/0/0/-1/47754ab2-0161-1000-e8a7-011909010070/a702/0/-1/0/1/x/-1/NW/-1/0/sdk/7.0.2/dir/Y29tLmlubW9iaS5pbm1vYmluYXRpdmVzYW1wbGU~/BCoCOBdzdXBwbHktdW1wX3Byb2RfZGZ3Ml8xNwA/-1/AA/7/668e3d95?m\u003d120\u0026ts\u003d$TS",
+              "trackerType": "URL_PING",
+              "uiEvent": "CLIENT_FILL"
+            }
+          ],
+          "assetValue": [
+            {
+              "assetName": "PrimaryViewImage",
+              "assetType": "webview",
+              "dataType": "html",
+              "assetStyle": {
+                "geometry": [
+                  0.0,
+                  0.0,
+                  300.0,
+                  250.0
+                ]
+              },
+              "assetValue": [
+                "\u003chtml\u003e\u003chead\u003e\u003cmeta name\u003d\"viewport\" content\u003d\"user-scalable\u003d0, minimum-scale\u003d1.0, maximum-scale\u003d1.0\"/\u003e\u003cstyle type\u003d\"text/css\"\u003ehtml,body{overflow:hidden;margin:0;padding:0;height:100%;width:100%}#im_1011_ad{background:rgba(0,0,0,0.8);height:100%;width:100%;position:absolute}#im_1011_img{border:0;height:100%}.im_1011_beacon{display:none}\u003c/style\u003e\u003c/head\u003e\u003cbody\u003e \u003cscript type\u003d\"text/javascript\" src\u003d\"https://i.l.inmobicdn.net/sdk/sdk/500/ios/mraid.js\"\u003e\u003c/script\u003e \u003cscript type\u003d\u0027text/javascript\u0027\u003evar im_1011_events\u003d{impressionBeacons:[\u0027DEFAULT_RTB_NURL\u0027,\u0027http://et2.w.inmobi.com/c.asm/C/b/ejoy3krxat/1rxs/13/2m/ba/u/0/8qm/0/eyJVSUQiOiIxQkJGRkIwMS0wRjVFLTRBRjktOERGMS1EQzg0QzBCMkQyQUYiLCJJREEiOiIxQkJGRkIwMS0wRjVFLTRBRjktOERGMS1EQzg0QzBCMkQyQUYiLCJJRFYiOiIyN0EzMzBEOS1DMEI4LTRFN0YtQjhGMy04QjI5REE4OTRBM0IifQ~~/7dabfe10-015e-1000-d11a-00076c470033/-1/0/-1/0/0/37.7798,-122.489/0/nw/101/5/sdk/6.2.1/dir/Y29tLmlubW9iaS5kc3BjZXJ0aWZpY2F0aW9uNjIx/NvLMt9qJVqg4dXhKVG1waHlJTlhnQVp0N0NZcXV3enUvWVU0VmpjOGJUZEowRmpFeFZsV2xNVVZTb09jVnBRPT0YBkJBTk5FUhw8HBaAwPCVgIT_q_sBFpn___-f_v__XQAWASIAAEwArBUAACwVAACFAhIA/7/c17ab764?b\u003d7dabfe10-015e-1000-7ddb-fe1000690000\u0027,],clickBeacons:[\u0027http://c2.w.inmobi.com/c.asm/C/b/ejoy3krxat/1rxs/13/2m/ba/u/0/8qm/0/eyJVSUQiOiIxQkJGRkIwMS0wRjVFLTRBRjktOERGMS1EQzg0QzBCMkQyQUYiLCJJREEiOiIxQkJGRkIwMS0wRjVFLTRBRjktOERGMS1EQzg0QzBCMkQyQUYiLCJJRFYiOiIyN0EzMzBEOS1DMEI4LTRFN0YtQjhGMy04QjI5REE4OTRBM0IifQ~~/7dabfe10-015e-1000-d11a-00076c470033/-1/0/-1/1/0/37.7798,-122.489/0/nw/101/5/sdk/6.2.1/dir/Y29tLmlubW9iaS5kc3BjZXJ0aWZpY2F0aW9uNjIx/NvLMt9qJVqg4dXhKVG1waHlJTlhnQVp0N0NZcXV3enUvWVU0VmpjOGJUZEowRmpFeFZsV2xNVVZTb09jVnBRPT0YBkJBTk5FUhw8HBaAwPCVgIT_q_sBFpn___-f_v__XQAWASIAAEwArBUAACwVAACFAhIA/7/d102cb65\u0027,]};var im_1011_fireBeacon\u003dfunction(beaconUrl){if(null\u003d\u003dbeaconUrl){return;}var x\u003ddocument.createElement(\"img\");x.setAttribute(\"src\",beaconUrl);x.className\u003d\"im_1011_beacon\";document.body.appendChild(x);};var im_1011_fireBeacons\u003dfunction(beaconUrls){for(var index\u003d0;index\u003cbeaconUrls.length;++index){im_1011_fireBeacon(beaconUrls[index]);}};var im_1011_fireImpressionBeacons\u003dfunction(){im_1011_fireBeacons(im_1011_events.impressionBeacons);};var im_1011_fireClickBeacons\u003dfunction(){im_1011_fireBeacons(im_1011_events.clickBeacons);};var im_1011_count\u003d0,mraid\u003dwindow.mraid;var im_1011_checkForMraid\u003dfunction(){im_1011_count++;if(4!\u003d\u003dim_1011_count){if(\"undefined\"!\u003d\u003dtypeof mraid){if(typeof mraid.isViewable\u003d\u003d\u003d\"function\"\u0026\u0026mraid.isViewable()){im_1011_fireImpressionBeacons();}else{mraid.addEventListener(\"viewableChange\",function(viewable){if(viewable){mraid.removeEventListener(\"viewableChange\",arguments.callee);im_1011_fireImpressionBeacons();}});}}}else{setTimeout(im_1011_checkForMraid,500);}}im_1011_fireImpressionBeacons();var im_1011_clickHandler\u003dfunction(){document.removeEventListener(\u0027click\u0027,im_1011_clickHandler);im_1011_fireClickBeacons();}document.addEventListener(\u0027click\u0027,im_1011_clickHandler);\u003c/script\u003e \u003cdiv id\u003d\"im_1011_ad\"\u003e \u003cscript TYPE\u003d\u0027text/javascript\u0027\u003evar ACE_HOST\u003d\u0027http://imp.bid.ace.advertising.com\u0027;var ACE_AR\u003d{Site:\u0027929362\u0027,CallType:\u0027IFRAME\u0027,Region:\u00271\u0027,Size:\u0027300250\u0027,rclk:\u0027http://inmobi-bidout-d.openx.net/ma/1.0/rc?ts\u003d1fHJpZD04ZWFhMWM5MS00MWQyLTRhNDktOWJhZC0yMTkwY2M2ZjBhZjR8cnQ9MTUwNTMzNTgxNXxhdWlkPTUzOTI0OTUzNXxhdW09RE1JRC5NT0JJTEV8YXVwZj1kaXNwbGF5fHNpZD01MzkyNDk0ODF8cHViPTUzOTIxNDc3MnxwYz1VU0R8cmFpZD0yNDRkYWQxMC00YjY3LTQyNTUtOGIyZC02ZmMwY2VkZjY4MTN8cnM9M3xhaWQ9NTM5MjA4NTY1fHQ9MTJ8YXM9MzAweDI1MHxsaWQ9NTM5MjA4NTYyfG9pZD01MzcxMDIwNjV8cD02MjZ8cHI9MjY5fGF0Yj02MjZ8YWR2PTUzNzA3MzE0M3xhYz1VU0R8cG09UFJJQ0lORy5DUE18bT0xfGFpPTE1MmQwN2IxLWRhNDEtNGM0MC1hZDE4LWZlNzRjMjY5NTM0YXxtYz1VU0R8cGk9MjY5fG1hPTUxYjNhZDJmLTI3ODgtNDYwOC1iYzBiLWNjZjg3ODQyMDg0OXxtcnQ9MTUwNTMzNTgxNXxtcmM9U1JUX1dPTnxtd2E9NTM3MDczMTQzfGNrPTF8bXdiaT0zODQxfG13Yj02MjZ8bWFwPTYyNnxlbGc9MXxtb2M9VVNEfG1vcj0zNTd8bXBmPTEwfG1tZj0xMHxtcG5mPTEwfG1tbmY9MTB8cGN2PTIwMTYxMjIwfG1vPU9YfGVjPTI2OTM0NTN8bXB1PTI2OXxtY3A9NjI2fGFxdD1ydGJ8aWM9NGUwODViNzAtNjVhNC00ZTc5LWE5OGYtY2I3ZTk0ZTQ3NjI3fHNhcz0zMDF4MjUxfGN0PTV8bXdjPTUzNzEwMjA2NXxtd3A9NTM5MjA4NTYyfG13Y3I9NTM5MjA4NTY1fG13aXM9MXxtd3BiaT0xfG13cHQ9b3BlbnJ0Yl9qc29ufGxpdD1YfHVyPU5iSGJhRlVHeWh8bGQ9cHJvZ3Jlc3NpdmUuY29t\u0026r\u003d\u0027,Secure:\u00270\u0027,Extra:\u0027oxprice\u003dAAABXn0Br66dHthlldPIjRxzmF06zom42-75-g/rip\u003dChRwbTY2MDAxNDk4Mzc0Njc1MDAxNBIlQVM0MTgxNDg4MzcyODJjMjA0MzMwOWE4M2E0NDMwNGJiYTIwNhgKIgExKgAyDUFwcCBQbGFjZW1lbnQ4zbKkAUCfCUgAfWBSJDqdAWBSJDqlAQ99Wz-tAXe8GjrdAXe8GjroAQHyAQd1bmtub3du_QFgUiQ6mgIkMWJlZDc1MmYtYzdkNS00NzVkLWE2ZTQtN2MzZDk4NTMwNDA0ygIHICxmYWxzZdICByAsZmFsc2XiAgp3cC53YXR0cGFk6gIHcHJpbWFyefICCmlubW9iaV9zZGuaAwY2NC44MjKiAwgtMTQ3LjYzNqoDA2FwcLIDCndwLndhdHRwYWTKAxZzZWxlY3QtZGVhbFByaW9yaXRpemVk/rc\u003d6A22E53B0B3CB1B9BEA20087579BE4A9/bz\u003d_v8AdQBzAC0AZQBhAHMAdAAtADEAZA/bidid\u003d51b3ad2f-2788-4608-bc0b-ccf878420849/pid\u003d1009/limitadtracking\u003dfalse\u0027};\u003c/script\u003e\u003cscript TYPE\u003d\u0027text/javascript\u0027 SRC\u003d\u0027http://uac.advertising.com/wrapper/aceUAC.js\u0027\u003e\u003c/script\u003e \u003c/div\u003e\u003c/body\u003e\u003c/html\u003e"
+              ]
+            }
+          ]
+        }
+      },
+      "markupType": "inmobiJson",
+      "expiry": 9000,
+      "metaInfo": {
+        "creativeType": "unknown",
+        "iasEnabled": false
+      }
+    }
+  ],
+  "requestId": "47754ab2-0161-1000-e800-011c00000077"
+}

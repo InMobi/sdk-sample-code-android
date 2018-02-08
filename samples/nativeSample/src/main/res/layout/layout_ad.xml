@@ -1,83 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:padding="@dimen/adContentPadding"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <data>
+
+        <variable
+            name="model"
+            type="com.inmobi.nativeSample.utility.FeedData.AdNativeData" />
+
+        <import type="android.view.View"></import>
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:recyclerItemGone="@{model}"
+        android:padding="@dimen/adContentPadding">
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/adIcon"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/adSponsored"
-            android:text="@string/sponsored"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/adIcon"
-            android:layout_toRightOf="@id/adIcon"
-            android:layout_toStartOf="@id/adSponsored"
-            android:layout_toLeftOf="@id/adSponsored"
-            android:layout_marginStart="@dimen/adContentPadding"
-            android:layout_marginLeft="@dimen/adContentPadding"
-            android:layout_centerVertical="true"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/adIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                app:imageUrl="@{model.icon}"
+                android:layout_centerVertical="true" />
 
             <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/adTitle"
-                android:layout_gravity="center_vertical"
+                android:id="@+id/adSponsored"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/sponsored" />
 
-            <android.support.v7.widget.AppCompatRatingBar
-                android:id="@+id/adRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/adRatingLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/adContentPadding"
+                android:layout_marginStart="@dimen/adContentPadding"
+                android:layout_toEndOf="@id/adIcon"
+                android:layout_toLeftOf="@id/adSponsored"
+                android:layout_toRightOf="@id/adIcon"
+                android:layout_toStartOf="@id/adSponsored"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/adTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{model.title}"
+                    android:layout_gravity="center_vertical" />
 
-    </RelativeLayout>
+                <android.support.v7.widget.AppCompatRatingBar
+                    android:id="@+id/adRating"
+                    android:layout_width="wrap_content"
+                    android:rating="@{model.rating}"
+                    android:visibility="@{model.rating > 0 ? View.VISIBLE : View.GONE}"
+                    android:layout_height="wrap_content" />
 
-    <FrameLayout
-        android:id="@+id/adContent"
-        android:layout_marginTop="@dimen/adContentPadding"
-        android:layout_marginBottom="@dimen/adContentPadding"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </RelativeLayout>
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/adAction"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/adDescription"
-            android:layout_toLeftOf="@id/adAction"
-            android:layout_toStartOf="@id/adAction"
-            android:layout_centerVertical="true"
-            android:maxLines="2"
-            android:ellipsize="marquee"
+        <FrameLayout
+            android:id="@+id/adContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/adContentPadding"
+            app:inmobiAdView="@{model}"
+            android:layout_marginTop="@dimen/adContentPadding" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/adAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@{model.ctaText}"
+                android:layout_alignParentRight="true" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/adDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/adAction"
+                android:text="@{model.description}"
+                android:layout_toStartOf="@id/adAction"
+                android:onClick="@{model::onAdClick}"
+                android:ellipsize="marquee"
+                android:maxLines="2" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

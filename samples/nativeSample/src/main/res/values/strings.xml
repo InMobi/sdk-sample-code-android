@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">InMobi Native Samples</string>
-
+    <string name="app_name">InMobiNativeSample</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="ad_display_error">Ad Display Error</string>
     <string name="sponsored">Sponsored</string>
-    <string name="title_activity_home">Home</string>
 </resources>

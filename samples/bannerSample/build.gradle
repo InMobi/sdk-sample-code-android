@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion androidCompileSdkVersion
-    buildToolsVersion androidBuildToolsVersion
+
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
         applicationId 'com.inmobi.banner.sample'
-        minSdkVersion androidMinSdkVersion
-        targetSdkVersion androidTargetSdkVersion
-        versionCode appVersionCode
-        versionName appVersionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.appVersionCode
+        versionName build_versions.appVersionName
         multiDexEnabled true
     }
     buildTypes {
@@ -35,14 +36,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.inmobi.monetization:inmobi-ads:7.0.0"
-    compile "com.android.support:appcompat-v7:${androidSupportLibVersion}"
-    compile "com.android.support:support-annotations:${androidSupportLibVersion}"
-    compile "com.android.support:support-v4:${androidSupportLibVersion}"
+    //InMobiAds
+    implementation deps.inMobi.ads
 
-    compile "com.google.android.gms:play-services:${gmsVersion}"
-    compile "com.facebook.fresco:fresco:0.5.0"
-    compile "com.squareup.picasso:picasso:2.5.2"
-    compile 'com.android.support:multidex:1.0.1'
+    //Support
+    implementation deps.support.app_compat
+
+    implementation deps.picasso
+    implementation deps.googlePlay
+    implementation deps.fresco
+
 }
