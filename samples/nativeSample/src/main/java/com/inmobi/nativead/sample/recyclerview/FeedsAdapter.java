@@ -31,11 +31,11 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int VIEW_TYPE_INMOBI_STRAND = 1;
 
     private ArrayList<FeedItem> mFeedItems;
-    private Context context;
+    private Context mContext;
 
-    FeedsAdapter(ArrayList<FeedItem> mFeedItems, Context context) {
+    FeedsAdapter(ArrayList<FeedItem> mFeedItems, Context mContext) {
         this.mFeedItems = mFeedItems;
-        this.context = context;
+        this.mContext = mContext;
     }
 
     @Override
@@ -61,7 +61,7 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.listitem, (ViewGroup) card, true);
             return new FeedViewHolder(card);
         } else {
-            return new AdViewHolder(context, card);
+            return new AdViewHolder(mContext, card);
         }
     }
 
@@ -75,24 +75,22 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             feedViewHolder.timeStamp.setText(feedItem.getTimestamp());
             feedViewHolder.description.setText(feedItem.getDescription());
 
-            Picasso.with(context)
-                    .load(context.getResources().getIdentifier(feedItem.getThumbImage(), "drawable", context.getPackageName()))
+            Picasso.with(mContext)
+                    .load(mContext.getResources().getIdentifier(feedItem.getThumbImage(), "drawable", mContext.getPackageName()))
                     .into(feedViewHolder.thumbImage);
 
-            Picasso.with(context)
-                    .load(context.getResources().getIdentifier(feedItem.getBigImage(), "drawable", context.getPackageName()))
+            Picasso.with(mContext)
+                    .load(mContext.getResources().getIdentifier(feedItem.getBigImage(), "drawable", mContext.getPackageName()))
                     .into(feedViewHolder.image);
 
-            Picasso.with(context)
+            Picasso.with(mContext)
                     .load(R.drawable.linkedin_bottom)
                     .into(feedViewHolder.bottom);
         } else {
             final AdViewHolder adViewHolder = (AdViewHolder) viewHolder;
             final InMobiNative inMobiNative = ((AdFeedItem) feedItem).mNativeStrand;
-            adViewHolder.cardView.removeAllViews();
-            adViewHolder.adContent.removeAllViews();
 
-            Picasso.with(context)
+            Picasso.with(mContext)
                     .load(inMobiNative.getAdIconUrl())
                     .into(adViewHolder.icon);
             adViewHolder.title.setText(inMobiNative.getAdTitle());
@@ -100,11 +98,11 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             adViewHolder.action.setText(inMobiNative.getAdCtaText());
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
-            ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            adViewHolder.adContent.addView(inMobiNative.getPrimaryViewOfWidth(adViewHolder.adView,
+            ((Activity) mContext).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            adViewHolder.adContent.addView(inMobiNative.getPrimaryViewOfWidth(mContext, adViewHolder.adView,
                     adViewHolder.cardView, displayMetrics.widthPixels));
 
-            float rating  = inMobiNative.getAdRating();
+            float rating = inMobiNative.getAdRating();
             if (rating != 0) {
                 adViewHolder.ratingBar.setRating(rating);
             }
@@ -116,11 +114,6 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     inMobiNative.reportAdClickAndOpenLandingPage();
                 }
             });
-
-            if (adViewHolder.adView == null) {
-                Log.e("STRANDS TEST", "getStrandView returned null" + inMobiNative);
-            }
-            adViewHolder.cardView.addView(adViewHolder.adView);
         }
     }
 
@@ -145,6 +138,7 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             action = (Button) adView.findViewById(R.id.adAction);
             adContent = (FrameLayout) adView.findViewById(R.id.adContent);
             ratingBar = (RatingBar) adView.findViewById(R.id.adRating);
+            cardView.addView(adView);
         }
     }
 

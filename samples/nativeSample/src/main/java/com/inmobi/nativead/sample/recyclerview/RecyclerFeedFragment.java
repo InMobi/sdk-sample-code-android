@@ -212,5 +212,10 @@ public class RecyclerFeedFragment extends Fragment {
 
         @Override
         public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {}
+
+        @Override
+        public void onUserSkippedMedia(@NonNull InMobiNative inMobiNative) {
+
+        }
     }
 }

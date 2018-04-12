@@ -124,9 +124,9 @@ public class SingleNativeAdFragment extends Fragment
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        content.addView(inMobiNative.getPrimaryViewOfWidth(content, mContainer, displayMetrics.widthPixels));
+        content.addView(inMobiNative.getPrimaryViewOfWidth(getActivity(), content, mContainer, displayMetrics.widthPixels));
 
-        float rating  = inMobiNative.getAdRating();
+        float rating = inMobiNative.getAdRating();
         if (rating != 0) {
             ratingBar.setRating(rating);
         }
@@ -159,7 +159,8 @@ public class SingleNativeAdFragment extends Fragment
     }
 
     @Override
-    public void onAdFullScreenDismissed(InMobiNative inMobiNative) {}
+    public void onAdFullScreenDismissed(InMobiNative inMobiNative) {
+    }
 
     @Override
     public void onAdFullScreenWillDisplay(InMobiNative inMobiNative) {
@@ -167,10 +168,12 @@ public class SingleNativeAdFragment extends Fragment
     }
 
     @Override
-    public void onAdFullScreenDisplayed(InMobiNative inMobiNative) {}
+    public void onAdFullScreenDisplayed(InMobiNative inMobiNative) {
+    }
 
     @Override
-    public void onUserWillLeaveApplication(InMobiNative inMobiNative) {}
+    public void onUserWillLeaveApplication(InMobiNative inMobiNative) {
+    }
 
     @Override
     public void onAdImpressed(@NonNull InMobiNative inMobiNative) {
@@ -183,8 +186,15 @@ public class SingleNativeAdFragment extends Fragment
     }
 
     @Override
-    public void onMediaPlaybackComplete(@NonNull InMobiNative inMobiNative) {}
+    public void onMediaPlaybackComplete(@NonNull InMobiNative inMobiNative) {
+    }
 
     @Override
-    public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {}
+    public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {
+    }
+
+    @Override
+    public void onUserSkippedMedia(@NonNull InMobiNative inMobiNative) {
+
+    }
 }
