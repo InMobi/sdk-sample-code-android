@@ -1,5 +1,33 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+## Build 7.1.0 [09/April/2018]
+    • Added support for GDPR compliance
+    • Added skip callback to Native Ads
+    • Fixed refresh issue with InMobiBanner
+    • Upgraded google play services to 11.8.0
+    • Bug Fixes
+
+    ### Interface changes
+        • APIs added:
+                • InMobiSdk class
+                    public static void init(final Context context, String accountId, JSONObject consentObject)
+                    public static void updateGDPRConsent(JSONObject consentObject)
+
+                • InMobiNative.NativeAdListener
+                    public void onUserSkippedMedia(InMobiNative nativeAd)
+
+            • APIs removed:
+                • InMobiSdk class
+                    public enum Ethnicity
+                    public static void setEthnicity(Ethnicity ethnicity)
+                    public enum HouseHoldIncome
+                    public static void setHouseHoldIncome(HouseHoldIncome houseHoldIncome)
+                    public static void setIncome(int income)
+                    public static void setNationality(String nationality)
+
+## Build 7.0.4 [12/Feb/2018]
+    • Bug fixes
+
 ## Build 7.0.2 [11/Dec/2017]
     • Bug fixes
 

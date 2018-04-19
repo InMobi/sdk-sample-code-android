@@ -200,6 +200,11 @@ public class ListViewFeedFragment extends ListFragment {
 
         @Override
         public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {}
+
+        @Override
+        public void onUserSkippedMedia(@NonNull InMobiNative inMobiNative) {
+
+        }
     }
 
     private boolean canListViewScrollUp(ListView listView) {

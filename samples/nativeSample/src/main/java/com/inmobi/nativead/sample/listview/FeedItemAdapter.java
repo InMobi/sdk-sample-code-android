@@ -127,8 +127,6 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
                 viewHolder = (AdViewHolder) convertView.getTag();
             }
 
-            viewHolder.content.removeAllViews();
-
             Picasso.with(mContext)
                     .load(inMobiNative.getAdIconUrl())
                     .into(viewHolder.icon);
@@ -138,7 +136,7 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
             ((Activity) mContext).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            viewHolder.content.addView(inMobiNative.getPrimaryViewOfWidth(viewHolder.content,
+            viewHolder.content.addView(inMobiNative.getPrimaryViewOfWidth(mContext, viewHolder.content,
                     parent, displayMetrics.widthPixels));
 
             float rating  = inMobiNative.getAdRating();

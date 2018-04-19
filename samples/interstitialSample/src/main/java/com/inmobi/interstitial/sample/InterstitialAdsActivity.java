@@ -19,7 +19,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
     private InMobiInterstitial mInterstitialAd;
     private Button mLoadAdButton;
     private Button mShowAdButton;
-    private Button mShowAdWithAnimation;
     private Button mPrefetch;
     private InterstitialApplication interstitialApplication;
     private InterstitialFetcher interstitialFetcher;
@@ -59,13 +58,11 @@ public class InterstitialAdsActivity extends AppCompatActivity {
         mPrefetch = (Button) findViewById(R.id.button_prefetch);
         mLoadAdButton = (Button) findViewById(R.id.button_load_ad);
         mShowAdButton = (Button) findViewById(R.id.button_show_ad);
-        mShowAdWithAnimation = (Button) findViewById(R.id.button_show_ad_with_animation);
         mPrefetch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mLoadAdButton.setVisibility(View.GONE);
                 mShowAdButton.setVisibility(View.GONE);
-                mShowAdWithAnimation.setVisibility(View.GONE);
                 forcedRetry.set(0);
                 prefetchInterstitial();
             }
@@ -88,12 +85,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                 mInterstitialAd.show();
             }
         });
-        mShowAdWithAnimation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mInterstitialAd.show(R.anim.right_in, R.anim.left_out);
-            }
-        });
         setupInterstitial();
     }
 
@@ -107,7 +98,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
         mPrefetch.setVisibility(View.VISIBLE);
         mLoadAdButton.setVisibility(View.VISIBLE);
         mShowAdButton.setVisibility(View.GONE);
-        mShowAdWithAnimation.setVisibility(View.GONE);
     }
 
     private void setupInterstitial() {
@@ -130,7 +120,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                         if (inMobiInterstitial.isReady()) {
                             if (mShowAdButton != null) {
                                 mShowAdButton.setVisibility(View.VISIBLE);
-                                mShowAdWithAnimation.setVisibility(View.VISIBLE);
                             }
                         } else {
                             Log.d(TAG, "onAdLoadSuccessful inMobiInterstitial not ready");
@@ -199,7 +188,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                 if (inMobiInterstitial.isReady()) {
                     if (mShowAdButton != null) {
                         mShowAdButton.setVisibility(View.VISIBLE);
-                        mShowAdWithAnimation.setVisibility(View.VISIBLE);
                     }
                 } else {
                     Log.d(TAG, "onAdLoadSuccessful inMobiInterstitial not ready");
