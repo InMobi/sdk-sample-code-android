@@ -1,7 +1,7 @@
 InMobi SDK for Android
 ======================
 
-Modified: Sep 18, 2017
+Modified: April 20, 2018
 
 SDK Version: 7.1.0
 
