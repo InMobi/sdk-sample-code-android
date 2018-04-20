@@ -31,15 +31,15 @@ To download the latest SDK as a JAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-- InMobi SDK v7.1.0 for Android introduces brand new Native Ad solution.
+- InMobi SDK v7.0.0 for Android introduces brand new Native Ad solution.
 - Interactive Video Ad Experience
 - Engaging end-cards are now supported via Rich-Media End-cards
 - Support for GIF images
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
-- android-support-v4.jar, r27.1.0
-- android-recyclerview-v7.jar,r27.1.0
+- android-support-v4.jar, r27
+- android-recyclerview-v7.jar,r27
 - Picasso Library (picasso-2.5.2.jar - available on JCenter)
 - **Recommended** Google Play Services 11.8.0
 
