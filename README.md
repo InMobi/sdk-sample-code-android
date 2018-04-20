@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: Sep 18, 2017
+Modified: April 20, 2018
 
-SDK Version: 7.0.0
+SDK Version: 7.1.0
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.inmobi.monetization:inmobi-ads:7.0.0'
+    compile 'com.inmobi.monetization:inmobi-ads:7.1.0'
 }
 ```
 
@@ -38,10 +38,10 @@ To download the latest SDK as a JAR, please visit [http://inmobi.com/sdk](https:
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
-- android-support-v4.jar, r24 
-- android-recyclerview-v7.jar,r24
+- android-support-v4.jar, r27
+- android-recyclerview-v7.jar,r27
 - Picasso Library (picasso-2.5.2.jar - available on JCenter)
-- **Recommended** Google Play Services 8.4.0
+- **Recommended** Google Play Services 11.8.0
 
 ## License
 To view the license for the InMobi SDK, see [here](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/License.txt). To view the terms of service, visit [https://inmobi.com/terms-of-service](http://inmobi.com/terms-of-service/). 
