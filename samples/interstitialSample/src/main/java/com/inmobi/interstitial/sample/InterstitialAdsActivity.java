@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -29,7 +32,14 @@ public class InterstitialAdsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345");
+        JSONObject consent = new JSONObject();
+        try {
+            // Provide correct consent value to sdk which is obtained by User
+            consent.put(InMobiSdk.IM_GDPR_CONSENT_AVAILABLE, true);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        InMobiSdk.init(this, "123456789abcdfghjiukljnm09874", consent);
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
         setContentView(R.layout.activity_interstitial_ads);
         interstitialApplication = (InterstitialApplication) this.getApplication();

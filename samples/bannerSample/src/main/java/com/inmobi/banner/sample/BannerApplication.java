@@ -9,6 +9,9 @@ import com.inmobi.sdk.InMobiSdk;
 
 import android.support.multidex.MultiDexApplication;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -25,7 +28,14 @@ public class BannerApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        InMobiSdk.init(this, "123456789abcdfghjiukljnm09874");
+        JSONObject consent = new JSONObject();
+        try {
+            // Provide correct consent value to sdk which is obtained by User
+            consent.put(InMobiSdk.IM_GDPR_CONSENT_AVAILABLE, true);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        InMobiSdk.init(this, "123456789abcdfghjiukljnm09874", consent);
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
 
         mInMobiAdRequest = new InMobiAdRequest.Builder(PlacementId.YOUR_PLACEMENT_ID)
