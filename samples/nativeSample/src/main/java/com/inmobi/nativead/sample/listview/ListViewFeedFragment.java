@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
+import com.inmobi.ads.listeners.NativeAdEventListener;
 import com.inmobi.nativead.PlacementId;
 import com.inmobi.nativead.utility.FeedData;
 import com.inmobi.nativead.utility.SwipeRefreshLayoutWrapper;
@@ -86,6 +87,7 @@ public class ListViewFeedFragment extends ListFragment {
         for (int position : mAdPositions) {
             final InMobiNative nativeStrand = new InMobiNative(getActivity(),
                     PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener(position));
+
             mStrands.add(nativeStrand);
         }
     }
@@ -125,7 +127,7 @@ public class ListViewFeedFragment extends ListFragment {
     }
 
 
-    private final class StrandAdListener implements InMobiNative.NativeAdListener {
+    private final class StrandAdListener extends NativeAdEventListener {
 
         private int mPosition;
 
@@ -135,6 +137,7 @@ public class ListViewFeedFragment extends ListFragment {
 
         @Override
         public void onAdLoadSucceeded(@NonNull InMobiNative inMobiNativeStrand) {
+            super.onAdLoadSucceeded(inMobiNativeStrand);
             Log.d(TAG, "Strand loaded at position " + mPosition);
             if (!mFeedItems.isEmpty()) {
                 FeedData.FeedItem oldFeedItem = mFeedMap.get(mPosition);
@@ -151,6 +154,7 @@ public class ListViewFeedFragment extends ListFragment {
 
         @Override
         public void onAdLoadFailed(@NonNull InMobiNative inMobiNativeStrand, @NonNull final InMobiAdRequestStatus inMobiAdRequestStatus) {
+            super.onAdLoadFailed(inMobiNativeStrand, inMobiAdRequestStatus);
             Log.d(TAG, "Ad Load failed  for" + mPosition + "(" + inMobiAdRequestStatus.getMessage() + ")");
             if (!mFeedItems.isEmpty()) {
                 FeedData.FeedItem oldFeedItem = mFeedMap.get(mPosition);
@@ -165,46 +169,46 @@ public class ListViewFeedFragment extends ListFragment {
 
         @Override
         public void onAdFullScreenDismissed(InMobiNative inMobiNative) {
+            super.onAdFullScreenDismissed(inMobiNative);
             Log.d(TAG, "Ad fullscreen dismissed.");
         }
 
         @Override
         public void onAdFullScreenWillDisplay(InMobiNative inMobiNative) {
+            super.onAdFullScreenWillDisplay(inMobiNative);
             Log.d(TAG, "Ad going fullscreen.");
         }
 
         @Override
         public void onAdFullScreenDisplayed(InMobiNative inMobiNative) {
+            super.onAdFullScreenDisplayed(inMobiNative);
             Log.d(TAG, "Ad fullscreen displayed.");
         }
 
         @Override
         public void onUserWillLeaveApplication(InMobiNative inMobiNative) {
+            super.onUserWillLeaveApplication(inMobiNative);
             Log.d(TAG, "User left app.");
         }
 
         @Override
         public void onAdImpressed(@NonNull InMobiNative inMobiNativeStrand) {
+            super.onAdImpressed(inMobiNativeStrand);
             Log.d(TAG, "Impression recorded for strand at position:" + mPosition);
         }
 
         @Override
         public void onAdClicked(@NonNull InMobiNative inMobiNativeStrand) {
+            super.onAdClicked(inMobiNativeStrand);
             Log.d(TAG, "Click recorded for ad at position:" + mPosition);
         }
 
         @Override
-        public void onMediaPlaybackComplete(@NonNull InMobiNative inMobiNative) {
-            Log.d(TAG, "Ad media playback complete.");
+        public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {
+            super.onAdStatusChanged(inMobiNative);
+            Log.d(TAG, "Ad status changed");
         }
 
-        @Override
-        public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {}
-
-        @Override
-        public void onUserSkippedMedia(@NonNull InMobiNative inMobiNative) {
-
-        }
     }
 
     private boolean canListViewScrollUp(ListView listView) {
