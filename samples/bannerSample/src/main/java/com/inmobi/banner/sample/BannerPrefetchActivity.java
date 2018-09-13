@@ -145,18 +145,6 @@ public class BannerPrefetchActivity extends AppCompatActivity {
                 super.onRewardsUnlocked(inMobiBanner, map);
                 Log.d(TAG, "onRewardsUnlocked");
             }
-
-            @Override
-            public void onRequestPayloadCreated(byte[] bytes) {
-                super.onRequestPayloadCreated(bytes);
-                Log.d(TAG, "onRequestPayloadCreated");
-            }
-
-            @Override
-            public void onRequestPayloadCreationFailed(InMobiAdRequestStatus inMobiAdRequestStatus) {
-                super.onRequestPayloadCreationFailed(inMobiAdRequestStatus);
-                Log.d(TAG, "onAdLoadSucceeded");
-            }
         });
 
         setBannerLayoutParams();

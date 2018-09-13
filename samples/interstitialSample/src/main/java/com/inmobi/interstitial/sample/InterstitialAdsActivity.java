@@ -171,18 +171,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                         super.onRewardsUnlocked(inMobiInterstitial, map);
                         Log.d(TAG, "onRewardsUnlocked " + map.size());
                     }
-
-                    @Override
-                    public void onRequestPayloadCreated(byte[] bytes) {
-                        super.onRequestPayloadCreated(bytes);
-                        Log.d(TAG, "onRequestPayloadCreated " + bytes);
-                    }
-
-                    @Override
-                    public void onRequestPayloadCreationFailed(InMobiAdRequestStatus inMobiAdRequestStatus) {
-                        super.onRequestPayloadCreationFailed(inMobiAdRequestStatus);
-                        Log.d(TAG, "onRequestPayloadCreationFailed " + inMobiAdRequestStatus);
-                    }
                 });
     }
 
@@ -261,21 +249,7 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                 super.onRewardsUnlocked(inMobiInterstitial, map);
                 Log.d(TAG, "onRewardsUnlocked " + map.size());
             }
-
-            @Override
-            public void onRequestPayloadCreated(byte[] bytes) {
-                super.onRequestPayloadCreated(bytes);
-                Log.d(TAG, "onRequestPayloadCreated " + bytes);
-            }
-
-            @Override
-            public void onRequestPayloadCreationFailed(InMobiAdRequestStatus inMobiAdRequestStatus) {
-                super.onRequestPayloadCreationFailed(inMobiAdRequestStatus);
-                Log.d(TAG, "onRequestPayloadCreationFailed " + inMobiAdRequestStatus);
-            }
         });
-
-
         mInterstitialAd.load();
     }
 }
