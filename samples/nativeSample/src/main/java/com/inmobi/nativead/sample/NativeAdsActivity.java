@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 
 import com.inmobi.sdk.InMobiSdk;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class NativeAdsActivity extends AppCompatActivity {
 
     @Override
@@ -16,7 +19,14 @@ public class NativeAdsActivity extends AppCompatActivity {
 
         //Initialize Inmobi SDK before any API call.
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
-        InMobiSdk.init(this, "12345678901234567890123456789012");
+        JSONObject consent = new JSONObject();
+        try {
+            // Provide correct consent value to sdk which is obtained by User
+            consent.put(InMobiSdk.IM_GDPR_CONSENT_AVAILABLE, true);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        InMobiSdk.init(this, "12345678901234567890123456789012", consent);
 
         setContentView(R.layout.activity_native_ads);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
