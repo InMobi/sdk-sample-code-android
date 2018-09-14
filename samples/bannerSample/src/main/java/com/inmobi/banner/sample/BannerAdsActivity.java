@@ -1,12 +1,5 @@
 package com.inmobi.banner.sample;
 
-import com.inmobi.ads.InMobiAdRequestStatus;
-import com.inmobi.ads.InMobiBanner;
-import com.inmobi.banner.PlacementId;
-import com.inmobi.banner.utility.Constants;
-import com.inmobi.banner.utility.DataFetcher;
-import com.inmobi.banner.utility.NewsSnippet;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -19,7 +12,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.inmobi.ads.InMobiAdRequestStatus;
+import com.inmobi.ads.InMobiBanner;
+import com.inmobi.ads.listeners.BannerAdEventListener;
+import com.inmobi.banner.PlacementId;
+import com.inmobi.banner.utility.Constants;
+import com.inmobi.banner.utility.DataFetcher;
+import com.inmobi.banner.utility.NewsSnippet;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,7 +52,8 @@ public class BannerAdsActivity extends AppCompatActivity {
 
     private OnHeadlineSelectedListener mCallback = new OnHeadlineSelectedListener() {
         @Override
-        public void onArticleSelected(int position) {}
+        public void onArticleSelected(int position) {
+        }
     };
 
     @Override
@@ -68,42 +71,48 @@ public class BannerAdsActivity extends AppCompatActivity {
         mBannerAd = new InMobiBanner(BannerAdsActivity.this, PlacementId.YOUR_PLACEMENT_ID);
         RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
         mBannerAd.setAnimationType(InMobiBanner.AnimationType.ROTATE_HORIZONTAL_AXIS);
-        mBannerAd.setListener(new InMobiBanner.BannerAdListener() {
+        mBannerAd.setListener(new BannerAdEventListener() {
             @Override
             public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
+                super.onAdLoadSucceeded(inMobiBanner);
                 Log.d(TAG, "onAdLoadSucceeded");
             }
 
             @Override
-            public void onAdLoadFailed(InMobiBanner inMobiBanner,
-                                       InMobiAdRequestStatus inMobiAdRequestStatus) {
+            public void onAdLoadFailed(InMobiBanner inMobiBanner, InMobiAdRequestStatus inMobiAdRequestStatus) {
+                super.onAdLoadFailed(inMobiBanner, inMobiAdRequestStatus);
                 Log.d(TAG, "Banner ad failed to load with error: " +
                         inMobiAdRequestStatus.getMessage());
             }
 
             @Override
+            public void onAdClicked(InMobiBanner inMobiBanner, Map<Object, Object> map) {
+                super.onAdClicked(inMobiBanner, map);
+                Log.d(TAG, "onAdClicked");
+            }
+
+            @Override
             public void onAdDisplayed(InMobiBanner inMobiBanner) {
+                super.onAdDisplayed(inMobiBanner);
                 Log.d(TAG, "onAdDisplayed");
             }
 
             @Override
             public void onAdDismissed(InMobiBanner inMobiBanner) {
+                super.onAdDismissed(inMobiBanner);
                 Log.d(TAG, "onAdDismissed");
             }
 
             @Override
-            public void onAdInteraction(InMobiBanner inMobiBanner, Map<Object, Object> map) {
-                Log.d(TAG, "onAdInteraction");
-            }
-
-            @Override
             public void onUserLeftApplication(InMobiBanner inMobiBanner) {
+                super.onUserLeftApplication(inMobiBanner);
                 Log.d(TAG, "onUserLeftApplication");
             }
 
             @Override
-            public void onAdRewardActionCompleted(InMobiBanner inMobiBanner, Map<Object, Object> map) {
-                Log.d(TAG, "onAdRewardActionCompleted");
+            public void onRewardsUnlocked(InMobiBanner inMobiBanner, Map<Object, Object> map) {
+                super.onRewardsUnlocked(inMobiBanner, map);
+                Log.d(TAG, "onRewardsUnlocked");
             }
         });
         setBannerLayoutParams();

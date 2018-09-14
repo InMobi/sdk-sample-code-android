@@ -1,5 +1,69 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+## Build 7.2.0 [12/Sept/2018]
+    • Added support for Android P
+    • Added Video events for Native Ads
+    • Block auto-redirection of ads without user interaction
+    • Banner XML integration placementId parameter expects "plid-"
+    • Bug Fixes
+
+    ### Interface changes
+        • APIs added:
+                • InMobiNative
+                    public InMobiNative(Context context, long placementId, NativeAdEventListener listener)
+                    public void setListener(NativeAdEventListener listener)
+                • InMobiBanner
+                    public void setListener(BannerAdEventListener listener)
+                • InMobiInterstitial
+                    public InMobiInterstitial(Context context, long placementId, InterstitialAdEventListener listener)
+                    public void setListener(InterstitialAdEventListener listener)
+                • BannerAdEventListener
+                     public void onAdLoadSucceeded(InMobiBanner ad)
+                     public void onAdLoadFailed(InMobiBanner ad, InMobiAdRequestStatus status)
+                     public void onAdClicked(InMobiBanner ad, Map<Object, Object> params)
+                     public void onAdDisplayed(InMobiBanner ad)
+                     public void onAdDismissed(InMobiBanner ad)
+                     public void onUserLeftApplication(InMobiBanner ad)
+                     public void onRewardsUnlocked(InMobiBanner ad, Map<Object, Object> rewards)
+                • InterstitialAdEventListener
+                    public void onAdLoadSucceeded(InMobiInterstitial ad)
+                    public void onAdLoadFailed(InMobiInterstitial ad, InMobiAdRequestStatus status)
+                    public void onAdReceived(InMobiInterstitial ad)
+                    public void onAdClicked(InMobiInterstitial ad, Map<Object, Object> params)
+                    public void onAdWillDisplay(InMobiInterstitial ad)
+                    public void onAdDisplayed(InMobiInterstitial ad)
+                    public void onAdDisplayFailed(InMobiInterstitial ad)
+                    public void onAdDismissed(InMobiInterstitial ad)
+                    public void onUserLeftApplication(InMobiInterstitial ad)
+                    public void onRewardsUnlocked(InMobiInterstitial ad, Map<Object, Object> rewards)
+                • NativeAdEventListener
+                    public void onAdLoadSucceeded(InMobiNative ad)
+                    public void onAdLoadFailed(InMobiNative ad, InMobiAdRequestStatus requestStatus)
+                    public void onAdFullScreenDismissed(InMobiNative ad)
+                    public void onAdFullScreenWillDisplay(InMobiNative ad)
+                    public void onAdFullScreenDisplayed(InMobiNative ad)
+                    public void onUserWillLeaveApplication(InMobiNative ad)
+                    public void onAdImpressed(InMobiNative ad)
+                    public void onAdClicked(InMobiNative ad)
+                    public void onAdStatusChanged(InMobiNative nativeAd)
+                • VideoEventListener
+                    public void onVideoCompleted(InMobiNative ad)
+                    public void onVideoSkipped(InMobiNative ad)
+                    public void onAudioStateChanged(InMobiNative inMobiNative, boolean isMuted)
+
+        • Deprecated API:
+                • InMobiNative
+                    public InMobiNative(Context context, long placementId, NativeAdListener listener)
+                    public void setNativeAdListener(NativeAdListener listener)
+                • InMobiNative.NativeAdListener
+                • InMobiBanner
+                    public void setListener(BannerAdListener listener)
+                • InMobiBanner.BannerAdListener
+                • InMobiInterstitial
+                    public InMobiInterstitial(Context context, long placementId, InterstitialAdListener2 listener)
+                    public void setInterstitialAdListener(InterstitialAdListener2 listener)
+                • InMobiInterstitial.InterstitialAdListener2
+
 ## Build 7.1.0 [09/April/2018]
     • Added support for GDPR compliance
     • Added skip callback to Native Ads

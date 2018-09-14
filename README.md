@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: April 20, 2018
+Modified: September 12, 2018
 
-SDK Version: 7.1.0
+SDK Version: 7.2.0
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.inmobi.monetization:inmobi-ads:7.1.0'
+    compile 'com.inmobi.monetization:inmobi-ads:7.2.0'
 }
 ```
 
@@ -31,10 +31,11 @@ To download the latest SDK as a JAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-- InMobi SDK v7.0.0 for Android introduces brand new Native Ad solution.
-- Interactive Video Ad Experience
-- Engaging end-cards are now supported via Rich-Media End-cards
-- Support for GIF images
+- Added support for Android P
+- Added Video events for Native Ads
+- Block auto-redirection of ads without user interaction
+- Banner XML integration placementId parameter expects "plid-"
+
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
