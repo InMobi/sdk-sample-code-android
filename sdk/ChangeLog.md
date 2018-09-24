@@ -1,5 +1,9 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+
+## Build 7.2.1 [20/Sept/2018]
+    • Hot-fix for Android
+
 ## Build 7.2.0 [12/Sept/2018]
     • Added support for Android P
     • Added Video events for Native Ads
@@ -63,6 +67,11 @@ InMobi Monetization SDK ChangeLog for Android
                     public InMobiInterstitial(Context context, long placementId, InterstitialAdListener2 listener)
                     public void setInterstitialAdListener(InterstitialAdListener2 listener)
                 • InMobiInterstitial.InterstitialAdListener2
+
+
+
+## Build 7.1.1 [17/May/2018]
+    • Fixed memory leak in InmobiBanner when multiple instances are created per activity
 
 ## Build 7.1.0 [09/April/2018]
     • Added support for GDPR compliance
