@@ -1,6 +1,9 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 7.2.2 [26/Nov/2018]
+    • Bug fixes
+
 ## Build 7.2.1 [20/Sept/2018]
     • Hot-fix for Android
 
