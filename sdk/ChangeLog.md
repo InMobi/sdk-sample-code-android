@@ -1,7 +1,7 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 ## Build 7.2.7 [25/Feb/2019]
-    • MMA SDK Integration
+    • MMA SDK Integration (China only)
     • Gif Enhancements
 
     ### Interface changes
