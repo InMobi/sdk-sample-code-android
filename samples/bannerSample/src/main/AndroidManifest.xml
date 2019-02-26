@@ -14,12 +14,9 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/icon"
-        android:label="@string/app_name"
-        android:name=".BannerApplication"
-        android:theme="@style/AppTheme">
+    <application android:allowBackup="true" android:icon="@drawable/icon"
+        android:label="@string/app_name" android:theme="@style/AppTheme"
+        android:name="android.support.multidex.MultiDexApplication">
 
         <activity
             android:name=".BannerBase"
@@ -32,11 +29,6 @@
 
         <activity
             android:name=".BannerAdsActivity"
-            android:label="@string/app_name">
-        </activity>
-
-        <activity
-            android:name=".BannerPrefetchActivity"
             android:label="@string/app_name">
         </activity>
 

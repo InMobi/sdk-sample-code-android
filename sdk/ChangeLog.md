@@ -1,5 +1,20 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+## Build 7.2.7 [25/Feb/2019]
+    • MMA SDK Integration
+    • Gif Enhancements
+
+    ### Interface changes
+        • Deprecated API:
+                • InMobiNative
+                    public static void requestAd(Context context, final InMobiAdRequest adRequest,
+                                 NativeAdRequestListener listener)
+                • InMobiBanner
+                    public static void requestAd(Context context, final InMobiAdRequest adRequest,
+                                 BannerAdRequestListener listener)
+                • InMobiInterstitial
+                    public static void requestAd(Context context, InMobiAdRequest adRequest,
+                                 InterstitialAdRequestListener interstitialAdRequestListener)
 
 ## Build 7.2.6 [8/Feb/2019]
     • Bug fix - Avoid crash in WebView processing.

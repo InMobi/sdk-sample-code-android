@@ -43,12 +43,5 @@ public class BannerBase extends AppCompatActivity {
 
             }
         });
-        Button prefetchSample = (Button) findViewById(R.id.prefetchSample);
-        prefetchSample.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(BannerBase.this, BannerPrefetchActivity.class));
-            }
-        });
     }
 }
