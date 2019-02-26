@@ -1,6 +1,9 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 7.2.6 [8/Feb/2019]
+    • Bug fix - Avoid crash in WebView processing.
+
 ## Build 7.2.4 [14/Dec/2018]
     • Bug fix - Release resource for failures with multiple banners in single AdContainer.
 
