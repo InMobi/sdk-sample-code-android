@@ -187,6 +187,12 @@ public class SingleNativeAdFragment extends Fragment {
         }
 
         @Override
+        public void onAdReceived(InMobiNative inMobiNative) {
+            super.onAdReceived(inMobiNative);
+            Log.d(TAG, "onAdReceived");
+        }
+
+        @Override
         public void onAdFullScreenDismissed(InMobiNative inMobiNative) {
             super.onAdFullScreenDismissed(inMobiNative);
         }

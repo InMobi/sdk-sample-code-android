@@ -1,5 +1,13 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+## Build 7.2.8 [6/May/2019]
+    • Bug fixes.
+
+    ### Interface changes
+        • API added:
+                • NativeAdEventListener
+                    public void onAdReceived(InMobiNative ad)
+
 ## Build 7.2.7 [25/Feb/2019]
     • MMA SDK Integration (China only)
     • Gif Enhancements
