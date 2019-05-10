@@ -171,7 +171,6 @@ public class SingleNativeAdFragment extends Fragment {
         @Override
         public void onAdLoadSucceeded(@NonNull InMobiNative inMobiNative) {
             //Pass the old ad view as the first parameter to facilitate view reuse.
-            super.onAdLoadSucceeded(inMobiNative);
             View view = loadAdIntoView(inMobiNative);
             if (view == null) {
                 Log.d(TAG, "Could not render Strand!");
@@ -182,47 +181,44 @@ public class SingleNativeAdFragment extends Fragment {
 
         @Override
         public void onAdLoadFailed(@NonNull InMobiNative inMobiNative, @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
-            super.onAdLoadFailed(inMobiNative, inMobiAdRequestStatus);
             Log.d(TAG, "Ad Load failed (" + inMobiAdRequestStatus.getMessage() + ")");
         }
 
         @Override
+        public void onAdReceived(InMobiNative inMobiNative) {
+            Log.d(TAG, "onAdReceived");
+        }
+
+        @Override
         public void onAdFullScreenDismissed(InMobiNative inMobiNative) {
-            super.onAdFullScreenDismissed(inMobiNative);
         }
 
         @Override
         public void onAdFullScreenWillDisplay(InMobiNative inMobiNative) {
-            super.onAdFullScreenWillDisplay(inMobiNative);
             Log.d(TAG, "Ad going fullscreen.");
         }
 
         @Override
         public void onAdFullScreenDisplayed(InMobiNative inMobiNative) {
-            super.onAdFullScreenDisplayed(inMobiNative);
         }
 
         @Override
         public void onUserWillLeaveApplication(InMobiNative inMobiNative) {
-            super.onUserWillLeaveApplication(inMobiNative);
         }
 
         @Override
         public void onAdImpressed(@NonNull InMobiNative inMobiNative) {
-            super.onAdImpressed(inMobiNative);
             Log.d(TAG, "Impression recorded successfully");
         }
 
         @Override
         public void onAdClicked(@NonNull InMobiNative inMobiNative) {
-            super.onAdClicked(inMobiNative);
             Log.d(TAG, "Ad clicked");
         }
 
 
         @Override
         public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {
-            super.onAdStatusChanged(inMobiNative);
         }
 
     }

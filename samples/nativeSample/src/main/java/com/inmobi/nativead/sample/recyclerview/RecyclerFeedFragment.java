@@ -158,7 +158,6 @@ public class RecyclerFeedFragment extends Fragment {
 
         @Override
         public void onAdLoadSucceeded(@NonNull InMobiNative inMobiNativeStrand) {
-            super.onAdLoadSucceeded(inMobiNativeStrand);
             Log.d(TAG, "Strand loaded at position " + mPosition);
             if (!mFeedItems.isEmpty()) {
                 FeedData.FeedItem oldFeedItem = mFeedMap.get(mPosition);
@@ -175,7 +174,6 @@ public class RecyclerFeedFragment extends Fragment {
 
         @Override
         public void onAdLoadFailed(@NonNull InMobiNative inMobiNativeStrand, @NonNull final InMobiAdRequestStatus inMobiAdRequestStatus) {
-            super.onAdLoadFailed(inMobiNativeStrand, inMobiAdRequestStatus);
             Log.d(TAG, "Ad Load failed  for" + mPosition + "(" + inMobiAdRequestStatus.getMessage() + ")");
             if (!mFeedItems.isEmpty()) {
                 FeedData.FeedItem oldFeedItem = mFeedMap.get(mPosition);
@@ -189,40 +187,38 @@ public class RecyclerFeedFragment extends Fragment {
         }
 
         @Override
+        public void onAdReceived(InMobiNative inMobiNative) {
+            Log.d(TAG, "onAdReceived");
+        }
+
+        @Override
         public void onAdFullScreenDismissed(InMobiNative inMobiNative) {
-            super.onAdFullScreenDismissed(inMobiNative);
         }
 
         @Override
         public void onAdFullScreenWillDisplay(InMobiNative inMobiNative) {
-            super.onAdFullScreenWillDisplay(inMobiNative);
         }
 
         @Override
         public void onAdFullScreenDisplayed(InMobiNative inMobiNative) {
-            super.onAdFullScreenDisplayed(inMobiNative);
         }
 
         @Override
         public void onUserWillLeaveApplication(InMobiNative inMobiNative) {
-            super.onUserWillLeaveApplication(inMobiNative);
         }
 
         @Override
         public void onAdImpressed(@NonNull InMobiNative inMobiNativeStrand) {
-            super.onAdImpressed(inMobiNativeStrand);
             Log.d(TAG, "Impression recorded for strand at position:" + mPosition);
         }
 
         @Override
         public void onAdClicked(@NonNull InMobiNative inMobiNativeStrand) {
-            super.onAdClicked(inMobiNativeStrand);
             Log.d(TAG, "Click recorded for ad at position:" + mPosition);
         }
 
         @Override
         public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {
-            super.onAdStatusChanged(inMobiNative);
         }
     }
 }

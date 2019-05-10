@@ -17,13 +17,12 @@ ext {
     androidMinSdkVersion = 15
     androidTargetSdkVersion = 28
     androidCompileSdkVersion = 28
-    androidBuildToolsVersion = "27.0.3"
 
     appVersionCode = 1
     appVersionName = "1.0.0"
 
-    gmsVersion = "8.4.0"
-    androidSupportLibVersion = "25.3.1"
+    gmsVersion = "11.8.0"
+    androidSupportLibVersion = "28.0.0"
 }
 
 allprojects {
