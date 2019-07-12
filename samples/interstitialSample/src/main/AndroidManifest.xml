@@ -10,8 +10,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application android:allowBackup="true" android:icon="@drawable/icon"
@@ -37,10 +35,6 @@
             android:hardwareAccelerated="true"
             android:theme="@android:style/Theme.NoTitleBar"
             tools:ignore="UnusedAttribute"/>
-
-        <service
-            android:name="com.inmobi.signals.activityrecognition.ActivityRecognitionManager"
-            android:enabled="true"/>
 
         <meta-data
             android:name="com.google.android.gms.version"

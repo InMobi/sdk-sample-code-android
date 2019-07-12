@@ -92,15 +92,15 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
             viewHolder.time_tt.setText(feed.getTimestamp());
             viewHolder.description_tt.setText(feed.getDescription());
 
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(mContext.getResources().getIdentifier(feed.getThumbImage(), "drawable", mContext.getPackageName()))
                     .into(viewHolder.thumb_image);
 
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(mContext.getResources().getIdentifier(feed.getBigImage(), "drawable", mContext.getPackageName()))
                     .into(viewHolder.big_image);
 
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(R.drawable.linkedin_bottom)
                     .into(viewHolder.bottom_img);
 
@@ -127,7 +127,7 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
                 viewHolder = (AdViewHolder) convertView.getTag();
             }
 
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(inMobiNative.getAdIconUrl())
                     .into(viewHolder.icon);
             viewHolder.title.setText(inMobiNative.getAdTitle());

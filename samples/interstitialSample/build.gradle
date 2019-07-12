@@ -35,12 +35,12 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.inmobi.monetization:inmobi-ads:7.2.8"
+    compile "com.inmobi.monetization:inmobi-ads:7.2.9"
     compile "com.android.support:design:${androidSupportLibVersion}"
     compile "com.android.support:appcompat-v7:${androidSupportLibVersion}"
     compile "com.android.support:recyclerview-v7:${androidSupportLibVersion}"
 
     compile "com.google.android.gms:play-services:${gmsVersion}"
-    compile "com.squareup.picasso:picasso:2.5.2"
+    compile "com.squareup.picasso:picasso:2.71828"
     compile 'com.android.support:multidex:1.0.1'
 }
