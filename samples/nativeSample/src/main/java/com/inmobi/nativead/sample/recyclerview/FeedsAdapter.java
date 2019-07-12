@@ -75,22 +75,22 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             feedViewHolder.timeStamp.setText(feedItem.getTimestamp());
             feedViewHolder.description.setText(feedItem.getDescription());
 
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(mContext.getResources().getIdentifier(feedItem.getThumbImage(), "drawable", mContext.getPackageName()))
                     .into(feedViewHolder.thumbImage);
 
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(mContext.getResources().getIdentifier(feedItem.getBigImage(), "drawable", mContext.getPackageName()))
                     .into(feedViewHolder.image);
 
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(R.drawable.linkedin_bottom)
                     .into(feedViewHolder.bottom);
         } else {
             final AdViewHolder adViewHolder = (AdViewHolder) viewHolder;
             final InMobiNative inMobiNative = ((AdFeedItem) feedItem).mNativeStrand;
 
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(inMobiNative.getAdIconUrl())
                     .into(adViewHolder.icon);
             adViewHolder.title.setText(inMobiNative.getAdTitle());

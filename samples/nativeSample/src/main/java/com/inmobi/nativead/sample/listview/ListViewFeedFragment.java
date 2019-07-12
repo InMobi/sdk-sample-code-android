@@ -207,6 +207,7 @@ public class ListViewFeedFragment extends ListFragment {
 
     }
 
+    @SuppressWarnings("deprecation")
     private boolean canListViewScrollUp(ListView listView) {
         if (android.os.Build.VERSION.SDK_INT >= 14) {
             return ViewCompat.canScrollVertically(listView, -1);

@@ -135,7 +135,7 @@ public class SingleNativeAdFragment extends Fragment {
         FrameLayout content = (FrameLayout) adView.findViewById(R.id.adContent);
         RatingBar ratingBar = (RatingBar) adView.findViewById(R.id.adRating);
 
-        Picasso.with(getActivity())
+        Picasso.get()
                 .load(inMobiNative.getAdIconUrl())
                 .into(icon);
         title.setText(inMobiNative.getAdTitle());

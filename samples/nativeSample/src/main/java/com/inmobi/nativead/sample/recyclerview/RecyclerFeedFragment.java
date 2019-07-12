@@ -138,6 +138,7 @@ public class RecyclerFeedFragment extends Fragment {
         mFeedMap.clear();
     }
 
+    @SuppressWarnings("deprecation")
     private boolean canViewScrollUp(RecyclerView recyclerView) {
         if (android.os.Build.VERSION.SDK_INT >= 14) {
             return ViewCompat.canScrollVertically(recyclerView, -1);
