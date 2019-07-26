@@ -1,5 +1,8 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+## Build 7.3.0 [25/July/2019]
+    • Bug fixes.
+
 ## Build 7.2.9 [10/July/2019]
     • Removal of createCalendar API from Mraid.
     • Support for new Picasso version 2.71828.
