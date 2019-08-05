@@ -10,7 +10,7 @@ android {
         versionCode appVersionCode
         versionName appVersionName
         multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
     buildTypes {
@@ -22,21 +22,24 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.inmobi.monetization:inmobi-ads:7.3.0"
-    compile "com.android.support:design:${androidSupportLibVersion}"
-    compile "com.android.support:appcompat-v7:${androidSupportLibVersion}"
-    compile "com.android.support:support-annotations:${androidSupportLibVersion}"
-    compile "com.android.support:support-v4:${androidSupportLibVersion}"
-    compile "com.android.support:recyclerview-v7:${androidSupportLibVersion}"
-    compile "com.android.support:cardview-v7:${androidSupportLibVersion}"
-    compile "com.google.android.gms:play-services:${gmsVersion}"
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.annotation:annotation:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.inmobi.monetization:inmobi-ads:8.2.0'
 
-    compile 'com.facebook.fresco:fresco:0.12.0'
-    compile 'com.squareup.picasso:picasso:2.71828'
-    compile 'com.android.support:multidex:1.0.3'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+
+    implementation 'androidx.browser:browser:1.0.0'
+    implementation 'com.facebook.fresco:fresco:0.12.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'androidx.multidex:multidex:2.0.0'
+    testImplementation 'junit:junit:4.12'
 }
