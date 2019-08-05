@@ -3,7 +3,7 @@ package com.inmobi.banner.sample;
 import com.inmobi.ads.InMobiBanner;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class BannerXmlActivity extends AppCompatActivity {
 

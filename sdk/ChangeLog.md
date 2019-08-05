@@ -1,5 +1,73 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+## Build 8.2.0 [02/Aug/2019]
+    • Chrome Custom tabs support
+    • Thread Optimizations
+    • Bug Fixes for SDK and AudienceBidder Plugin
+
+## Build 8.1.3 [05/July/2019]
+    • Audience Bidder support for DFP
+    • Bug Fixes
+
+## Build 8.1.2 [13/Jun/2019]
+    • Updated AdColony SDK support to 3.3.10
+    • Updated Audience Network (Facebook) support to 5.3.1
+
+## Build 8.1.1 [28/May/2019]
+    • Improved Stability with crash fixes
+    • Thread and Memory Optimizations
+    • Support for new Picasso version 2.71828
+
+    ### API added
+        • NativeAdEventListener
+            public void onAdReceived(InMobiNative ad)
+
+## Build 8.1.0 [15/May/2019]
+    • AudienceBidder
+        • Added support for AppNexus
+        • Added keyword implementation for MoPub
+    • Added DFP plugin
+
+## Build 8.0.9 [24/Apr/2019]
+    • Bug fixes
+
+## Build 8.0.8 [17/Apr/2019]
+    • Bug fixes
+
+## Build 8.0.7 [05/Apr/2019]
+    • Bug fixes
+    • Updated AudienceBidder to v1.0.1
+        • Support for Amazon Publsiher Service
+        • Support for granular keywords
+        • Fix issue with updateBid not working with MoPub's refresh
+        • Replaced source file with a aar
+        • Change in API (see documentation)
+
+## Build 8.0.5 [11/Mar/2019]
+    • Added InMobi's Audience Bidder for MoPub
+    • Update support for the following mediation adapters
+        • AdColony SDKv 3.3.7
+        • AdMob SDKv 17.1.1
+        • AppLovin SDKv 9.1.0
+        • AppNext SDKv 2.4.4.472
+        • Audience Network (Facebook) SDKv 5.1.0
+        • Chartboost SDKv 7.3.1
+        • Flurry (Yahoo) SDKv 11.4.0
+        • MoPub SDKv 5.4.1
+        • MyTarget SDKv 5.3.1
+        • Oath (AOL) SDKv 6.8.2
+        • Unity SDKv 3.0.0
+        • Vungle SDKv 6.3.24
+    • Deprecated Tremor support
+    • Deprecated Flurry (Yahoo) Banner
+    • Added support for additional reporting for AppLovin and Chartboost
+    • Bug fixes
+## Build 8.0.1 [28/Nov/2018]
+    • Bug Fixes
+
+## Build 8.0.0 [17/Oct/2018]
+    • Unification of InMobi SDK and AerServ SDK
+
 ## Build 7.3.0 [25/July/2019]
     • Bug fixes.
 

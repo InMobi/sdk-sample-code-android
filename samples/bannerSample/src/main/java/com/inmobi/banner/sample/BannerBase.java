@@ -2,8 +2,8 @@ package com.inmobi.banner.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,7 +24,7 @@ public class BannerBase extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345", consent);
+        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty1234", consent);
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
         setContentView(R.layout.banner_base);
 
