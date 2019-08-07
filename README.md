@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: August 05, 2019
+Modified: July 25, 2019
 
-SDK Version: 8.2.0
+SDK Version: 7.3.0
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -13,14 +13,14 @@ The InMobi SDK for Android is available via:
 
 **jCenter JAR**
 
-The InMobi SDK is available as a AAR via jCenter; to use it, add the following to your `build.gradle`
+The InMobi SDK is available as a JAR via jCenter; to use it, add the following to your `build.gradle`
 
 ```
 repositories {
     jcenter()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:8.2.0'
+    implementation 'com.inmobi.monetization:inmobi-ads:7.3.0'
 }
 ```
 
@@ -31,10 +31,13 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-• Chrome Custom tabs support
-• Thread Optimizations
-• Bug Fixes for SDK and AudienceBidder Plugin
-
+• Removal of createCalendar API from Mraid
+• Support for new Picasso version 2.71828
+• Bug Fixes
+• Interface changes
+     • API added:
+            • InMobiNative
+                public Boolean isVideo()
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
