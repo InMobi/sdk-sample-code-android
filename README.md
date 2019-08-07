@@ -31,12 +31,12 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-• Removal of createCalendar API from Mraid
-• Support for new Picasso version 2.71828
-• Bug Fixes
-• Interface changes
-     • API added:
-            • InMobiNative
+- Removal of createCalendar API from Mraid
+- Support for new Picasso version 2.71828
+- Bug Fixes
+- Interface changes
+     - API added:
+            - InMobiNative
                 public Boolean isVideo()
 
 ## Requirements
@@ -44,7 +44,6 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 - android-support-v4.jar, r28
 - android-recyclerview-v7.jar,r28
 - Picasso Library (picasso-2.71828.jar - available on JCenter)
-- Chrome Custom tabs dependency (needs to be added in build.gradle at app level)
 - **Recommended** Google Play Services 17.0.0
 
 ## License

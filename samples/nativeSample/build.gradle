@@ -35,9 +35,8 @@ dependencies {
     implementation 'com.inmobi.monetization:inmobi-ads:7.3.0'
 
     implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 
-    implementation 'androidx.browser:browser:1.0.0'
     implementation 'com.facebook.fresco:fresco:0.12.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.multidex:multidex:2.0.0'
