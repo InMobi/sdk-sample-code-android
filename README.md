@@ -26,7 +26,7 @@ dependencies {
 
 **Download from the support portal**
 
-To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https://inmobi.com/sdk).
+To download the latest SDK as a JAR, please visit [Support Portal](https://support.inmobi.com/monetize/android-guidelines/).
 
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
