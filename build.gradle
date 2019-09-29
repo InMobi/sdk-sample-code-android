@@ -1,17 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+build.gradle
 buildscript {
     repositories {
         jcenter()
         google()
-    }
+    build.gradle}
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-
+build.gradle
 
 ext {
     androidMinSdkVersion = 15
@@ -24,7 +24,7 @@ ext {
     gmsVersion = "12.0.1"
     androidSupportLibVersion = "28.0.0"
 }
-
+README.md
 allprojects {
     repositories {
         jcenter()
