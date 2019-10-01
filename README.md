@@ -64,6 +64,6 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 - **Recommended** Google Play Services 17.0.0
 
 ## License
-To view the license for the InMobi SDK, see [here](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/License.txt). To view the terms of service, visit [https://inmobi.com/terms-of-service](http://inmobi.com/terms-of-service/). 
+To view the license for the InMobi SDK, see [here](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/licenses/License.txt). To view the terms of service, visit [https://inmobi.com/terms-of-service](http://inmobi.com/terms-of-service/).
 The code for the sample apps is provided under the Apache 2.0 License.
 
