@@ -1,5 +1,36 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+
+## Build 9.0.0 [20/September/2019]
+    • Modular SDK
+        - Added an ability to integrate Mediation as a separate module.
+    • Added support for Android 10
+    • Support for Mopub 5.8
+    • Interface Changes
+        - APIs added
+            • AerServTransactionInformation
+                public String getCreativeID()
+            • InMobiBanner
+                public void destroy()
+        - APIs removed
+            • InMobiNative
+                public InMobiNative(Context context, long placementId, NativeAdListener listener)
+                public void setNativeAdListener(NativeAdListener listener)
+            • InMobiNative.NativeAdListener
+            • InMobiBanner
+                public void setListener(BannerAdListener listener)
+            • InMobiBanner.BannerAdListener
+            • InMobiInterstitial
+                public InMobiInterstitial(Context context, long placementId, InterstitialAdListener2 listener)
+                public void setInterstitialAdListener(InterstitialAdListener2 listener)
+            • InMobiInterstitial.InterstitialAdListener2
+    • Bug fixes and performance improvements
+
+
+
+## Build 8.2.1 [21/August/2019]
+    • Bug Fixes for SDK and AudienceBidder Plugin
+
 ## Build 8.2.0 [02/Aug/2019]
     • Chrome Custom tabs support
     • Thread Optimizations
@@ -37,10 +68,10 @@ InMobi Monetization SDK ChangeLog for Android
 ## Build 8.0.7 [05/Apr/2019]
     • Bug fixes
     • Updated AudienceBidder to v1.0.1
-        • Support for Amazon Publsiher Service
+        • Support for Amazon Publsiher Service 
         • Support for granular keywords
         • Fix issue with updateBid not working with MoPub's refresh
-        • Replaced source file with a aar
+        • Replaced source file with a aar 
         • Change in API (see documentation)
 
 ## Build 8.0.5 [11/Mar/2019]
@@ -67,52 +98,6 @@ InMobi Monetization SDK ChangeLog for Android
 
 ## Build 8.0.0 [17/Oct/2018]
     • Unification of InMobi SDK and AerServ SDK
-
-## Build 7.3.0 [25/July/2019]
-    • Bug fixes.
-
-## Build 7.2.9 [10/July/2019]
-    • Removal of createCalendar API from Mraid.
-    • Support for new Picasso version 2.71828.
-    • Bug fixes.
-
-    ### Interface changes
-         • API added:
-                • InMobiNative
-                    public Boolean isVideo()
-
-## Build 7.2.8 [6/May/2019]
-    • Bug fixes.
-
-    ### Interface changes
-        • API added:
-                • NativeAdEventListener
-                    public void onAdReceived(InMobiNative ad)
-
-## Build 7.2.7 [25/Feb/2019]
-    • MMA SDK Integration (China only)
-    • Gif Enhancements
-
-    ### Interface changes
-        • Deprecated API:
-                • InMobiNative
-                    public static void requestAd(Context context, final InMobiAdRequest adRequest,
-                                 NativeAdRequestListener listener)
-                • InMobiBanner
-                    public static void requestAd(Context context, final InMobiAdRequest adRequest,
-                                 BannerAdRequestListener listener)
-                • InMobiInterstitial
-                    public static void requestAd(Context context, InMobiAdRequest adRequest,
-                                 InterstitialAdRequestListener interstitialAdRequestListener)
-
-## Build 7.2.6 [8/Feb/2019]
-    • Bug fix - Avoid crash in WebView processing.
-
-## Build 7.2.4 [14/Dec/2018]
-    • Bug fix - Release resource for failures with multiple banners in single AdContainer.
-
-## Build 7.2.2 [26/Nov/2018]
-    • Bug fixes
 
 ## Build 7.2.1 [20/Sept/2018]
     • Hot-fix for Android
