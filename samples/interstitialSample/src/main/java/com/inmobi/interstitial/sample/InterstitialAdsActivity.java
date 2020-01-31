@@ -19,7 +19,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class InterstitialAdsActivity extends AppCompatActivity {
 
@@ -41,14 +40,14 @@ public class InterstitialAdsActivity extends AppCompatActivity {
 
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
         @InitializationStatus String initStatus = InMobiSdk.init(this,
-                "1234567890qwerty0987654321qwerty12345\"", consent);
+                "1234567890qwerty0987654321qwerty12345", consent);
         switch (initStatus) {
             case InitializationStatus.SUCCESS:
-                Log.d(TAG, "InMobi SDK Initalization Success");
+                Log.d(TAG, "InMobi SDK Initialization Success");
                 break;
             case InitializationStatus.INVALID_ACCOUNT_ID:
             case InitializationStatus.UNKNOWN_ERROR:
-                Log.d(TAG, "InMobi SDK Initalization Failed. Check logs for more information");
+                Log.d(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
                 break;
         }
 
@@ -160,8 +159,7 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                         }
                     });
         } catch (SdkNotInitializedException e) {
-            Log.e(TAG, "InMobiInterstitial Object can't be created, Initalize SDK first." +
-                    "Check logs for more information");
+            Log.e(TAG, "Exception while creating InMobiInterstitial object", e);
             Toast.makeText(this, "Problem creating InMobiInterstitial Object," +
                     " Check logs for more information", Toast.LENGTH_LONG).show();
         }

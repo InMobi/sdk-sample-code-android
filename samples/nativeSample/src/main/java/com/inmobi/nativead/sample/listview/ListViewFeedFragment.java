@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
+import com.inmobi.ads.exceptions.SdkNotInitializedException;
 import com.inmobi.ads.listeners.NativeAdEventListener;
 import com.inmobi.nativead.PlacementId;
 import com.inmobi.nativead.utility.FeedData;
@@ -86,10 +87,14 @@ public class ListViewFeedFragment extends ListFragment {
 
     private void createStrands() {
         for (int position : mAdPositions) {
-            final InMobiNative nativeStrand = new InMobiNative(getActivity(),
-                    PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener(position));
+            try {
+                final InMobiNative nativeStrand = new InMobiNative(getActivity(),
+                        PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener(position));
 
-            mStrands.add(nativeStrand);
+                mStrands.add(nativeStrand);
+            } catch (SdkNotInitializedException e) {
+                Log.e(TAG, "Exception while creating InMobiNative instance", e);
+            }
         }
     }
 

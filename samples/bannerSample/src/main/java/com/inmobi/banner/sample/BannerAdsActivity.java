@@ -124,10 +124,7 @@ public class BannerAdsActivity extends AppCompatActivity {
             adContainer.addView(mBannerAd);
             mBannerAd.load();
         } catch (SdkNotInitializedException e) {
-            Log.e(TAG, "InMobiBanner Object can't be created, InMobi SDK should be initialized successfully" +
-                    "Check logs for more information");
-            Toast.makeText(this, "Problem creating InMobiBanner Object," +
-                    " Check logs for more information", Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Exception while creating InMobiBanner object", e);
         }
     }
 
