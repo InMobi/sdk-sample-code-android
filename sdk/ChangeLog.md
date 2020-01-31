@@ -1,6 +1,23 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 9.0.2 [27/January/2020]
+    • Added support for success/failure status for InMobi Initialization.
+    • Proactive detection of abnormal network calls by fraudulent creatives.
+    • Improvements and Bug Fixes.
+    • Interface Changes
+            - APIs Updated
+                • InMobiSdk
+                    public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId)
+                    public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject)
+
+## Build 9.0.1 [25/October/2019]
+    • Add support for IAB GDPR consent string
+    • Update OMSDK to v1.2.19
+    • Banner refresh support from SSUI
+    • Support for Facebook Audience Network 5.5
+    • Bug Fixes for SDK and AudienceBidder Plugin
+
 ## Build 9.0.0 [20/September/2019]
     • Modular SDK
         - Added an ability to integrate Mediation as a separate module.
