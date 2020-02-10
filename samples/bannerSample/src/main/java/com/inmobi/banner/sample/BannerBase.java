@@ -4,19 +4,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.inmobi.sdk.InMobiSdk;
+import com.inmobi.unification.sdk.InitializationStatus;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class BannerBase extends AppCompatActivity {
 
+    private static final String TAG = BannerBase.class.getName();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
         JSONObject consent = new JSONObject();
         try {
             // Provide correct consent value to sdk which is obtained by User
@@ -24,10 +30,20 @@ public class BannerBase extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty1234", consent);
-        InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
-        setContentView(R.layout.banner_base);
 
+        @InitializationStatus String initStatus = InMobiSdk.init(this,
+                "1234567890qwerty0987654321qwerty12345", consent);
+
+        switch (initStatus) {
+            case InitializationStatus.SUCCESS:
+                Log.d(TAG, "InMobi SDK Initialization Success");
+                break;
+            case InitializationStatus.INVALID_ACCOUNT_ID:
+            case InitializationStatus.UNKNOWN_ERROR:
+                Log.e(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
+        }
+
+        setContentView(R.layout.banner_base);
         Button xmlIntegration = (Button) findViewById(R.id.xmlSample);
         xmlIntegration.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,12 +11,12 @@ import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiInterstitial;
 import com.inmobi.ads.listeners.InterstitialAdEventListener;
 import com.inmobi.sdk.InMobiSdk;
+import com.inmobi.unification.sdk.InitializationStatus;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class InterstitialAdsActivity extends AppCompatActivity {
 
@@ -24,7 +24,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
     private Button mLoadAdButton;
     private Button mShowAdButton;
     private final String TAG = InterstitialAdsActivity.class.getSimpleName();
-    private AtomicInteger forcedRetry = new AtomicInteger(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,20 @@ public class InterstitialAdsActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345", consent);
+
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
+        @InitializationStatus String initStatus = InMobiSdk.init(this,
+                "1234567890qwerty0987654321qwerty12345", consent);
+        switch (initStatus) {
+            case InitializationStatus.SUCCESS:
+                Log.d(TAG, "InMobi SDK Initialization Success");
+                break;
+            case InitializationStatus.INVALID_ACCOUNT_ID:
+            case InitializationStatus.UNKNOWN_ERROR:
+                Log.e(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
+                break;
+        }
+
         setContentView(R.layout.activity_interstitial_ads);
 
         mLoadAdButton = (Button) findViewById(R.id.button_load_ad);

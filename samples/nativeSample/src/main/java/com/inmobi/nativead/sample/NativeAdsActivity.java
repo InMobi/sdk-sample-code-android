@@ -1,18 +1,22 @@
 package com.inmobi.nativead.sample;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import com.google.android.material.tabs.TabLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.inmobi.sdk.InMobiSdk;
+import com.inmobi.unification.sdk.InitializationStatus;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class NativeAdsActivity extends AppCompatActivity {
 
+    private static final String TAG = NativeAdsActivity.class.getName();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +30,19 @@ public class NativeAdsActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        InMobiSdk.init(this, "12345678901234567890123456789012", consent);
+        InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
+        @InitializationStatus String initStatus = InMobiSdk.init(this,
+                "12345678901234567890123456789012", consent);
+
+        switch (initStatus) {
+            case InitializationStatus.SUCCESS:
+                Log.d(TAG, "InMobi SDK Initialization Success");
+                break;
+            case InitializationStatus.INVALID_ACCOUNT_ID:
+            case InitializationStatus.UNKNOWN_ERROR:
+                Log.e(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
+                break;
+        }
 
         setContentView(R.layout.activity_native_ads);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

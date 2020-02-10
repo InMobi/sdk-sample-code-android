@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: October 1, 2019
+Modified: 27 January, 2020
 
-SDK Version: 9.0.0
+SDK Version: 9.0.2
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:9.0.0'
+    implementation 'com.inmobi.monetization:inmobi-ads:9.0.2'
 }
 ```
 
@@ -31,29 +31,14 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-- Modular SDK
-    - Added an ability to integrate Mediation as a separate module.
-- Added support for Android 10
-- Support for Mopub 5.8
-- Interface Changes
-    - APIs added
-        - AerServTransactionInformation
-            public String getCreativeID()
-        - InMobiBanner
-            public void destroy()
-    - APIs removed
-        - InMobiNative
-            public InMobiNative(Context context, long placementId, NativeAdListener listener)
-            public void setNativeAdListener(NativeAdListener listener)
-        - InMobiNative.NativeAdListener
-        - InMobiBanner
-            public void setListener(BannerAdListener listener)
-        - InMobiBanner.BannerAdListener
-        - InMobiInterstitial
-            public InMobiInterstitial(Context context, long placementId, InterstitialAdListener2 listener)
-            public void setInterstitialAdListener(InterstitialAdListener2 listener)
-        - InMobiInterstitial.InterstitialAdListener2
-- Bug fixes and performance improvements
+• Added support for success/failure status for InMobi Initialization.
+• Proactive detection of abnormal network calls by fraudulent creatives.
+• Improvements and Bug Fixes.
+• Interface Changes
+        - APIs Updated
+            • InMobiSdk
+                public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId)
+                public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject)
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
