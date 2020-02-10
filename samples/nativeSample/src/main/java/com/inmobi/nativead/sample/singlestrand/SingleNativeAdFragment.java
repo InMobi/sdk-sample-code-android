@@ -19,7 +19,6 @@ import android.widget.TextView;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
-import com.inmobi.ads.exceptions.SdkNotInitializedException;
 import com.inmobi.ads.listeners.NativeAdEventListener;
 import com.inmobi.ads.listeners.VideoEventListener;
 import com.inmobi.nativead.PlacementId;
