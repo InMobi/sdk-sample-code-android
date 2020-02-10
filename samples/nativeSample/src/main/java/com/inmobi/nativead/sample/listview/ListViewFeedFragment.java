@@ -87,14 +87,10 @@ public class ListViewFeedFragment extends ListFragment {
 
     private void createStrands() {
         for (int position : mAdPositions) {
-            try {
-                final InMobiNative nativeStrand = new InMobiNative(getActivity(),
-                        PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener(position));
+            final InMobiNative nativeStrand = new InMobiNative(getActivity(),
+                    PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener(position));
 
-                mStrands.add(nativeStrand);
-            } catch (SdkNotInitializedException e) {
-                Log.e(TAG, "Exception while creating InMobiNative instance", e);
-            }
+            mStrands.add(nativeStrand);
         }
     }
 

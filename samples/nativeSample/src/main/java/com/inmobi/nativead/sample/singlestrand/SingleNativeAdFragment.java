@@ -84,30 +84,26 @@ public class SingleNativeAdFragment extends Fragment {
     }
 
     private void createStrands() {
-        try {
-            mInMobiNative = new InMobiNative(getActivity(), PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener());
-            mInMobiNative.setVideoEventListener(new VideoEventListener() {
-                @Override
-                public void onVideoCompleted(InMobiNative inMobiNative) {
-                    super.onVideoCompleted(inMobiNative);
-                    Log.d(TAG, "Video completed");
-                }
+        mInMobiNative = new InMobiNative(getActivity(), PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener());
+        mInMobiNative.setVideoEventListener(new VideoEventListener() {
+            @Override
+            public void onVideoCompleted(InMobiNative inMobiNative) {
+                super.onVideoCompleted(inMobiNative);
+                Log.d(TAG, "Video completed");
+            }
 
-                @Override
-                public void onVideoSkipped(InMobiNative inMobiNative) {
-                    super.onVideoSkipped(inMobiNative);
-                    Log.d(TAG, "Video skipped");
-                }
+            @Override
+            public void onVideoSkipped(InMobiNative inMobiNative) {
+                super.onVideoSkipped(inMobiNative);
+                Log.d(TAG, "Video skipped");
+            }
 
-                @Override
-                public void onAudioStateChanged(InMobiNative inMobiNative, boolean b) {
-                    super.onAudioStateChanged(inMobiNative, b);
-                    Log.d(TAG, "Audio state changed");
-                }
-            });
-        } catch (SdkNotInitializedException e) {
-            Log.e(TAG, "Exception while creating InMobiNative Instance", e);
-        }
+            @Override
+            public void onAudioStateChanged(InMobiNative inMobiNative, boolean b) {
+                super.onAudioStateChanged(inMobiNative, b);
+                Log.d(TAG, "Audio state changed");
+            }
+        });
     }
 
     @Override

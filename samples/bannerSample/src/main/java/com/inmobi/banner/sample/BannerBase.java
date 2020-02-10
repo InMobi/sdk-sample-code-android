@@ -40,7 +40,7 @@ public class BannerBase extends AppCompatActivity {
                 break;
             case InitializationStatus.INVALID_ACCOUNT_ID:
             case InitializationStatus.UNKNOWN_ERROR:
-                Log.d(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
+                Log.e(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
         }
 
         setContentView(R.layout.banner_base);

@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
-import com.inmobi.ads.exceptions.SdkNotInitializedException;
 import com.inmobi.ads.listeners.NativeAdEventListener;
 import com.inmobi.nativead.PlacementId;
 import com.inmobi.nativead.sample.R;
@@ -100,13 +99,9 @@ public class RecyclerFeedFragment extends Fragment {
 
     private void createStrands() {
         for (int position : mAdPositions) {
-            try {
-                final InMobiNative nativeStrand = new InMobiNative(getActivity(),
-                        PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener(position));
-                mStrands.add(nativeStrand);
-            } catch (SdkNotInitializedException e) {
-                Log.e(TAG, "Exception while creating InMobiNative Instance", e);
-            }
+            final InMobiNative nativeStrand = new InMobiNative(getActivity(),
+                    PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener(position));
+            mStrands.add(nativeStrand);
         }
     }
 
