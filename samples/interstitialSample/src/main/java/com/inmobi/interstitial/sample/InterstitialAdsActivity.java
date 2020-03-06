@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiInterstitial;
@@ -44,8 +45,25 @@ public class InterstitialAdsActivity extends AppCompatActivity {
             public void onInitializationComplete(@Nullable Error error) {
                 if (error == null) {
                     Log.d(TAG, "InMobi SDK Initialization Success");
+                    mLoadAdButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (null == mInterstitialAd) {
+                                setupInterstitial();
+                            } else {
+                                mInterstitialAd.load();
+                            }
+                        }
+                    });
                 } else {
                     Log.e(TAG, "InMobi SDK Initialization failed: " + error.getMessage());
+                    mLoadAdButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(InterstitialAdsActivity.this, "InMobi SDK is not initialized." +
+                                    "Check logs for more information", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         });
@@ -54,17 +72,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
 
         mLoadAdButton = (Button) findViewById(R.id.button_load_ad);
         mShowAdButton = (Button) findViewById(R.id.button_show_ad);
-        mLoadAdButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (null == mInterstitialAd) {
-                    setupInterstitial();
-                } else {
-                    mInterstitialAd.load();
-                }
-            }
-        });
-
         mShowAdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

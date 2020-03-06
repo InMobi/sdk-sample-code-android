@@ -39,6 +39,27 @@ public class NativeAdsActivity extends AppCompatActivity {
             public void onInitializationComplete(@Nullable Error error) {
                 if (error == null) {
                     Log.d(TAG, "InMobi SDK Initialization Success");
+                    TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+                    tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+                    final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+                    final FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), tabLayout);
+                    viewPager.setAdapter(adapter);
+                    viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+                    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                        @Override
+                        public void onTabSelected(TabLayout.Tab tab) {
+                            viewPager.setCurrentItem(tab.getPosition());
+                        }
+
+                        @Override
+                        public void onTabUnselected(TabLayout.Tab tab) {
+                        }
+
+                        @Override
+                        public void onTabReselected(TabLayout.Tab tab) {
+                        }
+                    });
                 } else {
                     Log.e(TAG, "InMobi SDK Initialization failed: " + error.getMessage());
                 }
@@ -49,27 +70,5 @@ public class NativeAdsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), tabLayout);
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
     }
 }
