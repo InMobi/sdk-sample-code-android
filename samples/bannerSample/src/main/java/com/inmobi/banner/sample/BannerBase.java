@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.inmobi.sdk.InMobiSdk;
-import com.inmobi.unification.sdk.InitializationStatus;
+import com.inmobi.sdk.SdkInitializationListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +19,8 @@ import org.json.JSONObject;
 public class BannerBase extends AppCompatActivity {
 
     private static final String TAG = BannerBase.class.getName();
+    private Button normalIntegration;
+    private Button xmlIntegration;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,32 +33,53 @@ public class BannerBase extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        @InitializationStatus String initStatus = InMobiSdk.init(this,
-                "1234567890qwerty0987654321qwerty12345", consent);
-
-        switch (initStatus) {
-            case InitializationStatus.SUCCESS:
-                Log.d(TAG, "InMobi SDK Initialization Success");
-                break;
-            case InitializationStatus.INVALID_ACCOUNT_ID:
-            case InitializationStatus.UNKNOWN_ERROR:
-                Log.e(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
-        }
+        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345", consent, new SdkInitializationListener() {
+            @Override
+            public void onInitializationComplete(@Nullable Error error) {
+                if (error == null) {
+                    Log.d(TAG, "InMobi SDK Initialization Success");
+                    sdkInitSuccess();
+                } else {
+                    Log.e(TAG, "InMobi SDK Initialization failed: " + error.getMessage());
+                    sdkInitFailed();
+                }
+            }
+        });
 
         setContentView(R.layout.banner_base);
-        Button xmlIntegration = (Button) findViewById(R.id.xmlSample);
+        xmlIntegration = (Button) findViewById(R.id.xmlSample);
+        normalIntegration = (Button) findViewById(R.id.normalBanner);
+    }
+
+    private void sdkInitSuccess() {
         xmlIntegration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(BannerBase.this, BannerXmlActivity.class));
             }
         });
-        Button normalIntegration = (Button) findViewById(R.id.normalBanner);
         normalIntegration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(BannerBase.this, BannerAdsActivity.class));
 
+            }
+        });
+    }
+
+    private void sdkInitFailed() {
+        xmlIntegration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BannerBase.this, "InMobi SDK is not initialized." +
+                        "Check logs for more information", Toast.LENGTH_LONG).show();
+            }
+        });
+        normalIntegration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BannerBase.this, "InMobi SDK is not initialized." +
+                        "Check logs for more information", Toast.LENGTH_LONG).show();
             }
         });
     }

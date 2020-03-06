@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 27 January, 2020
+Modified: 03 March, 2020
 
-SDK Version: 9.0.2
+SDK Version: 9.0.4
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:9.0.2'
+    implementation 'com.inmobi.monetization:inmobi-ads:9.0.4'
 }
 ```
 
@@ -31,11 +31,15 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-• Added support for success/failure status for InMobi Initialization.
-• Proactive detection of abnormal network calls by fraudulent creatives.
-• Improvements and Bug Fixes.
-• Interface Changes
-        - APIs Updated
+• Improvements and bug fixes
+    • Added support for InMobi Initialization callback
+    • Interface changes
+        - APIs Added
+            • InMobiSdk
+                public static void init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject, @Nullable final SdkInitializationListener sdkInitializationListener)
+            • SdkInitializationListener
+                void onInitializationComplete(@Nullable Error error)
+        - APIs Deprecated
             • InMobiSdk
                 public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId)
                 public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject)

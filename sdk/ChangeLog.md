@@ -1,6 +1,20 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 9.0.4 [03/March/2020]
+    • Improvements and bug fixes
+    • Added support for InMobi Initialization callback
+    • Interface changes
+        - APIs Added
+            • InMobiSdk
+                public static void init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject, @Nullable final SdkInitializationListener sdkInitializationListener)
+            • SdkInitializationListener
+                void onInitializationComplete(@Nullable Error error)
+        - APIs Deprecated
+            • InMobiSdk
+                public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId)
+                public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject)
+
 ## Build 9.0.2 [27/January/2020]
     • Added support for success/failure status for InMobi Initialization.
     • Proactive detection of abnormal network calls by fraudulent creatives.
