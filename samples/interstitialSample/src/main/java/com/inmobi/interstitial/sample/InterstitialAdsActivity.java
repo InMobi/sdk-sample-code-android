@@ -2,6 +2,7 @@ package com.inmobi.interstitial.sample;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiInterstitial;
 import com.inmobi.ads.listeners.InterstitialAdEventListener;
 import com.inmobi.sdk.InMobiSdk;
+import com.inmobi.sdk.SdkInitializationListener;
 import com.inmobi.unification.sdk.InitializationStatus;
 
 import org.json.JSONException;
@@ -37,17 +39,16 @@ public class InterstitialAdsActivity extends AppCompatActivity {
         }
 
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
-        @InitializationStatus String initStatus = InMobiSdk.init(this,
-                "1234567890qwerty0987654321qwerty12345", consent);
-        switch (initStatus) {
-            case InitializationStatus.SUCCESS:
-                Log.d(TAG, "InMobi SDK Initialization Success");
-                break;
-            case InitializationStatus.INVALID_ACCOUNT_ID:
-            case InitializationStatus.UNKNOWN_ERROR:
-                Log.e(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
-                break;
-        }
+        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345", consent, new SdkInitializationListener() {
+            @Override
+            public void onInitializationComplete(@Nullable Error error) {
+                if (error == null) {
+                    Log.d(TAG, "InMobi SDK Initialization Success");
+                } else {
+                    Log.e(TAG, "InMobi SDK Initialization failed: " + error.getMessage());
+                }
+            }
+        });
 
         setContentView(R.layout.activity_interstitial_ads);
 

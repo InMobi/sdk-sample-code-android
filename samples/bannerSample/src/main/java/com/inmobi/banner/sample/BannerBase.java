@@ -8,10 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.inmobi.sdk.InMobiSdk;
-import com.inmobi.unification.sdk.InitializationStatus;
+import com.inmobi.sdk.SdkInitializationListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,17 +30,16 @@ public class BannerBase extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        @InitializationStatus String initStatus = InMobiSdk.init(this,
-                "1234567890qwerty0987654321qwerty12345", consent);
-
-        switch (initStatus) {
-            case InitializationStatus.SUCCESS:
-                Log.d(TAG, "InMobi SDK Initialization Success");
-                break;
-            case InitializationStatus.INVALID_ACCOUNT_ID:
-            case InitializationStatus.UNKNOWN_ERROR:
-                Log.e(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
-        }
+        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345", consent, new SdkInitializationListener() {
+            @Override
+            public void onInitializationComplete(@Nullable Error error) {
+                if (error == null) {
+                    Log.d(TAG, "InMobi SDK Initialization Success");
+                } else {
+                    Log.e(TAG, "InMobi SDK Initialization failed: " + error.getMessage());
+                }
+            }
+        });
 
         setContentView(R.layout.banner_base);
         Button xmlIntegration = (Button) findViewById(R.id.xmlSample);

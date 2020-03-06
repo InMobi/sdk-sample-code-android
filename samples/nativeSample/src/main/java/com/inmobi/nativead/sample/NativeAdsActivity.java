@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.inmobi.sdk.InMobiSdk;
+import com.inmobi.sdk.SdkInitializationListener;
 import com.inmobi.unification.sdk.InitializationStatus;
 
 import org.json.JSONException;
@@ -31,18 +34,16 @@ public class NativeAdsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
-        @InitializationStatus String initStatus = InMobiSdk.init(this,
-                "12345678901234567890123456789012", consent);
-
-        switch (initStatus) {
-            case InitializationStatus.SUCCESS:
-                Log.d(TAG, "InMobi SDK Initialization Success");
-                break;
-            case InitializationStatus.INVALID_ACCOUNT_ID:
-            case InitializationStatus.UNKNOWN_ERROR:
-                Log.e(TAG, "InMobi SDK Initialization Failed. Check logs for more information");
-                break;
-        }
+        InMobiSdk.init(this, "12345678901234567890123456789012", consent, new SdkInitializationListener() {
+            @Override
+            public void onInitializationComplete(@Nullable Error error) {
+                if (error == null) {
+                    Log.d(TAG, "InMobi SDK Initialization Success");
+                } else {
+                    Log.e(TAG, "InMobi SDK Initialization failed: " + error.getMessage());
+                }
+            }
+        });
 
         setContentView(R.layout.activity_native_ads);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
