@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
 import com.inmobi.ads.listeners.NativeAdEventListener;
@@ -159,7 +160,8 @@ public class RecyclerFeedFragment extends Fragment {
         }
 
         @Override
-        public void onAdLoadSucceeded(@NonNull InMobiNative inMobiNativeStrand) {
+        public void onAdLoadSucceeded(@NonNull InMobiNative inMobiNativeStrand,
+                                      @NonNull AdMetaInfo adMetaInfo) {
             Log.d(TAG, "Strand loaded at position " + mPosition);
             if (!mFeedItems.isEmpty()) {
                 FeedData.FeedItem oldFeedItem = mFeedMap.get(mPosition);
@@ -189,8 +191,8 @@ public class RecyclerFeedFragment extends Fragment {
         }
 
         @Override
-        public void onAdReceived(InMobiNative inMobiNative) {
-            Log.d(TAG, "onAdReceived");
+        public void onAdFetchSuccessful(@NonNull InMobiNative inMobiNative, @NonNull AdMetaInfo adMetaInfo) {
+            Log.d(TAG, "onAdFetchSuccessful");
         }
 
         @Override

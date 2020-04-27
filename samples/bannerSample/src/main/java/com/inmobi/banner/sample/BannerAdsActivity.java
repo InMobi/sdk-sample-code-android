@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiBanner;
 import com.inmobi.ads.listeners.BannerAdEventListener;
@@ -73,8 +74,9 @@ public class BannerAdsActivity extends AppCompatActivity {
         mBannerAd.setAnimationType(InMobiBanner.AnimationType.ROTATE_HORIZONTAL_AXIS);
         mBannerAd.setListener(new BannerAdEventListener() {
             @Override
-            public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
-                super.onAdLoadSucceeded(inMobiBanner);
+            public void onAdLoadSucceeded(@NonNull InMobiBanner inMobiBanner,
+                                          @NonNull AdMetaInfo adMetaInfo) {
+                super.onAdLoadSucceeded(inMobiBanner, adMetaInfo);
                 Log.d(TAG, "onAdLoadSucceeded");
             }
 

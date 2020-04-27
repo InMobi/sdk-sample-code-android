@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
 import com.inmobi.ads.listeners.NativeAdEventListener;
@@ -170,7 +171,8 @@ public class SingleNativeAdFragment extends Fragment {
         }
 
         @Override
-        public void onAdLoadSucceeded(@NonNull InMobiNative inMobiNative) {
+        public void onAdLoadSucceeded(@NonNull InMobiNative inMobiNative,
+                                      @NonNull AdMetaInfo adMetaInfo) {
             //Pass the old ad view as the first parameter to facilitate view reuse.
             View view = loadAdIntoView(inMobiNative);
             if (view == null) {
@@ -186,8 +188,8 @@ public class SingleNativeAdFragment extends Fragment {
         }
 
         @Override
-        public void onAdReceived(InMobiNative inMobiNative) {
-            Log.d(TAG, "onAdReceived");
+        public void onAdFetchSuccessful(@NonNull InMobiNative inMobiNative, @NonNull AdMetaInfo adMetaInfo) {
+            Log.d(TAG, "onAdFetchSuccessful");
         }
 
         @Override

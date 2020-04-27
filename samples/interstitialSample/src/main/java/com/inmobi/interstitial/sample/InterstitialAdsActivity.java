@@ -2,6 +2,7 @@ package com.inmobi.interstitial.sample;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiInterstitial;
 import com.inmobi.ads.listeners.InterstitialAdEventListener;
@@ -96,8 +98,8 @@ public class InterstitialAdsActivity extends AppCompatActivity {
         mInterstitialAd = new InMobiInterstitial(InterstitialAdsActivity.this, PlacementId.YOUR_PLACEMENT_ID,
                 new InterstitialAdEventListener() {
                     @Override
-                    public void onAdLoadSucceeded(InMobiInterstitial inMobiInterstitial) {
-                        super.onAdLoadSucceeded(inMobiInterstitial);
+                    public void onAdLoadSucceeded(@NonNull InMobiInterstitial inMobiInterstitial,
+                                                  @NonNull AdMetaInfo adMetaInfo) {
                         Log.d(TAG, "onAdLoadSuccessful");
                         if (inMobiInterstitial.isReady()) {
                             if (mShowAdButton != null) {
@@ -116,9 +118,9 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onAdReceived(InMobiInterstitial inMobiInterstitial) {
-                        super.onAdReceived(inMobiInterstitial);
-                        Log.d(TAG, "onAdReceived");
+                    public void onAdFetchSuccessful(@NonNull InMobiInterstitial inMobiInterstitial, @NonNull AdMetaInfo adMetaInfo) {
+                        super.onAdFetchSuccessful(inMobiInterstitial, adMetaInfo);
+                        Log.d(TAG, "onAdFetchSuccessful");
                     }
 
                     @Override
@@ -134,8 +136,9 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onAdDisplayed(InMobiInterstitial inMobiInterstitial) {
-                        super.onAdDisplayed(inMobiInterstitial);
+                    public void onAdDisplayed(@NonNull InMobiInterstitial inMobiInterstitial,
+                                              @NonNull AdMetaInfo adMetaInfo) {
+                        super.onAdDisplayed(inMobiInterstitial, adMetaInfo);
                         Log.d(TAG, "onAdDisplayed " + inMobiInterstitial);
                     }
 
