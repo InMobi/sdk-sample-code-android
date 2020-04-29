@@ -48,12 +48,14 @@ public class BannerCustomABActivity extends AppCompatActivity implements View.On
             public void onAdLoadSucceeded(@NonNull InMobiBanner inMobiBanner,
                                           @NonNull AdMetaInfo adMetaInfo) {
                 super.onAdLoadSucceeded(inMobiBanner, adMetaInfo);
-                show.setVisibility(View.INVISIBLE);
                 Log.d(TAG, "onAdLoadSucceeded");
+                Log.d(TAG, "Bid received: " + adMetaInfo.getBid());
+                show.setVisibility(View.INVISIBLE);
             }
 
             @Override
-            public void onAdLoadFailed(InMobiBanner inMobiBanner, InMobiAdRequestStatus inMobiAdRequestStatus) {
+            public void onAdLoadFailed(@NonNull InMobiBanner inMobiBanner,
+                                       @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
                 super.onAdLoadFailed(inMobiBanner, inMobiAdRequestStatus);
                 show.setVisibility(View.INVISIBLE);
                 Log.d(TAG, "Banner ad failed to load with error: " +
@@ -61,31 +63,32 @@ public class BannerCustomABActivity extends AppCompatActivity implements View.On
             }
 
             @Override
-            public void onAdClicked(InMobiBanner inMobiBanner, Map<Object, Object> map) {
+            public void onAdClicked(@NonNull InMobiBanner inMobiBanner,
+                                    @NonNull Map<Object, Object> map) {
                 super.onAdClicked(inMobiBanner, map);
                 Log.d(TAG, "onAdClicked");
             }
 
             @Override
-            public void onAdDisplayed(InMobiBanner inMobiBanner) {
+            public void onAdDisplayed(@NonNull InMobiBanner inMobiBanner) {
                 super.onAdDisplayed(inMobiBanner);
                 Log.d(TAG, "onAdDisplayed");
             }
 
             @Override
-            public void onAdDismissed(InMobiBanner inMobiBanner) {
+            public void onAdDismissed(@NonNull InMobiBanner inMobiBanner) {
                 super.onAdDismissed(inMobiBanner);
                 Log.d(TAG, "onAdDismissed");
             }
 
             @Override
-            public void onUserLeftApplication(InMobiBanner inMobiBanner) {
+            public void onUserLeftApplication(@NonNull InMobiBanner inMobiBanner) {
                 super.onUserLeftApplication(inMobiBanner);
                 Log.d(TAG, "onUserLeftApplication");
             }
 
             @Override
-            public void onRewardsUnlocked(InMobiBanner inMobiBanner, Map<Object, Object> map) {
+            public void onRewardsUnlocked(@NonNull InMobiBanner inMobiBanner, @NonNull Map<Object, Object> map) {
                 super.onRewardsUnlocked(inMobiBanner, map);
                 Log.d(TAG, "onRewardsUnlocked");
             }
@@ -94,6 +97,7 @@ public class BannerCustomABActivity extends AppCompatActivity implements View.On
             public void onAdFetchSuccessful(@NonNull InMobiBanner inMobiBanner, @NonNull AdMetaInfo adMetaInfo) {
                 super.onAdFetchSuccessful(inMobiBanner, adMetaInfo);
                 Log.d(TAG, "onAdFetchSuccessful");
+                Log.d(TAG, "Bid received: " + adMetaInfo.getBid());
                 show.setVisibility(View.VISIBLE);
 
             }

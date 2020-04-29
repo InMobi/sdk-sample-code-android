@@ -66,6 +66,7 @@ public class InterstitialCustomABActivity extends AppCompatActivity {
                     public void onAdLoadSucceeded(@NonNull InMobiInterstitial inMobiInterstitial,
                                                   @NonNull AdMetaInfo adMetaInfo) {
                         Log.d(TAG, "onAdLoadSuccessful");
+                        Log.d(TAG, "Bid received: " + adMetaInfo.getBid());
                         if (inMobiInterstitial.isReady()) {
                             mLoadAdButton.setVisibility(View.GONE);
                             if (mShowAdButton != null) {
@@ -77,7 +78,8 @@ public class InterstitialCustomABActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onAdLoadFailed(InMobiInterstitial inMobiInterstitial, InMobiAdRequestStatus inMobiAdRequestStatus) {
+                    public void onAdLoadFailed(@NonNull InMobiInterstitial inMobiInterstitial,
+                                               @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
                         super.onAdLoadFailed(inMobiInterstitial, inMobiAdRequestStatus);
                         Log.d(TAG, "Unable to load interstitial ad (error message: " +
                                 inMobiAdRequestStatus.getMessage());
@@ -86,7 +88,8 @@ public class InterstitialCustomABActivity extends AppCompatActivity {
                     @Override
                     public void onAdFetchSuccessful(@NonNull InMobiInterstitial inMobiInterstitial, @NonNull AdMetaInfo adMetaInfo) {
                         super.onAdFetchSuccessful(inMobiInterstitial, adMetaInfo);
-                        Log.d(TAG, "onAdFetchSuccessful");
+                        Log.d(TAG, "onAdFetchSuccessful " + adMetaInfo.getBid());
+                        Log.d(TAG, "Bid received: " + adMetaInfo.getBid());
                         if (mLoadAdButton != null) {
                             mLoadAdButton.setVisibility(View.VISIBLE);
                         }
@@ -99,13 +102,14 @@ public class InterstitialCustomABActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onAdClicked(InMobiInterstitial inMobiInterstitial, Map<Object, Object> map) {
+                    public void onAdClicked(@NonNull InMobiInterstitial inMobiInterstitial,
+                                            @NonNull Map<Object, Object> map) {
                         super.onAdClicked(inMobiInterstitial, map);
                         Log.d(TAG, "onAdClicked " + map.size());
                     }
 
                     @Override
-                    public void onAdWillDisplay(InMobiInterstitial inMobiInterstitial) {
+                    public void onAdWillDisplay(@NonNull InMobiInterstitial inMobiInterstitial) {
                         super.onAdWillDisplay(inMobiInterstitial);
                         Log.d(TAG, "onAdWillDisplay " + inMobiInterstitial);
                     }
@@ -115,30 +119,32 @@ public class InterstitialCustomABActivity extends AppCompatActivity {
                                               @NonNull AdMetaInfo adMetaInfo) {
                         super.onAdDisplayed(inMobiInterstitial, adMetaInfo);
                         Log.d(TAG, "onAdDisplayed " + inMobiInterstitial);
+                        Log.d(TAG, "Bid received: " + adMetaInfo.getBid());
                     }
 
                     @Override
-                    public void onAdDisplayFailed(InMobiInterstitial inMobiInterstitial) {
+                    public void onAdDisplayFailed(@NonNull InMobiInterstitial inMobiInterstitial) {
                         super.onAdDisplayFailed(inMobiInterstitial);
                         Log.d(TAG, "onAdDisplayFailed " + "FAILED");
                     }
 
                     @Override
-                    public void onAdDismissed(InMobiInterstitial inMobiInterstitial) {
+                    public void onAdDismissed(@NonNull InMobiInterstitial inMobiInterstitial) {
                         super.onAdDismissed(inMobiInterstitial);
                         Log.d(TAG, "onAdDismissed " + inMobiInterstitial);
                     }
 
                     @Override
-                    public void onUserLeftApplication(InMobiInterstitial inMobiInterstitial) {
+                    public void onUserLeftApplication(@NonNull InMobiInterstitial inMobiInterstitial) {
                         super.onUserLeftApplication(inMobiInterstitial);
                         Log.d(TAG, "onUserWillLeaveApplication " + inMobiInterstitial);
                     }
 
                     @Override
-                    public void onRewardsUnlocked(InMobiInterstitial inMobiInterstitial, Map<Object, Object> map) {
+                    public void onRewardsUnlocked(@NonNull InMobiInterstitial inMobiInterstitial,
+                                                  @NonNull Map<Object, Object> map) {
                         super.onRewardsUnlocked(inMobiInterstitial, map);
-                        Log.d(TAG, "onRewardsUnlocked " + map.size());
+                        Log.d(TAG, "onRewardsUnlocked " + map);
                     }
                 });
     }

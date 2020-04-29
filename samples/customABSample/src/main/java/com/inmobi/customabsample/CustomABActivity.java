@@ -16,11 +16,18 @@ import com.inmobi.sdk.SdkInitializationListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CustomABActivity extends AppCompatActivity {
+public class CustomABActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = CustomABActivity.class.getName();
-    private Button bannerIntegration;
-    private Button interstitialIntegration;
+    private Button mBannerIntegration;
+    private Button mInterstitialIntegration;
+    private @SDKState String sdkInitStatus;
+
+    public @interface SDKState {
+        String SDK_INITIALIZING = "SDK_INITIALIZING";
+        String SDK_INITIALIZED = "SDK_INITIALIZED";
+        String SDK_INITIALIZE_FAILED = "SDK_INITIALIZATION_FAILED";
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,55 +42,61 @@ public class CustomABActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        sdkInitStatus = SDKState.SDK_INITIALIZING;
         InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345", consent, new SdkInitializationListener() {
             @Override
             public void onInitializationComplete(@Nullable Error error) {
                 if (error == null) {
                     Log.d(TAG, "InMobi SDK Initialization Success");
-                    sdkInitSuccess();
+                    sdkInitStatus = SDKState.SDK_INITIALIZED;
                 } else {
                     Log.e(TAG, "InMobi SDK Initialization failed: " + error.getMessage());
-                    sdkInitFailed();
+                    sdkInitStatus = SDKState.SDK_INITIALIZE_FAILED;
                 }
             }
         });
 
         setContentView(R.layout.activity_custom_a_b);
-        bannerIntegration = (Button) findViewById(R.id.bannerSample);
-        interstitialIntegration = (Button) findViewById(R.id.interstitialSample);
+        mBannerIntegration = (Button) findViewById(R.id.bannerSample);
+        mBannerIntegration.setOnClickListener(this);
+        mInterstitialIntegration = (Button) findViewById(R.id.interstitialSample);
+        mInterstitialIntegration.setOnClickListener(this);
+
     }
 
-    private void sdkInitSuccess() {
-        bannerIntegration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CustomABActivity.this, BannerCustomABActivity.class));
-            }
-        });
-        interstitialIntegration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CustomABActivity.this, InterstitialCustomABActivity.class));
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.bannerSample:
+                switch(sdkInitStatus) {
+                    case SDKState.SDK_INITIALIZE_FAILED:
+                        Toast.makeText(CustomABActivity.this, "InMobi SDK is not initialized." +
+                                "Check logs for more information", Toast.LENGTH_LONG).show();
+                        break;
+                    case SDKState.SDK_INITIALIZED:
+                        startActivity(new Intent(CustomABActivity.this, BannerCustomABActivity.class));
+                        break;
+                    case SDKState.SDK_INITIALIZING:
 
-            }
-        });
+                        break;
+                }
+                break;
+            case R.id.interstitialSample:
+                switch(sdkInitStatus) {
+                    case SDKState.SDK_INITIALIZE_FAILED:
+                        Toast.makeText(CustomABActivity.this, "InMobi SDK is not initialized." +
+                                "Check logs for more information", Toast.LENGTH_LONG).show();
+                        break;
+                    case SDKState.SDK_INITIALIZED:
+                        startActivity(new Intent(CustomABActivity.this, InterstitialCustomABActivity.class));
+                        break;
+                    case SDKState.SDK_INITIALIZING:
+                        Toast.makeText(CustomABActivity.this, "Please wait for InMobi SDK" +
+                                "to complete the initialization process", Toast.LENGTH_LONG).show();
+                        break;
+                }
+                break;
+        }
     }
-
-    private void sdkInitFailed() {
-        bannerIntegration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CustomABActivity.this, "InMobi SDK is not initialized." +
-                        "Check logs for more information", Toast.LENGTH_LONG).show();
-            }
-        });
-        interstitialIntegration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CustomABActivity.this, "InMobi SDK is not initialized." +
-                        "Check logs for more information", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
 }
