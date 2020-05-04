@@ -100,7 +100,7 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                     @Override
                     public void onAdLoadSucceeded(@NonNull InMobiInterstitial inMobiInterstitial,
                                                   @NonNull AdMetaInfo adMetaInfo) {
-                        Log.d(TAG, "onAdLoadSuccessful");
+                        Log.d(TAG, "onAdLoadSuccessful with bid " +  adMetaInfo.getBid());
                         if (inMobiInterstitial.isReady()) {
                             if (mShowAdButton != null) {
                                 mShowAdButton.setVisibility(View.VISIBLE);
@@ -112,57 +112,49 @@ public class InterstitialAdsActivity extends AppCompatActivity {
 
                     @Override
                     public void onAdLoadFailed(InMobiInterstitial inMobiInterstitial, InMobiAdRequestStatus inMobiAdRequestStatus) {
-                        super.onAdLoadFailed(inMobiInterstitial, inMobiAdRequestStatus);
                         Log.d(TAG, "Unable to load interstitial ad (error message: " +
                                 inMobiAdRequestStatus.getMessage());
                     }
 
                     @Override
                     public void onAdFetchSuccessful(@NonNull InMobiInterstitial inMobiInterstitial, @NonNull AdMetaInfo adMetaInfo) {
-                        super.onAdFetchSuccessful(inMobiInterstitial, adMetaInfo);
-                        Log.d(TAG, "onAdFetchSuccessful");
+                        Log.d(TAG, "onAdFetchSuccessful with bid " + adMetaInfo.getBid());
                     }
 
                     @Override
                     public void onAdClicked(InMobiInterstitial inMobiInterstitial, Map<Object, Object> map) {
-                        super.onAdClicked(inMobiInterstitial, map);
                         Log.d(TAG, "onAdClicked " + map.size());
                     }
 
                     @Override
                     public void onAdWillDisplay(InMobiInterstitial inMobiInterstitial) {
-                        super.onAdWillDisplay(inMobiInterstitial);
-                        Log.d(TAG, "onAdWillDisplay " + inMobiInterstitial);
+                        Log.d(TAG, "onAdWillDisplay");
                     }
 
                     @Override
                     public void onAdDisplayed(@NonNull InMobiInterstitial inMobiInterstitial,
                                               @NonNull AdMetaInfo adMetaInfo) {
-                        super.onAdDisplayed(inMobiInterstitial, adMetaInfo);
-                        Log.d(TAG, "onAdDisplayed " + inMobiInterstitial);
+                        Log.d(TAG, "onAdDisplayed");
                     }
 
                     @Override
-                    public void onAdDisplayFailed(InMobiInterstitial inMobiInterstitial) {
-                        super.onAdDisplayFailed(inMobiInterstitial);
-                        Log.d(TAG, "onAdDisplayFailed " + "FAILED");
+                    public void onAdDisplayFailed(@NonNull InMobiInterstitial inMobiInterstitial) {
+                        Log.d(TAG, "onAdDisplayFailed");
                     }
 
                     @Override
-                    public void onAdDismissed(InMobiInterstitial inMobiInterstitial) {
-                        super.onAdDismissed(inMobiInterstitial);
-                        Log.d(TAG, "onAdDismissed " + inMobiInterstitial);
+                    public void onAdDismissed(@NonNull InMobiInterstitial inMobiInterstitial) {
+                        Log.d(TAG, "onAdDismissed");
                     }
 
                     @Override
-                    public void onUserLeftApplication(InMobiInterstitial inMobiInterstitial) {
-                        super.onUserLeftApplication(inMobiInterstitial);
-                        Log.d(TAG, "onUserWillLeaveApplication " + inMobiInterstitial);
+                    public void onUserLeftApplication(@NonNull InMobiInterstitial inMobiInterstitial) {
+                        Log.d(TAG, "onUserWillLeaveApplication");
                     }
 
                     @Override
-                    public void onRewardsUnlocked(InMobiInterstitial inMobiInterstitial, Map<Object, Object> map) {
-                        super.onRewardsUnlocked(inMobiInterstitial, map);
+                    public void onRewardsUnlocked(@NonNull InMobiInterstitial inMobiInterstitial,
+                                                  @NonNull Map<Object, Object> map) {
                         Log.d(TAG, "onRewardsUnlocked " + map.size());
                     }
                 });
