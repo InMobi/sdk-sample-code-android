@@ -192,7 +192,7 @@ public class RecyclerFeedFragment extends Fragment {
 
         @Override
         public void onAdFetchSuccessful(@NonNull InMobiNative inMobiNative, @NonNull AdMetaInfo adMetaInfo) {
-            Log.d(TAG, "onAdFetchSuccessful");
+            Log.d(TAG, "onAdFetchSuccessful with bid " + adMetaInfo.getBid());
         }
 
         @Override

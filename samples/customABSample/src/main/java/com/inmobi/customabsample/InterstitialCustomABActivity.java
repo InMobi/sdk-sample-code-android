@@ -105,7 +105,7 @@ public class InterstitialCustomABActivity extends AppCompatActivity {
 
                     @Override
                     public void onAdWillDisplay(@NonNull InMobiInterstitial inMobiInterstitial) {
-                        Log.d(TAG, "onAdWillDisplay " + inMobiInterstitial);
+                        Log.d(TAG, "onAdWillDisplay");
                     }
 
                     @Override
@@ -121,12 +121,12 @@ public class InterstitialCustomABActivity extends AppCompatActivity {
 
                     @Override
                     public void onAdDismissed(@NonNull InMobiInterstitial inMobiInterstitial) {
-                        Log.d(TAG, "onAdDismissed " + inMobiInterstitial);
+                        Log.d(TAG, "onAdDismissed");
                     }
 
                     @Override
                     public void onUserLeftApplication(@NonNull InMobiInterstitial inMobiInterstitial) {
-                        Log.d(TAG, "onUserWillLeaveApplication " + inMobiInterstitial);
+                        Log.d(TAG, "onUserWillLeaveApplication");
                     }
 
                     @Override
