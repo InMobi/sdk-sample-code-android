@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 24 April, 2020
+Modified: 08 May, 2020
 
-SDK Version: 9.0.5
+SDK Version: 9.0.6
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:9.0.5'
+    implementation 'com.inmobi.monetization:inmobi-ads:9.0.6'
 }
 ```
 

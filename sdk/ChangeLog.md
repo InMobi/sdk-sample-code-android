@@ -1,6 +1,9 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 9.0.6 [08/May/2020]
+    • Bug Fixes for MAX Audience Bidder & WebView
+
 ## Build 9.0.5 [24/April/2020]
     • MAX Audience Bidding Support
     • Custom Audience Bidding Support

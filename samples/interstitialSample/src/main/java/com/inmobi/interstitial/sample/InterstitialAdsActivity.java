@@ -16,7 +16,6 @@ import com.inmobi.ads.InMobiInterstitial;
 import com.inmobi.ads.listeners.InterstitialAdEventListener;
 import com.inmobi.sdk.InMobiSdk;
 import com.inmobi.sdk.SdkInitializationListener;
-import com.inmobi.unification.sdk.InitializationStatus;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -158,5 +157,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                         Log.d(TAG, "onRewardsUnlocked " + map);
                     }
                 });
+        mInterstitialAd.show();
     }
 }
