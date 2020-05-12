@@ -13,6 +13,7 @@ import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiBanner;
 import com.inmobi.ads.listeners.BannerAdEventListener;
+import com.inmobi.customabsample.customevent.InMobiBannerCustomEvent;
 
 import java.util.Map;
 
@@ -24,107 +25,83 @@ public class BannerCustomABActivity extends AppCompatActivity implements View.On
     public static final int BANNER_WIDTH = 320;
     public static final int BANNER_HEIGHT = 50;
 
-    private Button preload, show;
+    private Button load;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner_custom_a_b);
-        preload = findViewById(R.id.preload);
-        preload.setOnClickListener(this);
-        show = findViewById(R.id.show);
-        show.setOnClickListener(this);
-
-        setupBannerAd();
+        load = findViewById(R.id.preload);
+        load.setOnClickListener(this);
     }
 
     private void setupBannerAd() {
-        mInMobiBanner = new InMobiBanner(BannerCustomABActivity.this, PlacementId.YOUR_BANNER_PLACEMENT_ID);
-        RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
-        mInMobiBanner.setAnimationType(InMobiBanner.AnimationType.ROTATE_HORIZONTAL_AXIS);
+        mInMobiBanner = new InMobiBanner(this, PlacementId.YOUR_BANNER_PLACEMENT_ID);
+        mInMobiBanner.setBannerSize(BANNER_WIDTH, BANNER_HEIGHT);
         mInMobiBanner.setEnableAutoRefresh(false);
         mInMobiBanner.setListener(new BannerAdEventListener() {
             @Override
-            public void onAdLoadSucceeded(@NonNull InMobiBanner inMobiBanner,
-                                          @NonNull AdMetaInfo adMetaInfo) {
-                Log.d(TAG, "onAdLoadSucceeded with bid " + adMetaInfo.getBid());
-                show.setVisibility(View.INVISIBLE);
-            }
-
-            @Override
-            public void onAdLoadFailed(@NonNull InMobiBanner inMobiBanner,
-                                       @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
-                show.setVisibility(View.INVISIBLE);
-                Log.d(TAG, "Banner ad failed to load with error: " +
-                        inMobiAdRequestStatus.getMessage());
-            }
-
-            @Override
-            public void onAdClicked(@NonNull InMobiBanner inMobiBanner,
-                                    @NonNull Map<Object, Object> map) {
-                Log.d(TAG, "onAdClicked");
-            }
-
-            @Override
-            public void onAdDisplayed(@NonNull InMobiBanner inMobiBanner) {
-                Log.d(TAG, "onAdDisplayed");
-            }
-
-            @Override
-            public void onAdDismissed(@NonNull InMobiBanner inMobiBanner) {
-                Log.d(TAG, "onAdDismissed");
-            }
-
-            @Override
-            public void onUserLeftApplication(@NonNull InMobiBanner inMobiBanner) {
-                Log.d(TAG, "onUserLeftApplication");
-            }
-
-            @Override
-            public void onRewardsUnlocked(@NonNull InMobiBanner inMobiBanner, @NonNull Map<Object, Object> map) {
-                Log.d(TAG, "onRewardsUnlocked");
+            public void onAdFetchFailed(@NonNull InMobiBanner inMobiBanner, @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
+                Log.d(TAG, "InMobi failed to fetch bid");
             }
 
             @Override
             public void onAdFetchSuccessful(@NonNull InMobiBanner inMobiBanner, @NonNull AdMetaInfo adMetaInfo) {
-                Log.d(TAG, "onAdFetchSuccessful with bid " + adMetaInfo.getBid());
-                show.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onAdFetchFailed(@NonNull InMobiBanner inMobiBanner, @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
-                Log.d(TAG, "onAdFetchFailed " + inMobiAdRequestStatus.getMessage());
-                show.setVisibility(View.INVISIBLE);
+                Log.d(TAG, "InMobi successfully fetched an ad with bid " + adMetaInfo.getBid());
+                InMobiBannerCustomEvent.addInMobiAdObject(PlacementId.YOUR_BANNER_PLACEMENT_ID, inMobiBanner);
+                new InMobiBannerCustomEvent().loadBanner(BannerCustomABActivity.this,
+                        customEventBannerListener, PlacementId.YOUR_BANNER_PLACEMENT_ID);
             }
         });
-        setBannerLayoutParams();
-        adContainer.addView(mInMobiBanner);
     }
 
-    private void setBannerLayoutParams() {
-        int width = toPixelUnits(BANNER_WIDTH);
-        int height = toPixelUnits(BANNER_HEIGHT);
-        RelativeLayout.LayoutParams bannerLayoutParams = new RelativeLayout.LayoutParams(width, height);
-        bannerLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        bannerLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        mInMobiBanner.setLayoutParams(bannerLayoutParams);
-    }
+    CustomEventBannerListener customEventBannerListener = new CustomEventBannerListener() {
 
-    private int toPixelUnits(int dipUnit) {
-        float density = getResources().getDisplayMetrics().density;
-        return Math.round(dipUnit * density);
-    }
+        @Override
+        public void onAdDisplayed() {
+            Log.d(TAG, "onAdDisplayed");
+        }
+
+        @Override
+        public void onAdDismissed() {
+            Log.d(TAG, "onAdDismissed");
+        }
+
+        @Override
+        public void onUserLeftApplication() {
+            Log.d(TAG, "onUserLeftApplication");
+        }
+
+        @Override
+        public void onRewardsUnlocked(Map<Object, Object> rewards) {
+            Log.d(TAG, "onRewardsUnlocked");
+        }
+
+        @Override
+        public void onAdLoadFailed() {
+            Log.d(TAG, "onAdLoadFailed");
+        }
+
+        @Override
+        public void onAdLoadSuccessful(View view) {
+            Log.d(TAG, "onAdLoadSuccessful");
+            RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
+            adContainer.addView(mInMobiBanner);
+        }
+
+        @Override
+        public void onAdClicked() {
+            Log.d(TAG, "onAdClicked");
+        }
+    };
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
             case R.id.preload:
+                setupBannerAd();
                 mInMobiBanner.getPreloadManager().preload();
-                break;
-            case R.id.show:
-                mInMobiBanner.getPreloadManager().load();
                 break;
         }
     }

@@ -55,6 +55,7 @@ public class CustomABActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         });
+        InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
 
         setContentView(R.layout.activity_custom_a_b);
         mBannerIntegration = (Button) findViewById(R.id.bannerSample);
