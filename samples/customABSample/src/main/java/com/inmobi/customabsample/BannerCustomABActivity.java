@@ -13,15 +13,15 @@ import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiBanner;
 import com.inmobi.ads.listeners.BannerAdEventListener;
+import com.inmobi.customabsample.customevent.CustomEventBannerListener;
 import com.inmobi.customabsample.customevent.InMobiBannerCustomEvent;
-
-import java.util.Map;
 
 public class BannerCustomABActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = BannerCustomABActivity.class.getSimpleName();
-    InMobiBanner mInMobiBanner;
+    private InMobiBanner mInMobiBanner;
 
+    private RelativeLayout adcontainer;
     public static final int BANNER_WIDTH = 320;
     public static final int BANNER_HEIGHT = 50;
 
@@ -31,7 +31,8 @@ public class BannerCustomABActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner_custom_a_b);
-        load = findViewById(R.id.preload);
+        load = findViewById(R.id.load);
+        adcontainer = findViewById(R.id.ad_container);
         load.setOnClickListener(this);
     }
 
@@ -48,59 +49,31 @@ public class BannerCustomABActivity extends AppCompatActivity implements View.On
             @Override
             public void onAdFetchSuccessful(@NonNull InMobiBanner inMobiBanner, @NonNull AdMetaInfo adMetaInfo) {
                 Log.d(TAG, "InMobi successfully fetched an ad with bid " + adMetaInfo.getBid());
-                InMobiBannerCustomEvent.addInMobiAdObject(PlacementId.YOUR_BANNER_PLACEMENT_ID, inMobiBanner);
-                new InMobiBannerCustomEvent().loadBanner(BannerCustomABActivity.this,
-                        customEventBannerListener, PlacementId.YOUR_BANNER_PLACEMENT_ID);
+                InMobiBannerCustomEvent customEvent = new InMobiBannerCustomEvent();
+                customEvent.setInMobiBanner(inMobiBanner);
+                customEvent.loadAd(new CustomEventBannerListener() {
+                    @Override
+                    public void onAdLoadSuccess(View view) {
+                        Log.d(TAG, "onAdLoadSuccess");
+                        adcontainer.addView(view);
+                    }
+
+                    @Override
+                    public void onAdLoadFailed() {
+                        Log.d(TAG, "onAdLoadFailed");
+                    }
+                });
             }
         });
     }
-
-    CustomEventBannerListener customEventBannerListener = new CustomEventBannerListener() {
-
-        @Override
-        public void onAdDisplayed() {
-            Log.d(TAG, "onAdDisplayed");
-        }
-
-        @Override
-        public void onAdDismissed() {
-            Log.d(TAG, "onAdDismissed");
-        }
-
-        @Override
-        public void onUserLeftApplication() {
-            Log.d(TAG, "onUserLeftApplication");
-        }
-
-        @Override
-        public void onRewardsUnlocked(Map<Object, Object> rewards) {
-            Log.d(TAG, "onRewardsUnlocked");
-        }
-
-        @Override
-        public void onAdLoadFailed() {
-            Log.d(TAG, "onAdLoadFailed");
-        }
-
-        @Override
-        public void onAdLoadSuccessful(View view) {
-            Log.d(TAG, "onAdLoadSuccessful");
-            RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
-            adContainer.addView(mInMobiBanner);
-        }
-
-        @Override
-        public void onAdClicked() {
-            Log.d(TAG, "onAdClicked");
-        }
-    };
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.preload:
+            case R.id.load:
                 setupBannerAd();
+                adcontainer.removeAllViews();
                 mInMobiBanner.getPreloadManager().preload();
                 break;
         }
