@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Custom AB Sample</string>
+    <string name="custom_ab_banner">Custom AB Banner</string>
+    <string name="custom_ab_interstitial">Custom AB Interstitial</string>
+    <string name="load">Load</string>
+    <string name="show">Show</string>
+    <string name="preload">Preload</string>
+</resources>

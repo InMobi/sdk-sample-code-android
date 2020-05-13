@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 03 March, 2020
+Modified: 08 May, 2020
 
-SDK Version: 9.0.4
+SDK Version: 9.0.6
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:9.0.4'
+    implementation 'com.inmobi.monetization:inmobi-ads:9.0.6'
 }
 ```
 
@@ -31,18 +31,52 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-• Improvements and bug fixes
-    • Added support for InMobi Initialization callback
-    • Interface changes
-        - APIs Added
-            • InMobiSdk
-                public static void init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject, @Nullable final SdkInitializationListener sdkInitializationListener)
-            • SdkInitializationListener
-                void onInitializationComplete(@Nullable Error error)
+    - MAX Audience Bidding Support
+    - Custom Audience Bidding Support
+    - MoPub Audience Bidding Support
+    - Several Threading Optimizations and Improvements
+    - Bug Fixes
+    - Interface changes
+        -APIs Added
+            -BannerAdEventListener
+                -public void onAdFetchSuccessful(@NonNull InMobiBanner ad, @NonNull AdMetaInfo info)
+                -public void onAdLoadSucceeded(@NonNull InMobiBanner ad, @NonNull AdMetaInfo info)
+                -public void onAdFetchFailed(@NonNull InMobiBanner ad, @NonNull InMobiAdRequestStatus status)
+            -InterstitialAdEventListener
+                -public void onAdFetchSuccessful(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
+                -public void onAdLoadSucceeded(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
+                -public void onAdDisplayed(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
+                -public void onAdFetchFailed(@NonNull InMobiInterstitial ad, @NonNull InMobiAdRequestStatus status)
+            -NativeAdEventListener
+                -public void onAdFetchSuccessful(@NonNull InMobiNative ad, @NonNull AdMetaInfo info)
+                -public void onAdLoadSucceeded(@NonNull InMobiNative ad, @NonNull AdMetaInfo info)
+            -PreloadManager
+                -void preload()
+                -void load()
+            -InMobiBanner
+                -@NonNull public PreloadManager getPreloadManager()
+            -InMobiInterstitial
+                -@NonNull public PreloadManager getPreloadManager()
         - APIs Deprecated
-            • InMobiSdk
-                public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId)
-                public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject)
+            -BannerAdEventListener
+                -public void onAdLoadSucceeded(@NonNull InMobiBanner ad)
+            -InterstitialAdEventListener
+                -public void onAdLoadSucceeded(@NonNull InMobiInterstitial ad)
+                -public void onAdReceived(@NonNull InMobiInterstitial ad)
+                -public void onAdDisplayed(@NonNull InMobiInterstitial ad)
+            -NativeAdEventListener
+                -public void onAdLoadSucceeded(@NonNull InMobiNative ad)
+                -public void onAdReceived(@NonNull InMobiNative ad)
+            -InMobiBanner
+                -public JSONObject getAdMetaInfo()
+                -public String getCreativeId()
+            -InMobiInterstitial
+                -public JSONObject getAdMetaInfo()
+                -public String getCreativeId()
+            -InMobiNative
+                -public JSONObject getAdMetaInfo()
+                -public String getCreativeId()
+
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher

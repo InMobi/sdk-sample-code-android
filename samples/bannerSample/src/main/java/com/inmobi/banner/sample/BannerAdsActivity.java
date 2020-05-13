@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiBanner;
 import com.inmobi.ads.listeners.BannerAdEventListener;
@@ -73,45 +74,39 @@ public class BannerAdsActivity extends AppCompatActivity {
         mBannerAd.setAnimationType(InMobiBanner.AnimationType.ROTATE_HORIZONTAL_AXIS);
         mBannerAd.setListener(new BannerAdEventListener() {
             @Override
-            public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
-                super.onAdLoadSucceeded(inMobiBanner);
-                Log.d(TAG, "onAdLoadSucceeded");
+            public void onAdLoadSucceeded(@NonNull InMobiBanner inMobiBanner,
+                                          @NonNull AdMetaInfo adMetaInfo) {
+                Log.d(TAG, "onAdLoadSucceeded with bid " + adMetaInfo.getBid());
             }
 
             @Override
-            public void onAdLoadFailed(InMobiBanner inMobiBanner, InMobiAdRequestStatus inMobiAdRequestStatus) {
-                super.onAdLoadFailed(inMobiBanner, inMobiAdRequestStatus);
+            public void onAdLoadFailed(@NonNull InMobiBanner inMobiBanner, @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
                 Log.d(TAG, "Banner ad failed to load with error: " +
                         inMobiAdRequestStatus.getMessage());
             }
 
             @Override
-            public void onAdClicked(InMobiBanner inMobiBanner, Map<Object, Object> map) {
-                super.onAdClicked(inMobiBanner, map);
+            public void onAdClicked(@NonNull InMobiBanner inMobiBanner, @NonNull Map<Object, Object> map) {
                 Log.d(TAG, "onAdClicked");
             }
 
             @Override
-            public void onAdDisplayed(InMobiBanner inMobiBanner) {
-                super.onAdDisplayed(inMobiBanner);
+            public void onAdDisplayed(@NonNull InMobiBanner inMobiBanner) {
                 Log.d(TAG, "onAdDisplayed");
             }
 
             @Override
-            public void onAdDismissed(InMobiBanner inMobiBanner) {
-                super.onAdDismissed(inMobiBanner);
+            public void onAdDismissed(@NonNull InMobiBanner inMobiBanner) {
                 Log.d(TAG, "onAdDismissed");
             }
 
             @Override
-            public void onUserLeftApplication(InMobiBanner inMobiBanner) {
-                super.onUserLeftApplication(inMobiBanner);
+            public void onUserLeftApplication(@NonNull InMobiBanner inMobiBanner) {
                 Log.d(TAG, "onUserLeftApplication");
             }
 
             @Override
-            public void onRewardsUnlocked(InMobiBanner inMobiBanner, Map<Object, Object> map) {
-                super.onRewardsUnlocked(inMobiBanner, map);
+            public void onRewardsUnlocked(@NonNull InMobiBanner inMobiBanner, @NonNull Map<Object, Object> map) {
                 Log.d(TAG, "onRewardsUnlocked");
             }
         });

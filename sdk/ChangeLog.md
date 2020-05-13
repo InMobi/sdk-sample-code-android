@@ -1,6 +1,57 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 9.0.6 [08/May/2020]
+    • Bug Fixes for MAX Audience Bidder & WebView
+
+## Build 9.0.5 [24/April/2020]
+    • MAX Audience Bidding Support
+    • Custom Audience Bidding Support
+    • MoPub Audience Bidding Support
+    • Several Threading Optimizations and Improvements
+    • Bug Fixes
+    • Interface changes
+            - APIs Added
+                • BannerAdEventListener
+                    public void onAdFetchSuccessful(@NonNull InMobiBanner ad, @NonNull AdMetaInfo info)
+                    public void onAdLoadSucceeded(@NonNull InMobiBanner ad, @NonNull AdMetaInfo info)
+                    public void onAdFetchFailed(@NonNull InMobiBanner ad, @NonNull InMobiAdRequestStatus status)
+                • InterstitialAdEventListener
+                    public void onAdFetchSuccessful(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
+                    public void onAdLoadSucceeded(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
+                    public void onAdDisplayed(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
+                    public void onAdFetchFailed(@NonNull InMobiInterstitial ad, @NonNull InMobiAdRequestStatus status)
+                • NativeAdEventListener
+                    public void onAdFetchSuccessful(@NonNull InMobiNative ad, @NonNull AdMetaInfo info)
+                    public void onAdLoadSucceeded(@NonNull InMobiNative ad, @NonNull AdMetaInfo info)
+                • PreloadManager
+                    void preload()
+                    void load()
+                • InMobiBanner
+                    @NonNull public PreloadManager getPreloadManager()
+                • InMobiInterstitial
+                    @NonNull public PreloadManager getPreloadManager()
+            - APIs Deprecated
+                • BannerAdEventListener
+                    public void onAdLoadSucceeded(@NonNull InMobiBanner ad)
+                • InterstitialAdEventListener
+                    public void onAdLoadSucceeded(@NonNull InMobiInterstitial ad)
+                    public void onAdReceived(@NonNull InMobiInterstitial ad)
+                    public void onAdDisplayed(@NonNull InMobiInterstitial ad)
+                • NativeAdEventListener
+                    public void onAdLoadSucceeded(@NonNull InMobiNative ad)
+                    public void onAdReceived(@NonNull InMobiNative ad)
+                • InMobiBanner
+                    public JSONObject getAdMetaInfo()
+                    public String getCreativeId()
+                • InMobiInterstitial
+                    public JSONObject getAdMetaInfo()
+                    public String getCreativeId()
+                • InMobiNative
+                    public JSONObject getAdMetaInfo()
+                    public String getCreativeId()
+
+
 ## Build 9.0.4 [03/March/2020]
     • Improvements and bug fixes
     • Added support for InMobi Initialization callback
@@ -14,6 +65,9 @@ InMobi Monetization SDK ChangeLog for Android
             • InMobiSdk
                 public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId)
                 public static @InitializationStatus String init(@NonNull final Context context, @NonNull @Size(min = 32, max = 36) String accountId, @Nullable JSONObject consentObject)
+
+## Build 9.0.3 [14/February/2020]
+    • Support for Open Auction
 
 ## Build 9.0.2 [27/January/2020]
     • Added support for success/failure status for InMobi Initialization.
