@@ -12,128 +12,87 @@ import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiInterstitial;
 import com.inmobi.ads.listeners.InterstitialAdEventListener;
+import com.inmobi.customabsample.customevent.CustomEventInterstitialListener;
+import com.inmobi.customabsample.customevent.InMobiInterstitialCustomEvent;
 
 import java.util.Map;
 
-public class InterstitialCustomABActivity extends AppCompatActivity {
+public class InterstitialCustomABActivity extends AppCompatActivity implements View.OnClickListener {
 
     private InMobiInterstitial mInterstitialAd;
 
-    private Button mPreloadButton;
     private Button mLoadAdButton;
     private Button mShowAdButton;
 
     private final String TAG = InterstitialCustomABActivity.class.getSimpleName();
+    private InMobiInterstitialCustomEvent customEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interstitial_custom_a_b);
-        mPreloadButton = findViewById(R.id.button_preload_ad);
-        mLoadAdButton = findViewById(R.id.button_load_ad);
-        mShowAdButton = findViewById(R.id.button_show_ad);
-        mPreloadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null == mInterstitialAd) {
-                    setupInterstitial();
-                } else {
-                    mInterstitialAd.getPreloadManager().preload();
-                }
-            }
-        });
-        mLoadAdButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mInterstitialAd.getPreloadManager().load();
-            }
-        });
-        mShowAdButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mInterstitialAd.show();
-                mPreloadButton.setVisibility(View.VISIBLE);
-                mShowAdButton.setVisibility(View.GONE);
-            }
-        });
-        setupInterstitial();
+        mLoadAdButton = findViewById(R.id.load);
+        mShowAdButton = findViewById(R.id.show);
+        mLoadAdButton.setOnClickListener(this);
+        mShowAdButton.setOnClickListener(this);
     }
 
     private void setupInterstitial() {
         mInterstitialAd = new InMobiInterstitial(InterstitialCustomABActivity.this, PlacementId.YOUR_INTERSTITIAL_PLACEMENT_ID,
                 new InterstitialAdEventListener() {
-                    @Override
-                    public void onAdLoadSucceeded(@NonNull InMobiInterstitial inMobiInterstitial,
-                                                  @NonNull AdMetaInfo adMetaInfo) {
-                        Log.d(TAG, "onAdLoadSuccessful with bid " + adMetaInfo.getBid());
-                        if (inMobiInterstitial.isReady()) {
-                            mLoadAdButton.setVisibility(View.GONE);
-                            if (mShowAdButton != null) {
-                                mShowAdButton.setVisibility(View.VISIBLE);
-                            }
-                        } else {
-                            Log.d(TAG, "onAdLoadSuccessful inMobiInterstitial not ready");
-                        }
-                    }
-
-                    @Override
-                    public void onAdLoadFailed(@NonNull InMobiInterstitial inMobiInterstitial,
-                                               @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
-                        Log.d(TAG, "Unable to load interstitial ad (error message: " +
-                                inMobiAdRequestStatus.getMessage());
-                    }
 
                     @Override
                     public void onAdFetchSuccessful(@NonNull InMobiInterstitial inMobiInterstitial,
                                                     @NonNull AdMetaInfo adMetaInfo) {
                         Log.d(TAG, "onAdFetchSuccessful with bid  " + adMetaInfo.getBid());
-                        if (mLoadAdButton != null) {
+                        if (mShowAdButton != null) {
                             mLoadAdButton.setVisibility(View.VISIBLE);
                         }
+                        customEvent = new InMobiInterstitialCustomEvent();
+                        customEvent.setInMobiInterstitial(inMobiInterstitial);
+                        customEvent.loadAd(new CustomEventInterstitialListener() {
+                            @Override
+                            public void onAdLoadSuccess() {
+                                Log.d(TAG, "onAdLoadSuccess");
+                                mShowAdButton.setVisibility(View.VISIBLE);
+                            }
+
+                            @Override
+                            public void onAdLoadFailed() {
+                                Log.d(TAG, "onAdLoadFailed");
+
+                            }
+
+                            @Override
+                            public void onAdShowSuccess() {
+                                Log.d(TAG, "onAdShowSuccess");
+                            }
+
+                            @Override
+                            public void onAdShowFailed() {
+                                Log.d(TAG, "onAdShowFailed");
+                            }
+                        });
                     }
 
                     @Override
                     public void onAdFetchFailed(@NonNull InMobiInterstitial inMobiInterstitial, @NonNull InMobiAdRequestStatus inMobiAdRequestStatus) {
                         Log.d(TAG, "onAdFetchFailed due to " + inMobiAdRequestStatus.getMessage());
                     }
-
-                    @Override
-                    public void onAdClicked(@NonNull InMobiInterstitial inMobiInterstitial,
-                                            @NonNull Map<Object, Object> map) {
-                        Log.d(TAG, "onAdClicked " + map);
-                    }
-
-                    @Override
-                    public void onAdWillDisplay(@NonNull InMobiInterstitial inMobiInterstitial) {
-                        Log.d(TAG, "onAdWillDisplay");
-                    }
-
-                    @Override
-                    public void onAdDisplayed(@NonNull InMobiInterstitial inMobiInterstitial,
-                                              @NonNull AdMetaInfo adMetaInfo) {
-                        Log.d(TAG, "onAdDisplayed");
-                    }
-
-                    @Override
-                    public void onAdDisplayFailed(@NonNull InMobiInterstitial inMobiInterstitial) {
-                        Log.d(TAG, "onAdDisplayFailed");
-                    }
-
-                    @Override
-                    public void onAdDismissed(@NonNull InMobiInterstitial inMobiInterstitial) {
-                        Log.d(TAG, "onAdDismissed");
-                    }
-
-                    @Override
-                    public void onUserLeftApplication(@NonNull InMobiInterstitial inMobiInterstitial) {
-                        Log.d(TAG, "onUserWillLeaveApplication");
-                    }
-
-                    @Override
-                    public void onRewardsUnlocked(@NonNull InMobiInterstitial inMobiInterstitial,
-                                                  @NonNull Map<Object, Object> map) {
-                        Log.d(TAG, "onRewardsUnlocked " + map);
-                    }
                 });
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.load:
+                setupInterstitial();
+                mInterstitialAd.getPreloadManager().preload();
+                break;
+            case R.id.show:
+                customEvent.showAd();
+                break;
+        }
     }
 }
