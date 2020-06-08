@@ -3,7 +3,7 @@ InMobi SDK for Android
 
 Modified: 08 May, 2020
 
-SDK Version: 9.0.6
+SDK Version: 9.0.7
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -31,51 +31,7 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    - MAX Audience Bidding Support
-    - Custom Audience Bidding Support
-    - MoPub Audience Bidding Support
-    - Several Threading Optimizations and Improvements
-    - Bug Fixes
-    - Interface changes
-        -APIs Added
-            -BannerAdEventListener
-                -public void onAdFetchSuccessful(@NonNull InMobiBanner ad, @NonNull AdMetaInfo info)
-                -public void onAdLoadSucceeded(@NonNull InMobiBanner ad, @NonNull AdMetaInfo info)
-                -public void onAdFetchFailed(@NonNull InMobiBanner ad, @NonNull InMobiAdRequestStatus status)
-            -InterstitialAdEventListener
-                -public void onAdFetchSuccessful(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
-                -public void onAdLoadSucceeded(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
-                -public void onAdDisplayed(@NonNull InMobiInterstitial ad, @NonNull AdMetaInfo info)
-                -public void onAdFetchFailed(@NonNull InMobiInterstitial ad, @NonNull InMobiAdRequestStatus status)
-            -NativeAdEventListener
-                -public void onAdFetchSuccessful(@NonNull InMobiNative ad, @NonNull AdMetaInfo info)
-                -public void onAdLoadSucceeded(@NonNull InMobiNative ad, @NonNull AdMetaInfo info)
-            -PreloadManager
-                -void preload()
-                -void load()
-            -InMobiBanner
-                -@NonNull public PreloadManager getPreloadManager()
-            -InMobiInterstitial
-                -@NonNull public PreloadManager getPreloadManager()
-        - APIs Deprecated
-            -BannerAdEventListener
-                -public void onAdLoadSucceeded(@NonNull InMobiBanner ad)
-            -InterstitialAdEventListener
-                -public void onAdLoadSucceeded(@NonNull InMobiInterstitial ad)
-                -public void onAdReceived(@NonNull InMobiInterstitial ad)
-                -public void onAdDisplayed(@NonNull InMobiInterstitial ad)
-            -NativeAdEventListener
-                -public void onAdLoadSucceeded(@NonNull InMobiNative ad)
-                -public void onAdReceived(@NonNull InMobiNative ad)
-            -InMobiBanner
-                -public JSONObject getAdMetaInfo()
-                -public String getCreativeId()
-            -InMobiInterstitial
-                -public JSONObject getAdMetaInfo()
-                -public String getCreativeId()
-            -InMobiNative
-                -public JSONObject getAdMetaInfo()
-                -public String getCreativeId()
+    - Critical Bug fixes and Optimizations
 
 
 ## Requirements
