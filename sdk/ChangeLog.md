@@ -1,6 +1,12 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 9.0.9 [25/August/2020]
+    • Improvements and Bug fixes
+
+## Build 9.0.8 [13/August/2020]
+    • Critical bug fix for Ad Quality
+
 ## Build 9.0.7 [08/June/2020]
     • Critical bug fixes and optimizations
 
@@ -156,10 +162,10 @@ InMobi Monetization SDK ChangeLog for Android
 ## Build 8.0.7 [05/Apr/2019]
     • Bug fixes
     • Updated AudienceBidder to v1.0.1
-        • Support for Amazon Publsiher Service 
+        • Support for Amazon Publsiher Service
         • Support for granular keywords
         • Fix issue with updateBid not working with MoPub's refresh
-        • Replaced source file with a aar 
+        • Replaced source file with a aar
         • Change in API (see documentation)
 
 ## Build 8.0.5 [11/Mar/2019]
@@ -379,7 +385,7 @@ InMobi Monetization SDK ChangeLog for Android
 
 ## Build 6.2.3 [02/June/2017]
     • Bug fixes
-    
+
 ## Build 6.2.2 [30/May/2017]
     • Bug fixes
 
@@ -446,7 +452,7 @@ InMobi Monetization SDK ChangeLog for Android
 
 ## Build 6.1.1 [16/Feb/2017]
     • Hot-fix for impression tracking for Native fullscreen video
-    
+
 
 ## Build 6.1.0 [02/Feb/2017]
     • Added support for in-feed video ads
