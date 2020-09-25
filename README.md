@@ -3,7 +3,7 @@ InMobi SDK for Android
 
 Modified: 18 September, 2020
 
-SDK Version: 9.1.0
+SDK Version: 9.1.0 
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
