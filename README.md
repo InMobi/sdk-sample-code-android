@@ -31,6 +31,8 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
+    - Support for Android 11
+    - Support for IAB TCF 2.0 consent
     - Improvements and Bug fixes
 
 
