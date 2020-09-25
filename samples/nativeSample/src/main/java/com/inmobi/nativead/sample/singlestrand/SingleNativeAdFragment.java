@@ -127,6 +127,7 @@ public class SingleNativeAdFragment extends Fragment {
         loadAd();
     }
 
+    @SuppressWarnings("deprecation")
     private View loadAdIntoView(@NonNull final InMobiNative inMobiNative) {
         View adView = LayoutInflater.from(getActivity()).inflate(R.layout.layout_ad, null);
 

@@ -65,6 +65,7 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
 
     @NonNull
     @Override
+    @SuppressWarnings("deprecation")
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         final int itemViewType = getItemViewType(position);
         final FeedItem feedItem = getItem(position);

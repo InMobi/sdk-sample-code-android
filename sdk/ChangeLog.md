@@ -1,6 +1,11 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 9.1.0 [18/September/2020]
+    • Support for Android 11
+    • Support for IAB TCF 2.0 consent
+    • Improvements and Bug fixes
+    
 ## Build 9.0.9 [25/August/2020]
     • Improvements and Bug fixes
 

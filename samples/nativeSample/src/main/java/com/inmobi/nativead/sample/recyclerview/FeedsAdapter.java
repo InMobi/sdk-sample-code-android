@@ -65,6 +65,7 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         FeedItem feedItem = mFeedItems.get(position);
         if (viewHolder instanceof FeedViewHolder) {
