@@ -7,6 +7,8 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,7 +45,7 @@ public class BannerAdsActivity extends AppCompatActivity {
     private ListView mNewsListView;
 
     @NonNull
-    private final Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
     private List<NewsSnippet> mItemList = new ArrayList<>();
     private NewsFeedAdapter mAdapter;
 

@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 25 August, 2020
+Modified: 18 September, 2020
 
-SDK Version: 9.0.9
+SDK Version: 9.1.0 
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:9.0.9'
+    implementation 'com.inmobi.monetization:inmobi-ads:9.1.0'
 }
 ```
 
@@ -31,6 +31,8 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
+    - Support for Android 11
+    - Support for IAB TCF 2.0 consent
     - Improvements and Bug fixes
 
 
