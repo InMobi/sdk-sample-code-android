@@ -32,9 +32,6 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 
 ## New in this version
     - Bug fixes and improvements
-    - Update support for the following mediation adapters
-        - Facebook SDK v6.1.0
-        - AdMob SDK v19.4.0
 
 
 ## Requirements
