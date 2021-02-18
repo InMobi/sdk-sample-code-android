@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 19 October, 2020
+Modified: 18 February, 2021
 
-SDK Version: 9.1.1
+SDK Version: 9.1.6
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:9.1.1'
+    implementation 'com.inmobi.monetization:inmobi-ads:9.1.6'
 }
 ```
 
@@ -31,15 +31,15 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    - Bug fixes and improvements
+    - AndroidX Migration.
 
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
-- android-support-v4.jar, r28
-- android-recyclerview-v7.jar,r28
+- androidx.browser
+- androidx.appcompat
+- androidx.recyclerview
 - Picasso Library (picasso-2.71828.jar - available on JCenter)
-- Chrome Custom tabs dependency (needs to be added in build.gradle at app level)
 - **Recommended** Google Play Services 17.0.0
 
 ## License

@@ -1,5 +1,14 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+## Build 9.1.6 [16/February/2021]
+    • Migrated to AndroidX
+    • Bug fixes and improvements
+    • Refactored Audience Bidding Support
+    • Interface changes
+                - APIs Added
+                    • InMobiSdk
+                        public static String getToken(@Nullable Map<String, String> extras, @Nullable String keywords)
+                        public static String getToken()
 
 ## Build 9.1.1 [19/October/2020]
     • Bug fixes and improvements
