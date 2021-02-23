@@ -37,12 +37,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.inmobi.monetization:inmobi-ads:9.1.1'
-
-    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
-    implementation 'androidx.browser:browser:1.0.0'
-    implementation "com.squareup.picasso:picasso:2.71828"
     implementation 'androidx.multidex:multidex:2.0.0'
+
+    implementation "com.inmobi.monetization:inmobi-ads:$inmobiSdkVersion"
+    implementation "com.google.android.gms:play-services-ads-identifier:$playservicesadsidentifier"
+    implementation "com.google.android.gms:play-services-location:$playserviceslocation"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview"
+    implementation "com.squareup.picasso:picasso:$picasso"
+    implementation "androidx.browser:browser:$browser"
+
 }
