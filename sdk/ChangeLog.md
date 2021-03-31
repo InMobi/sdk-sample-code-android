@@ -1,5 +1,11 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
+
+## Build 9.1.7 [26/March/2021]
+    • Unified ID support
+    • AdPods support
+    • Bug fixes and improvements
+    
 ## Build 9.1.6 [16/February/2021]
     • Migrated to AndroidX
     • Bug fixes and improvements

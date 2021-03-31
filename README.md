@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 18 February, 2021
+Modified: 31 March, 2021
 
-SDK Version: 9.1.6
+SDK Version: 9.1.7
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -11,16 +11,16 @@ If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us
 ## Download
 The InMobi SDK for Android is available via: 
 
-**jCenter AAR**
+**mavenCentral AAR**
 
-The InMobi SDK is available as a AAR via jCenter; to use it, add the following to your `build.gradle`
+The InMobi SDK is available as a AAR via mavenCentral; to use it, add the following to your `build.gradle`
 
 ```
 repositories {
-    jcenter()
+    mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:9.1.6'
+    implementation 'com.inmobi.monetization:inmobi-ads:9.1.7'
 }
 ```
 
@@ -31,7 +31,9 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    - AndroidX Migration.
+    - Unified ID support
+    - AdPods support
+    - Bug fixes and improvements
 
 
 ## Requirements
