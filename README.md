@@ -1,15 +1,15 @@
 InMobi SDK for Android
 ======================
 
-Modified: 29 April, 2021
+Modified: 6 July, 2021
 
-SDK Version: 9.1.9
+SDK Version: 9.2.0
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
 
 ## Download
-The InMobi SDK for Android is available via: 
+The InMobi SDK for Android is available via:
 
 **mavenCentral AAR**
 
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:9.1.9'
+    implementation 'com.inmobi.monetization:inmobi-ads:9.2.0'
 }
 ```
 
@@ -31,7 +31,10 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    - Unified ID Bug fix
+    - Landing page opening management
+    - Native support for click and impression tracking
+    - MavenCentral auto fetch mandatory dependency
+    - Bug fixes and improvements
 
 
 ## Requirements

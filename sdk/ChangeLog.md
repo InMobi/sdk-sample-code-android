@@ -1,6 +1,12 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 9.2.0 [06/July/2021]
+    • Landing page opening management
+    • Native support for click and impression tracking
+    • MavenCentral auto fetch mandatory dependency
+    • Bug fixes and improvements
+
 ## Build 9.1.9 [26/April/2021]
     • Unified ID Bug fix
 
