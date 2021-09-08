@@ -1,6 +1,10 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 9.2.1 [08/September/2021]
+    • Added Partner provided GDPR consent support
+    • Crash fixes
+
 ## Build 9.2.0 [06/July/2021]
     • Landing page opening management
     • Native support for click and impression tracking
