@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 19 October, 2021
+Modified: 21 January, 2022
 
-SDK Version: 10.0.1
+SDK Version: 10.0.2
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:10.0.1'
+    implementation 'com.inmobi.monetization:inmobi-ads:10.0.2'
 }
 ```
 
@@ -31,21 +31,10 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    - OMSDK Dependency is automatically imported.
-    - Migrated OMSDK to 1.3
-    - Audio Focus in Native Ads
-    - Interface Changes
-            - APIs Added
-                   • InMobiBanner
-                        public void setContentUrl(@NonNull String contentUrl)
-                   • InMobiInterstitial
-                        public void setContentUrl(@NonNull String contentUrl)
-                   • InMobiNative
-                        public void setContentUrl(@NonNull String contentUrl)
-                   • InMobiSdk
-                        public static boolean isSDKInitialized()
-    - Upgraded Mediation Support for  Facebook SDK 6.7.0 and AdMob SDK 20.4.0.
-    - Bug fixes and improvements
+    - Updated Android Ads License
+    - Bug fixes and Improvements
+    - Removed MOAT Viewability support
+    - Ad Click Improvements (Support for direct applinks and deeplinks)
 
 
 ## Requirements

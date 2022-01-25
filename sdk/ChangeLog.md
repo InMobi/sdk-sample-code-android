@@ -1,6 +1,12 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 10.0.2 [21/January/2022]
+    • Updated Android Ads License
+    • Bug fixes and Improvements
+    • Removed MOAT Viewability support
+    • Ad Click Improvements (Support for direct applinks and deeplinks)
+
 ## Build 10.0.1 [19/October/2021]
     • Migrated OMSDK to 1.3
     • Audio Focus in Native Ads
