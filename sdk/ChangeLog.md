@@ -1,6 +1,22 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 10.0.1 [19/October/2021]
+    • Migrated OMSDK to 1.3
+    • Audio Focus in Native Ads
+    • Interface Changes
+            - APIs Added
+                   • InMobiBanner
+                        public void setContentUrl(@NonNull String contentUrl)
+                   • InMobiInterstitial
+                        public void setContentUrl(@NonNull String contentUrl)
+                   • InMobiNative
+                        public void setContentUrl(@NonNull String contentUrl)
+                   • InMobiSdk
+                        public static boolean isSDKInitialized()
+    • Upgraded Mediation Support for  Facebook SDK 6.7.0 and AdMob SDK 20.4.0.
+    • Bug fixes and improvements
+
 ## Build 9.2.1 [08/September/2021]
     • Added Partner provided GDPR consent support
     • Crash fixes
