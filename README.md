@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 21 January, 2022
+Modified: 28 January, 2022
 
-SDK Version: 10.0.2
+SDK Version: 10.0.3
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:10.0.2'
+    implementation 'com.inmobi.monetization:inmobi-ads:10.0.3'
 }
 ```
 
@@ -31,10 +31,10 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    - Updated Android Ads License
-    - Bug fixes and Improvements
-    - Removed MOAT Viewability support
-    - Ad Click Improvements (Support for direct applinks and deeplinks)
+    • Updated Android Ads License
+    • Removed MOAT Viewability support
+    • Ad Click Improvements (Support for direct applinks and deeplinks)
+    • Crash fixes
 
 
 ## Requirements
