@@ -1,4 +1,4 @@
-End-User License Agreement for InMobi Software Product
+ End-User License Agreement for InMobi Software Product
 
 This End-User License Agreement (“EULA”) is a legal agreement between you (either an individual or a single entity) (“the End User”) and InMobi Pte Limited for the software product identified above, which includes computer software and may include associated media, printed materials, and “online” or electronic documentation (“Software Product”).
 
@@ -6,11 +6,11 @@ By download, installing, copying or otherwise using the Software Product, you ag
 
 Software Product License
 
-InMobi is providing the Software Product solely for the purpose of allowing the End User to avail of or enjoy the benefits of the services provided by InMobi. The End User is NOT allowed to distribute this Software (either for profit or merely to recover your media and distribution costs) whether as a stand-alone product, or as part of a compilation or anthology, nor to use it for supporting your business or customers. It may be distributed freely on any website or through any other distribution mechanism, as long as no part of it is modified in any manner whatsoever.
+InMobi is providing the Software Product solely for the purpose of allowing the End User to avail of or enjoy the benefits of the services provided by InMobi. Except as expressly set forth herein, the End User is NOT allowed to distribute this Software (either for profit or merely to recover your media and distribution costs) whether as a stand-alone product, or as part of a compilation or anthology, nor to use it for supporting your business or customers. It may be distributed freely on any website or through any other distribution mechanism, as long as no part of it is modified in any manner whatsoever.
 
 1. Grant of License
 
-This EULA grants you the following rights: 
+This EULA grants you the following rights:
 
 a. Installation and Use. You may install and use an unlimited number of copies of the Software Product.
 
@@ -32,7 +32,7 @@ e. Termination. Without prejudice to any other rights, InMobi may terminate this
 
 3. Copyright
 
-All title and copyrights in and to the Software Product (including but not limited to any images, photographs, clipart, libraries, and examples incorporated into the Software Product), the accompanying printed materials, and any copies of the Software Product are owned by InMobi. The Software Product is protected by copyright laws and international treaty provisions. 
+Except as expressly provided herein, all title and copyrights in and to the Software Product (including but not limited to any images, photographs, clipart, libraries, and examples incorporated into the Software Product), the accompanying printed materials, and any copies of the Software Product are owned by InMobi. The Software Product is protected by copyright laws and international treaty provisions.
 
 4. Limited Warranty
 
@@ -40,7 +40,14 @@ a. No Warranties. InMobi expressly disclaims any and all warranties for the Soft
 
 b. No Liability For Damages. In no event shall InMobi be liable for any direct, special, consequential, incidental or indirect damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or any other pecuniary loss) arising out of the use of or inability to use this product, even if InMobi is aware of the possibility of such damages and known defects.
 
-5. Governing Law
+5. Third Party License
+
+The Software Product may contain third party software which shall be separately licensed as applicable. This license will be included within the Software Product.
+
+6. Children's Privacy Compliance Settings
+
+You represent and warrant that your Children Privacy Compliance setting remains accurate or that you will update that setting, whenever there is a change in your app's audience. You may update the app's Children Privacy Compliance settings at https://publisher.inmobi.com/my-inventory/app-and-placements.
+
+7. Governing Law
 
 This EULA and all disputes arising thereof shall be subject to the laws of Singapore, where the courts at Singapore shall exclusive jurisdiction.
-
