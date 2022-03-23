@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 28 January, 2022
+Modified: 11 March, 2022
 
-SDK Version: 10.0.3
+SDK Version: 10.0.5
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:10.0.3'
+    implementation 'com.inmobi.monetization:inmobi-ads:10.0.5'
 }
 ```
 
@@ -31,10 +31,12 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    • Updated Android Ads License
-    • Removed MOAT Viewability support
-    • Ad Click Improvements (Support for direct applinks and deeplinks)
-    • Crash fixes
+    • Support for Family apps as per Android 12 guidelines
+        -Interface changes
+            - APIs Added
+                • InMobiSDK
+                    public static void setIsAgeRestricted(boolean isAgeRestricted)
+
 
 
 ## Requirements
@@ -43,7 +45,7 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 - androidx.appcompat
 - androidx.recyclerview
 - Picasso Library (picasso-2.71828.jar - available on JCenter)
-- **Recommended** Google Play Services 17.0.0
+- **Recommended** Google Play Services 18.0.1
 
 ## License
 To view the license for the InMobi SDK, see [here](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/licenses/License.txt). To view the terms of service, visit [https://inmobi.com/terms-of-service](http://inmobi.com/terms-of-service/).
