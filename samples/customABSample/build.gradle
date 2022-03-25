@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion androidCompileSdkVersion
     buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.inmobi.customabsample"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
 
