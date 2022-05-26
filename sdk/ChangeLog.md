@@ -1,6 +1,9 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 10.0.7 [25/May/2022]
+    • Bug Fixes
+
 ## Build 10.0.6 [13/May/2022]
     • Custom Browser Support
     • Dynamic orientation Support
