@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 11 March, 2022
+Modified: 13 May, 2022
 
-SDK Version: 10.0.5
+SDK Version: 10.0.6
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:10.0.5'
+    implementation 'com.inmobi.monetization:inmobi-ads:10.0.6'
 }
 ```
 
@@ -31,13 +31,9 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    • Support for Family apps as per Android 12 guidelines
-        -Interface changes
-            - APIs Added
-                • InMobiSDK
-                    public static void setIsAgeRestricted(boolean isAgeRestricted)
-
-
+    • Custom Browser Support
+    • Dynamic orientation Support
+    • Improvements in ad response size and rendering
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
