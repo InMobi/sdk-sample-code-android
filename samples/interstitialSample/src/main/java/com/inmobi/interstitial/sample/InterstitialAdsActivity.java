@@ -156,6 +156,11 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                                                   @NonNull Map<Object, Object> map) {
                         Log.d(TAG, "onRewardsUnlocked " + map);
                     }
+
+                    @Override
+                    public void onAdImpression(@NonNull InMobiInterstitial inMobiInterstitial) {
+                        Log.d(TAG, "onAdImpression");
+                    }
                 });
         mInterstitialAd.show();
     }

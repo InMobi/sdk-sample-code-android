@@ -111,6 +111,11 @@ public class BannerAdsActivity extends AppCompatActivity {
             public void onRewardsUnlocked(@NonNull InMobiBanner inMobiBanner, @NonNull Map<Object, Object> map) {
                 Log.d(TAG, "onRewardsUnlocked");
             }
+
+            @Override
+            public void onAdImpression(@NonNull InMobiBanner inMobiBanner) {
+                Log.d(TAG, "onAdImpression");
+            }
         });
         setBannerLayoutParams();
         adContainer.addView(mBannerAd);

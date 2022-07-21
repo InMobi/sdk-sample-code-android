@@ -193,11 +193,6 @@ public class ListViewFeedFragment extends ListFragment {
         }
 
         @Override
-        public void onAdImpressed(@NonNull InMobiNative inMobiNativeStrand) {
-            Log.d(TAG, "Impression recorded for strand at position:" + mPosition);
-        }
-
-        @Override
         public void onAdClicked(@NonNull InMobiNative inMobiNativeStrand) {
             Log.d(TAG, "Click recorded for ad at position:" + mPosition);
         }
@@ -205,6 +200,11 @@ public class ListViewFeedFragment extends ListFragment {
         @Override
         public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {
             Log.d(TAG, "Ad status changed");
+        }
+
+        @Override
+        public void onAdImpression(@NonNull InMobiNative inMobiNative) {
+            Log.d(TAG, "onAdImpression");
         }
 
     }
