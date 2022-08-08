@@ -1,6 +1,21 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 10.0.8 [13/July/2022]
+    • Added Support for Publisher callback - onAdImpression
+    • Added Support for Contextual App Targeting
+    • Added Support for Picasso version 2.8
+    • Added Support for Swish Folders
+    • Bug fixes
+    • Interface Changes
+            - APIs Added
+                    • BannerAdEventListener
+                        public void onAdImpression(@NonNull InMobiBanner ad)
+                    • InterstitialAdEventListener
+                	    public void onAdImpression(@NonNull InMobiInterstitial ad)
+                    • NativeAdEventListener
+                	    public void onAdImpression(@NonNull InMobiNative ad)
+
 ## Build 10.0.7 [25/May/2022]
     • Bug Fixes
 

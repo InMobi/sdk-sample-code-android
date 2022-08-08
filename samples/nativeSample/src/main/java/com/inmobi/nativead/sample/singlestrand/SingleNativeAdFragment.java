@@ -211,11 +211,6 @@ public class SingleNativeAdFragment extends Fragment {
         }
 
         @Override
-        public void onAdImpressed(@NonNull InMobiNative inMobiNative) {
-            Log.d(TAG, "Impression recorded successfully");
-        }
-
-        @Override
         public void onAdClicked(@NonNull InMobiNative inMobiNative) {
             Log.d(TAG, "Ad clicked");
         }
@@ -223,6 +218,10 @@ public class SingleNativeAdFragment extends Fragment {
 
         @Override
         public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {
+        }
+
+        @Override
+        public void onAdImpression(@NonNull InMobiNative inMobiNative) {
         }
 
     }

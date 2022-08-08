@@ -212,17 +212,16 @@ public class RecyclerFeedFragment extends Fragment {
         }
 
         @Override
-        public void onAdImpressed(@NonNull InMobiNative inMobiNativeStrand) {
-            Log.d(TAG, "Impression recorded for strand at position:" + mPosition);
-        }
-
-        @Override
         public void onAdClicked(@NonNull InMobiNative inMobiNativeStrand) {
             Log.d(TAG, "Click recorded for ad at position:" + mPosition);
         }
 
         @Override
         public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {
+        }
+
+        @Override
+        public void onAdImpression(@NonNull InMobiNative inMobiNative) {
         }
     }
 }
