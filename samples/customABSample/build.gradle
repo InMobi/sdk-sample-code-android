@@ -43,5 +43,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerview"
     implementation "com.squareup.picasso:picasso:$picasso"
     implementation "androidx.browser:browser:$browser"
+    implementation "com.google.android.gms:play-services-appset:$playservicesappset"
+    implementation "com.google.android.gms:play-services-tasks:$playservicestask"
 
 }

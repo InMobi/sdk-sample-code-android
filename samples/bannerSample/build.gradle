@@ -48,5 +48,7 @@ dependencies {
     implementation "com.facebook.fresco:fresco:$fresco"
     implementation "com.squareup.picasso:picasso:$picasso"
     implementation "androidx.browser:browser:$browser"
+    implementation "com.google.android.gms:play-services-appset:$playservicesappset"
+    implementation "com.google.android.gms:play-services-tasks:$playservicestask"
 
 }
