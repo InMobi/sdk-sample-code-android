@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 20 July, 2022
+Modified: 5 August, 2022
 
-SDK Version: 10.0.8
+SDK Version: 10.0.9
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:10.0.8'
+    implementation 'com.inmobi.monetization:inmobi-ads:10.0.9'
 }
 ```
 
@@ -31,26 +31,14 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    • Added Support for Publisher callback - onAdImpression
-    • Added Support for Contextual App Targeting
-    • Added Support for Picasso version 2.8
-    • Added Support for Swish Folders
     • Bug fixes
-    • Interface Changes
-            - APIs Added
-                    • BannerAdEventListener
-                        public void onAdImpression(@NonNull InMobiBanner ad)
-                    • InterstitialAdEventListener
-                	    public void onAdImpression(@NonNull InMobiInterstitial ad)
-                    • NativeAdEventListener
-                	    public void onAdImpression(@NonNull InMobiNative ad)
 
 ## Requirements
 - Android 4.0.1 (API level 15) and higher
 - androidx.browser
 - androidx.appcompat
 - androidx.recyclerview
-- Picasso Library (picasso-2.8.jar - available on JCenter)
+- Picasso Library (picasso-2.8.jar)
 - **Recommended** Google Play Services 18.0.1
 
 ## License
