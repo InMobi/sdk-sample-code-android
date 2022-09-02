@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 5 August, 2022
+Modified: 29 August, 2022
 
-SDK Version: 10.0.9
+SDK Version: 10.5.1
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads:10.0.9'
+    implementation 'com.inmobi.monetization:inmobi-ads-kotlin:10.5.1'
 }
 ```
 
