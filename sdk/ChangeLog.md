@@ -1,6 +1,9 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 10.5.2 [4/October/2022]
+    • Bug Fixes
+
 ## Build 10.5.1 [5/August/2022]
     • Bug Fixes
 
