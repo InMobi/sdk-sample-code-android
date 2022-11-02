@@ -1,6 +1,11 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 10.1.1 [31/October/2022]
+    • Contextual Data support
+    • Audio Ad support
+    • Bug fixes
+
 ## Build 10.5.1 [5/August/2022]
     • Bug Fixes
 

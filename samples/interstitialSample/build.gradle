@@ -39,7 +39,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.multidex:multidex:2.0.0'
 
-    implementation "com.inmobi.monetization:inmobi-ads-kotlin:$inmobiSdkVersion"
+    implementation "com.inmobi.monetization:inmobi-ads:$inmobiSdkVersion"
     implementation "com.google.android.gms:play-services-ads-identifier:$playservicesadsidentifier"
     implementation "com.google.android.gms:play-services-location:$playserviceslocation"
     implementation "androidx.recyclerview:recyclerview:$recyclerview"
