@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 13 October, 2022
+Modified: 31 October, 2022
 
-SDK Version: 10.5.2
+SDK Version: 10.5.3
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads-kotlin:10.5.2'
+    implementation 'com.inmobi.monetization:inmobi-ads-kotlin:10.5.3'
 }
 ```
 
@@ -31,6 +31,8 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
+    • Contextual Data support
+    • Audio Ad support
     • Bug fixes
 
 ## Requirements
