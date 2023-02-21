@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 31 October, 2022
+Modified: 16 February, 2023
 
-SDK Version: 10.5.3
+SDK Version: 10.5.4
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -31,8 +31,7 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    • Contextual Data support
-    • Audio Ad support
+    • Gradle 7.0 support
     • Bug fixes
 
 ## Requirements
