@@ -1,6 +1,10 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 10.5.7 [27/Jun/2023]
+    • Support for U.S. data privacy laws
+    • Bug fixes
+
 ## Build 10.5.6 [23/Jun/2023]
     • Support for U.S. data privacy laws
     • Bug fixes
