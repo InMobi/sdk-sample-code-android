@@ -1,6 +1,11 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 11.1.0 [09/Jan/2026]
+    • Added support for Android 16
+    • Memory Leak Improvements
+    • Bug Fixes and Enhancements
+
 ## Build 11.0.0 [9/Oct/2025]
     • Upgraded support for native ads
     • Bug Fixes and Enhancements
