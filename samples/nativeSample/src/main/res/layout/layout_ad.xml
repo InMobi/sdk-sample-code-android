@@ -15,11 +15,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <FrameLayout
+            android:id="@+id/adChoice"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/adSponsored"
             android:text="@string/sponsored"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_below="@id/adChoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

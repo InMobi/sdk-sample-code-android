@@ -1,9 +1,8 @@
 package com.inmobi.nativead.sample.listview;
 
-import android.app.Activity;
 import android.content.Context;
 import androidx.annotation.NonNull;
-import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.inmobi.ads.InMobiNative;
+import com.inmobi.media.ads.nativeAd.InMobiNativeViewData;
 import com.inmobi.nativead.sample.R;
 import com.inmobi.nativead.utility.FeedData.FeedItem;
 import com.squareup.picasso.Picasso;
@@ -36,6 +36,8 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
 
     //View type for Ad Feed - from InMobi (InMobi Native Strand)
     private static final int VIEW_TYPE_INMOBI_STRAND = 1;
+
+    private static final String TAG = FeedItemAdapter.class.getSimpleName();
 
     FeedItemAdapter(Context mContext, ArrayList<FeedItem> mUsers) {
         super(mContext, R.layout.listitem, R.id.title, mUsers);
@@ -65,7 +67,6 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
 
     @NonNull
     @Override
-    @SuppressWarnings("deprecation")
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         final int itemViewType = getItemViewType(position);
         final FeedItem feedItem = getItem(position);
@@ -123,35 +124,83 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
                 viewHolder.action = (Button) convertView.findViewById(R.id.adAction);
                 viewHolder.content = (FrameLayout) convertView.findViewById(R.id.adContent);
                 viewHolder.ratingBar = (RatingBar) convertView.findViewById(R.id.adRating);
+                viewHolder.sponsored = (TextView) convertView.findViewById(R.id.adSponsored);
+                viewHolder.adChoice = (FrameLayout) convertView.findViewById(R.id.adChoice);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (AdViewHolder) convertView.getTag();
             }
 
-            Picasso.get()
-                    .load(inMobiNative.getAdIconUrl())
-                    .into(viewHolder.icon);
+            // Load icon image
+            if (inMobiNative.getAdIcon() != null && inMobiNative.getAdIcon().getUrl() != null) {
+                Picasso.get()
+                        .load(inMobiNative.getAdIcon().getUrl())
+                        .into(viewHolder.icon);
+            }
+
+            // Populate text views
             viewHolder.title.setText(inMobiNative.getAdTitle());
             viewHolder.description.setText(inMobiNative.getAdDescription());
-            viewHolder.action.setText(inMobiNative.getAdCtaText());
+            viewHolder.action.setText(inMobiNative.getCtaText());
+            viewHolder.sponsored.setText(inMobiNative.getAdvertiserName());
 
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            ((Activity) mContext).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            viewHolder.content.addView(inMobiNative.getPrimaryViewOfWidth(mContext, viewHolder.content,
-                    parent, displayMetrics.widthPixels));
-
-            float rating  = inMobiNative.getAdRating();
-            if (rating != 0) {
-                viewHolder.ratingBar.setRating(rating);
-            }
-            viewHolder.ratingBar.setVisibility(rating != 0 ? View.VISIBLE : View.GONE);
-
-            viewHolder.action.setOnClickListener(new View.OnClickListener() {
+            // Load media view
+            viewHolder.content.removeAllViews();
+            final InMobiNative nativeAd = inMobiNative;
+            final FrameLayout mediaContainer = viewHolder.content;
+            viewHolder.content.post(new Runnable() {
                 @Override
-                public void onClick(View v) {
-                    inMobiNative.reportAdClickAndOpenLandingPage();
+                public void run() {
+                    View mediaView = nativeAd.getMediaView();
+                    if (mediaView != null) {
+                        if (mediaView.getParent() != null) {
+                            ((ViewGroup) mediaView.getParent()).removeView(mediaView);
+                        }
+                        int mediaHeight = mContext.getResources().getDimensionPixelSize(R.dimen.native_ad_media_height);
+                        mediaView.setLayoutParams(new FrameLayout.LayoutParams(
+                                FrameLayout.LayoutParams.MATCH_PARENT,
+                                mediaHeight
+                        ));
+                        mediaContainer.addView(mediaView);
+                    } else {
+                        Log.d(TAG, "Media view is null for native ad");
+                    }
                 }
             });
+
+            // Set rating if available
+            float rating = inMobiNative.getAdRating();
+            if (rating > 0) {
+                viewHolder.ratingBar.setRating(rating);
+                viewHolder.ratingBar.setVisibility(View.VISIBLE);
+            } else {
+                viewHolder.ratingBar.setVisibility(View.GONE);
+            }
+
+            // Add AdChoice icon
+            viewHolder.adChoice.removeAllViews();
+            View adChoiceIcon = inMobiNative.getAdChoiceIcon();
+            if (adChoiceIcon != null) {
+                if (adChoiceIcon.getParent() != null) {
+                    ((ViewGroup) adChoiceIcon.getParent()).removeAllViews();
+                }
+                viewHolder.adChoice.addView(adChoiceIcon);
+            }
+
+            // Build InMobiNativeViewData to register views for interaction
+            InMobiNativeViewData viewData = new InMobiNativeViewData.Builder((ViewGroup) convertView)
+                    .setIconView(viewHolder.icon)
+                    .setTitleView(viewHolder.title)
+                    .setDescriptionView(viewHolder.description)
+                    .setCTAView(viewHolder.action)
+                    .setRatingView(viewHolder.ratingBar)
+                    .setExtraViews(java.util.Arrays.asList(viewHolder.sponsored))
+                    .build();
+
+            // Register all interactive views with InMobi SDK for proper tracking and video playback.
+            // This is CRITICAL for video ads to function correctly - without this call,
+            // video will not play and clicks will not be tracked.
+            inMobiNative.registerViewForTracking(viewData);
 
             return convertView;
         }
@@ -168,10 +217,10 @@ class FeedItemAdapter extends ArrayAdapter<FeedItem> {
     }
 
     private static class AdViewHolder {
-        TextView title, description;
+        TextView title, description, sponsored;
         ImageView icon;
         Button action;
-        FrameLayout content;
+        FrameLayout content, adChoice;
         RatingBar ratingBar;
     }
 }

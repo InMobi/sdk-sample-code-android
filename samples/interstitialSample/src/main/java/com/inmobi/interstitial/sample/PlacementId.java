@@ -5,5 +5,5 @@ public interface PlacementId {
     //long YOUR_PLACEMENT_ID = 1476878485960L;
 
     // PLID for Rewarded video
-    long YOUR_PLACEMENT_ID = 1475973082314L;
+    long YOUR_PLACEMENT_ID = 1623469928141L;
 }

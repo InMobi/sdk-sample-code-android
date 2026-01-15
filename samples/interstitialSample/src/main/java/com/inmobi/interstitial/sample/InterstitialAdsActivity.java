@@ -41,7 +41,7 @@ public class InterstitialAdsActivity extends AppCompatActivity {
         }
 
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
-        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345", consent, new SdkInitializationListener() {
+        InMobiSdk.init(this, BuildConfig.ACCOUNT_ID, consent, new SdkInitializationListener() {
             @Override
             public void onInitializationComplete(@Nullable Error error) {
                 if (error == null) {
@@ -79,7 +79,6 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                 mInterstitialAd.show();
             }
         });
-        setupInterstitial();
     }
 
     @Override
@@ -162,6 +161,5 @@ public class InterstitialAdsActivity extends AppCompatActivity {
                         Log.d(TAG, "onAdImpression");
                     }
                 });
-        mInterstitialAd.show();
     }
 }

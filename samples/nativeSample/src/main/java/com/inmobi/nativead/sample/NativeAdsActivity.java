@@ -34,7 +34,7 @@ public class NativeAdsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         InMobiSdk.setLogLevel(InMobiSdk.LogLevel.DEBUG);
-        InMobiSdk.init(this, "12345678901234567890123456789012", consent, new SdkInitializationListener() {
+        InMobiSdk.init(this, BuildConfig.ACCOUNT_ID, consent, new SdkInitializationListener() {
             @Override
             public void onInitializationComplete(@Nullable Error error) {
                 if (error == null) {

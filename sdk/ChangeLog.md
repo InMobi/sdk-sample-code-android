@@ -1,6 +1,162 @@
 InMobi Monetization SDK ChangeLog for Android
 =============================================
 
+## Build 11.1.0 [09/Jan/2026]
+    • Added support for Android 16
+    • Memory Leak Improvements
+    • Bug Fixes and Enhancements
+
+## Build 11.0.0 [9/Oct/2025]
+    • Upgraded support for native ads
+    • Bug Fixes and Enhancements
+    • APIs Removed
+        InMobiNative
+            - public String getAdIconUrl()
+            - public String getAdLandingPageUrl()
+            - public boolean isAppDownload()
+            - public JSONObject getCustomAdContent()
+            - public View getPrimaryViewOfWidth(Context context, View convertView, ViewGroup parent, int viewWidthInPixels)
+            - public void reportAdClickAndOpenLandingPage()
+        NativeAdEventListener
+            - public void onAdReceived(@NonNull InMobiNative ad)
+            - public void onAdFullScreenWillDisplay(@NonNull InMobiNative ad)
+            - public void onAdImpressed(@NonNull InMobiNative ad)
+            - public void onAdStatusChanged(@NonNull InMobiNative nativeAd)
+
+    • APIs Added
+        New Class Added : InMobiNativeImage
+        New Class Added : InMobiNativeViewData
+        New Class Added : MediaView
+        InMobiNative
+            - public InMobiNativeImage getAdIcon()
+            - public String getAdvertiserName()
+            - public View getAdChoiceIcon()
+            - public void registerViewForTracking(InMobiNativeViewData viewData)
+            - public void unTrackViews()
+            - public MediaView getMediaView()
+            - public boolean isVideo()
+            - public String getCreativeId()
+            - public JSONObject getAdContent()
+
+## Build 10.8.8 [26/Sep/2025]
+    • Simplified PPS integration
+    • Bug Fixes
+
+## Build 10.8.7 [30/Jul/2025]
+    • Bug Fixes
+
+## Build 10.8.6 [28/Jul/2025]
+    • Updated OMSDK to 1.5.5
+    • Performance Enhancements
+    • Bug Fixes
+
+## Build 10.8.5 (Internal Release) [03/July/2025]
+    • 10.8.2 and 10.8.3 changes merged into 10.8.4 
+    • Bug Fixes 
+
+## Build 10.8.4 (Internal Release) [06/June/2025]
+    • Native 1.2 Release 
+
+## Build 10.8.3 [30/Apr/2025]
+    • Added support for MRAID 3.0
+        - Includes support for exposureChange, MRAID_ENV, audioVolumeChange APIs
+    • Minor upgrades in ad experience
+    • Upgraded Open Measurement ( OM ) SDK to 1.5.2
+    • Improved memory management
+    • Deprecation of getSignals and PreloadManager API
+        - APIs Deprecated
+          • InMobiBanner
+                public String getSignals()
+                public PreloadManager getPreloadManager()
+          • InMobiInterstitial
+                public String getSignals()
+                public PreloadManager getPreloadManager()
+          • InMobiNative
+                public String getSignals()
+                public PreloadManager getPreloadManager()
+    • Upgraded the minSdkVersion from 16 to 19.
+    • Upgraded the dependency "androidx.browser" from 1.2.0 to 1.8.0.
+    • Bug Fixes
+
+## Build 10.8.2 [28/Feb/2025]
+    • Added support for Android 35
+    • Bug Fixes
+
+## Build 10.8.1 (Internal Release) [15/Jan/2024]
+    • Bug Fixes
+
+## Build 10.8.0 [13/Nov/2024]
+    • Bug Fixes
+
+## Build 10.7.9 (Internal Release) [15/Oct/2024]
+    • Glance POM Support
+
+## Build 10.7.8 [04/Oct/2024]
+    • Support for Publisher  Signals.
+        - APIs added
+            • InMobiSdk
+                fun putPublisherSignals(signals: Map<String, Any>?)
+                fun getPublisherSignals(): Map<String, Any>?
+                fun resetPublisherSignals()
+    • Bug Fixes
+
+## Build 10.7.7 [30/Aug/2024]
+    • Updated TargetVersion support to Android 14
+    • Bug Fixes
+
+## Build 10.7.5 [18/July/2024]
+    • Bug Fixes
+
+## Build 10.7.4 [12/June/2024]
+    • Bug Fixes
+
+## Build 10.7.3 [31/May/2024]
+    • Bug Fixes
+    • Updated OMSDK to 1.4.12
+
+## Build 10.6.7 [04/Mar/2024]
+    • Bug Fixes
+
+## Build 10.6.6 [13/Feb/2024]
+    • Bug Fixes
+    • Updated OMSDK to 1.3.37
+    • Improved ad loading & rendering performance in the full screen and video ad formats
+    • Additional rendering capabilities for Native ads
+
+## Build 10.6.3 [22/Jan/2024]
+    • Bug Fixes
+
+## Build 10.6.2 [10/Nov/2023]
+    • Bug Fixes
+
+## Build 10.6.1 [03/Nov/2023]
+    • Bug Fixes
+
+## Build 10.6.0 [25/Oct/2023]
+    • Bug Fixes
+    • Do not use this version as its to prone high Ad Load Failure.
+
+## Build 10.5.9 [26/Sep/2023]
+    • Bug Fixes
+
+## Build 10.5.8 [08/Sep/2023]
+    • Support for User Ad Reporting
+    • Support for Audio Ads
+    • Support for movable Audio Icons
+    • Support for Google Ad Identification Overlay
+    • Bug fixes
+
+## Build 10.5.7 [27/Jun/2023]
+    • Support for U.S. data privacy laws
+    • Bug fixes
+
+## Build 10.5.6 [23/Jun/2023]
+    • Support for U.S. data privacy laws
+    • Bug fixes
+
+## Build 10.5.5 [18/May/2023]
+    • Bug fixes
+
 ## Build 10.5.4 [16/Feb/2023]
     • Gradle 7.0 support
     • Bug fixes

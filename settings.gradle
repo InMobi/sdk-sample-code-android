@@ -1,1 +1,1 @@
-include ':samples:bannerSample', ':samples:interstitialSample', ':samples:nativeSample', ':samples:customABSample'
+include ':samples:bannerSample', ':samples:interstitialSample', ':samples:nativeSample'

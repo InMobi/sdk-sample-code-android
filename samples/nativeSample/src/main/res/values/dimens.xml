@@ -17,4 +17,5 @@
 
     <dimen name="adContentPadding">5dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="native_ad_media_height">300dp</dimen>
 </resources>

@@ -1,9 +1,9 @@
 package com.inmobi.banner.sample;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.View;
@@ -16,7 +16,7 @@ import com.inmobi.sdk.SdkInitializationListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BannerBase extends AppCompatActivity {
+public class BannerBase extends Activity {
 
     private static final String TAG = BannerBase.class.getName();
     private Button normalIntegration;
@@ -33,7 +33,7 @@ public class BannerBase extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        InMobiSdk.init(this, "1234567890qwerty0987654321qwerty12345", consent, new SdkInitializationListener() {
+        InMobiSdk.init(this, BuildConfig.ACCOUNT_ID, consent, new SdkInitializationListener() {
             @Override
             public void onInitializationComplete(@Nullable Error error) {
                 if (error == null) {

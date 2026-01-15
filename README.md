@@ -1,9 +1,9 @@
 InMobi SDK for Android
 ======================
 
-Modified: 16 February, 2023
+Modified: 09 January, 2026
 
-SDK Version: 10.5.4
+SDK Version: 11.1.0
 
 Thanks for monetizing with InMobi!
 If you haven't already, [sign up](https://www.inmobi.com/user/index?locale=en_us#signup) for an account to start monetizing your app!
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.inmobi.monetization:inmobi-ads-kotlin:10.5.3'
+    implementation 'com.inmobi.monetization:inmobi-ads-kotlin:11.1.0'
 }
 ```
 
@@ -31,16 +31,15 @@ To download the latest SDK as a AAR, please visit [http://inmobi.com/sdk](https:
 **To continue integrating with the InMobi SDK, please see the [Integration Guidelines](https://support.inmobi.com/monetize/android-guidelines/) for Android.**
 
 ## New in this version
-    • Gradle 7.0 support
-    • Bug fixes
+    • Added support for Android 16
+    • Memory Leak Improvements
+    • Bug Fixes and Enhancements
+
+** Refer to [Release Notes](https://support.inmobi.com/monetize/sdk-documentation/android-guidelines/changelogs-android) for Older Versions.**
 
 ## Requirements
-- Android 4.0.1 (API level 15) and higher
-- androidx.browser
-- androidx.appcompat
-- androidx.recyclerview
-- Picasso Library (picasso-2.8.jar)
-- **Recommended** Google Play Services 18.0.1
+- Android 5.0 (API level 21) and higher
+- androidx.appcompat (Not a dependency of SDK. Used only in Sample App)
 
 ## License
 To view the license for the InMobi SDK, see [here](https://github.com/InMobi/sdk-sample-code-android/blob/master/sdk/licenses/License.txt). To view the terms of service, visit [https://inmobi.com/terms-of-service](http://inmobi.com/terms-of-service/).

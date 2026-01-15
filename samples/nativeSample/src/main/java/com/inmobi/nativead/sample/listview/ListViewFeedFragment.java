@@ -17,6 +17,7 @@ import com.inmobi.ads.AdMetaInfo;
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiNative;
 import com.inmobi.ads.listeners.NativeAdEventListener;
+import com.inmobi.ads.listeners.VideoEventListener;
 import com.inmobi.nativead.PlacementId;
 import com.inmobi.nativead.utility.FeedData;
 import com.inmobi.nativead.utility.SwipeRefreshLayoutWrapper;
@@ -89,6 +90,24 @@ public class ListViewFeedFragment extends ListFragment {
         for (int position : mAdPositions) {
             final InMobiNative nativeStrand = new InMobiNative(getActivity(),
                     PlacementId.YOUR_PLACEMENT_ID_HERE, new StrandAdListener(position));
+
+            // Add VideoEventListener for video playback
+            nativeStrand.setVideoEventListener(new VideoEventListener() {
+                @Override
+                public void onVideoCompleted(InMobiNative inMobiNative) {
+                    Log.d(TAG, "Video completed");
+                }
+
+                @Override
+                public void onVideoSkipped(InMobiNative inMobiNative) {
+                    Log.d(TAG, "Video skipped");
+                }
+
+                @Override
+                public void onAudioStateChanged(InMobiNative inMobiNative, boolean isMuted) {
+                    Log.d(TAG, "Audio state changed to: " + (isMuted ? "muted" : "unmuted"));
+                }
+            });
 
             mStrands.add(nativeStrand);
         }
@@ -178,11 +197,6 @@ public class ListViewFeedFragment extends ListFragment {
         }
 
         @Override
-        public void onAdFullScreenWillDisplay(InMobiNative inMobiNative) {
-            Log.d(TAG, "Ad going fullscreen.");
-        }
-
-        @Override
         public void onAdFullScreenDisplayed(InMobiNative inMobiNative) {
             Log.d(TAG, "Ad fullscreen displayed.");
         }
@@ -195,11 +209,6 @@ public class ListViewFeedFragment extends ListFragment {
         @Override
         public void onAdClicked(@NonNull InMobiNative inMobiNativeStrand) {
             Log.d(TAG, "Click recorded for ad at position:" + mPosition);
-        }
-
-        @Override
-        public void onAdStatusChanged(@NonNull InMobiNative inMobiNative) {
-            Log.d(TAG, "Ad status changed");
         }
 
         @Override

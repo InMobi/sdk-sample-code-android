@@ -15,6 +15,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.inmobi.ads.InMobiNative;
+import com.inmobi.media.ads.nativeAd.InMobiNativeViewData;
 import com.inmobi.nativead.sample.R;
 import com.inmobi.nativead.utility.FeedData.FeedItem;
 import com.squareup.picasso.Picasso;
@@ -65,7 +66,6 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         FeedItem feedItem = mFeedItems.get(position);
         if (viewHolder instanceof FeedViewHolder) {
@@ -90,30 +90,76 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             final AdViewHolder adViewHolder = (AdViewHolder) viewHolder;
             final InMobiNative inMobiNative = ((AdFeedItem) feedItem).mNativeStrand;
 
-            Picasso.get()
-                    .load(inMobiNative.getAdIconUrl())
-                    .into(adViewHolder.icon);
+            // Load icon image
+            if (inMobiNative.getAdIcon() != null && inMobiNative.getAdIcon().getUrl() != null) {
+                Picasso.get()
+                        .load(inMobiNative.getAdIcon().getUrl())
+                        .into(adViewHolder.icon);
+            }
+
+            // Populate text views
             adViewHolder.title.setText(inMobiNative.getAdTitle());
             adViewHolder.description.setText(inMobiNative.getAdDescription());
-            adViewHolder.action.setText(inMobiNative.getAdCtaText());
+            adViewHolder.action.setText(inMobiNative.getCtaText());
+            adViewHolder.sponsored.setText(inMobiNative.getAdvertiserName());
 
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            ((Activity) mContext).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            adViewHolder.adContent.addView(inMobiNative.getPrimaryViewOfWidth(mContext, adViewHolder.adView,
-                    adViewHolder.cardView, displayMetrics.widthPixels));
-
-            float rating = inMobiNative.getAdRating();
-            if (rating != 0) {
-                adViewHolder.ratingBar.setRating(rating);
-            }
-            adViewHolder.ratingBar.setVisibility(rating != 0 ? View.VISIBLE : View.GONE);
-
-            adViewHolder.action.setOnClickListener(new View.OnClickListener() {
+            // Load media view
+            adViewHolder.adContent.removeAllViews();
+            final InMobiNative nativeAd = inMobiNative;
+            final FrameLayout mediaContainer = adViewHolder.adContent;
+            adViewHolder.adContent.post(new Runnable() {
                 @Override
-                public void onClick(View v) {
-                    inMobiNative.reportAdClickAndOpenLandingPage();
+                public void run() {
+                    View mediaView = nativeAd.getMediaView();
+                    if (mediaView != null) {
+                        if (mediaView.getParent() != null) {
+                            ((ViewGroup) mediaView.getParent()).removeView(mediaView);
+                        }
+                        int mediaHeight = mContext.getResources().getDimensionPixelSize(R.dimen.native_ad_media_height);
+                        mediaView.setLayoutParams(new FrameLayout.LayoutParams(
+                                FrameLayout.LayoutParams.MATCH_PARENT,
+                                mediaHeight
+                        ));
+                        mediaContainer.addView(mediaView);
+                    } else {
+                        android.util.Log.d("FeedsAdapter", "Media view is null for native ad");
+                    }
                 }
             });
+
+            // Set rating if available
+            float rating = inMobiNative.getAdRating();
+            if (rating > 0) {
+                adViewHolder.ratingBar.setRating(rating);
+                adViewHolder.ratingBar.setVisibility(View.VISIBLE);
+            } else {
+                adViewHolder.ratingBar.setVisibility(View.GONE);
+            }
+
+            // Add AdChoice icon
+            adViewHolder.adChoice.removeAllViews();
+            View adChoiceIcon = inMobiNative.getAdChoiceIcon();
+            if (adChoiceIcon != null) {
+                if (adChoiceIcon.getParent() != null) {
+                    ((ViewGroup) adChoiceIcon.getParent()).removeAllViews();
+                }
+                adViewHolder.adChoice.addView(adChoiceIcon);
+            }
+
+            // Build InMobiNativeViewData to register views for interaction
+            InMobiNativeViewData viewData = new InMobiNativeViewData.Builder((ViewGroup) adViewHolder.adView)
+                    .setIconView(adViewHolder.icon)
+                    .setTitleView(adViewHolder.title)
+                    .setDescriptionView(adViewHolder.description)
+                    .setCTAView(adViewHolder.action)
+                    .setRatingView(adViewHolder.ratingBar)
+                    .setExtraViews(java.util.Arrays.asList(adViewHolder.sponsored))
+                    .build();
+
+            // Register all interactive views with InMobi SDK for proper tracking and video playback.
+            // This is CRITICAL for video ads to function correctly - without this call,
+            // video will not play and clicks will not be tracked.
+            inMobiNative.registerViewForTracking(viewData);
         }
     }
 
@@ -122,9 +168,9 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         View adView;
 
         ImageView icon;
-        TextView title, description;
+        TextView title, description, sponsored;
         Button action;
-        FrameLayout adContent;
+        FrameLayout adContent, adChoice;
         RatingBar ratingBar;
 
         AdViewHolder(Context context, View adCardView) {
@@ -138,6 +184,8 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             action = (Button) adView.findViewById(R.id.adAction);
             adContent = (FrameLayout) adView.findViewById(R.id.adContent);
             ratingBar = (RatingBar) adView.findViewById(R.id.adRating);
+            sponsored = (TextView) adView.findViewById(R.id.adSponsored);
+            adChoice = (FrameLayout) adView.findViewById(R.id.adChoice);
             cardView.addView(adView);
         }
     }

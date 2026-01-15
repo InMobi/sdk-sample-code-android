@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.inmobi.interstitial.sample'
     compileSdkVersion androidCompileSdkVersion
 
     defaultConfig {
@@ -10,11 +11,13 @@ android {
         versionCode appVersionCode
         versionName appVersionName
         multiDexEnabled true
+        buildConfigField "String", "ACCOUNT_ID", "\"$ACCOUNT_ID\""
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".release"
         }
 
         debug {
@@ -22,30 +25,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    lintOptions {
-        abortOnError false
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     dexOptions {
         javaMaxHeapSize "4g"
+    }
+    lint {
+        abortOnError false
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
-    implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.multidex:multidex:2.0.0'
 
     implementation "com.inmobi.monetization:inmobi-ads-kotlin:$inmobiSdkVersion"
-    implementation "com.google.android.gms:play-services-ads-identifier:$playservicesadsidentifier"
-    implementation "com.google.android.gms:play-services-location:$playserviceslocation"
-    implementation "androidx.recyclerview:recyclerview:$recyclerview"
-    implementation "com.squareup.picasso:picasso:$picasso"
-    implementation "androidx.browser:browser:$browser"
-    implementation "com.google.android.gms:play-services-appset:$playservicesappset"
-    implementation "com.google.android.gms:play-services-tasks:$playservicestask"
-
 }

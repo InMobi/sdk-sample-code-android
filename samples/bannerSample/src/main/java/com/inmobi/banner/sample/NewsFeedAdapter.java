@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -33,9 +33,9 @@ class NewsFeedAdapter extends ArrayAdapter<NewsSnippet> {
         if (null == rowView || null == convertView.getTag()) {
             rowView = mInflater.inflate(R.layout.news_headline_view, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.headline = (TextView) rowView.findViewById(R.id.caption);
-            viewHolder.content = (TextView) rowView.findViewById(R.id.content);
-            viewHolder.icon = (SimpleDraweeView) rowView.findViewById(R.id.photo);
+            viewHolder.headline = rowView.findViewById(R.id.caption);
+            viewHolder.content = rowView.findViewById(R.id.content);
+            viewHolder.icon = rowView.findViewById(R.id.photo);
             rowView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) rowView.getTag();
@@ -52,6 +52,6 @@ class NewsFeedAdapter extends ArrayAdapter<NewsSnippet> {
     private static class ViewHolder {
         TextView headline;
         TextView content;
-        SimpleDraweeView icon;
+        ImageView icon;
     }
 }

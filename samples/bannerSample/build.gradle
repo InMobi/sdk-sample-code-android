@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.inmobi.banner.sample'
     compileSdkVersion androidCompileSdkVersion
-
     defaultConfig {
         applicationId 'com.inmobi.banner.sample'
         minSdkVersion androidMinSdkVersion
@@ -10,11 +10,13 @@ android {
         versionCode appVersionCode
         versionName appVersionName
         multiDexEnabled true
+        buildConfigField "String", "ACCOUNT_ID", "\"$ACCOUNT_ID\""
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".release"
         }
 
         debug {
@@ -22,33 +24,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    lintOptions {
-        abortOnError false
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     dexOptions {
         javaMaxHeapSize "4g"
     }
+    lint {
+        abortOnError false
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.aar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.annotation:annotation:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.browser:browser:1.0.0'
-    implementation 'androidx.multidex:multidex:2.0.0'
-
-
+//    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "com.inmobi.monetization:inmobi-ads-kotlin:$inmobiSdkVersion"
-    implementation "com.google.android.gms:play-services-ads-identifier:$playservicesadsidentifier"
-    implementation "com.google.android.gms:play-services-location:$playserviceslocation"
-    implementation "com.facebook.fresco:fresco:$fresco"
-    implementation "com.squareup.picasso:picasso:$picasso"
-    implementation "androidx.browser:browser:$browser"
-    implementation "com.google.android.gms:play-services-appset:$playservicesappset"
-    implementation "com.google.android.gms:play-services-tasks:$playservicestask"
-
 }
